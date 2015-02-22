@@ -14,13 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/analogClock"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingBar"
-        android:layout_below="@+id/textbox"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/textbox"
+        android:layout_toEndOf="@+id/textbox" />
 
 </RelativeLayout>
