@@ -32,6 +32,10 @@
             android:name=".RecentlyViewed"
             android:label="@string/title_activity_recently_viewed" >
         </activity>
+        <activity
+            android:name=".SortBy"
+            android:label="@string/title_activity_sort_by" >
+        </activity>
     </application>
 
 </manifest>
