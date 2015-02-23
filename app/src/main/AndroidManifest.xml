@@ -20,6 +20,18 @@
             android:name=".Recipe"
             android:label="@string/title_activity_recipe" >
         </activity>
+        <activity
+            android:name=".Favorites"
+            android:label="@string/title_activity_favorites" >
+        </activity>
+        <activity
+            android:name=".RecentlyAdded"
+            android:label="@string/title_activity_recently_added" >
+        </activity>
+        <activity
+            android:name=".RecentlyViewed"
+            android:label="@string/title_activity_recently_viewed" >
+        </activity>
     </application>
 
 </manifest>
