@@ -13,4 +13,49 @@
         android:id="@+id/mainMenu"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Name a-z"
+        android:id="@+id/NameAZ"
+        android:layout_above="@+id/nameZA"
+        android:layout_alignLeft="@+id/button8"
+        android:layout_alignStart="@+id/button8" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameZA"
+        android:text="Name Z-a"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/NameAZ"
+        android:layout_alignStart="@+id/NameAZ" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rating"
+        android:id="@+id/button8"
+        android:layout_below="@+id/mainMenu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time short to long"
+        android:id="@+id/TimeSH"
+        android:layout_above="@+id/TimeLS"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time long to short"
+        android:id="@+id/TimeLS"
+        android:layout_marginBottom="72dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/TimeSH"
+        android:layout_alignStart="@+id/TimeSH" />
 </RelativeLayout>
