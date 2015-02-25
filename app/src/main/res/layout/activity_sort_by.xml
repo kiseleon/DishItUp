@@ -58,4 +58,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/TimeSH"
         android:layout_alignStart="@+id/TimeSH" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to search"
+        android:id="@+id/backToSearch"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
