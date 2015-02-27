@@ -19,14 +19,14 @@
         android:layout_height="wrap_content"
         android:text=" Name a-z"
         android:id="@+id/NameAZ"
-        android:layout_above="@+id/nameZA"
-        android:layout_alignLeft="@+id/button8"
-        android:layout_alignStart="@+id/button8" />
+        android:layout_above="@+id/NameZA"
+        android:layout_alignLeft="@+id/Rating"
+        android:layout_alignStart="@+id/Rating" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nameZA"
+        android:id="@+id/NameZA"
         android:text="Name Z-a"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/NameAZ"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="rating"
-        android:id="@+id/button8"
+        android:id="@+id/Rating"
         android:layout_below="@+id/mainMenu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp" />
@@ -45,25 +45,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="time short to long"
-        android:id="@+id/TimeSH"
-        android:layout_above="@+id/TimeLS"
+        android:id="@+id/TimeSl"
+        android:layout_above="@+id/TimeLs"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Time long to short"
-        android:id="@+id/TimeLS"
+        android:id="@+id/TimeLs"
         android:layout_marginBottom="72dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/TimeSH"
-        android:layout_alignStart="@+id/TimeSH" />
+        android:layout_alignLeft="@+id/TimeSl"
+        android:layout_alignStart="@+id/TimeSl" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back to search"
-        android:id="@+id/backToSearch"
+        android:id="@+id/BackToSearch"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
