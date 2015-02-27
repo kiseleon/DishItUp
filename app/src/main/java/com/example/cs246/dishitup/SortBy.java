@@ -4,14 +4,31 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 
 public class SortBy extends ActionBarActivity {
+    Button mainMenu;
+    Button Rating;
+    Button NameAz;
+    Button NameZa;
+    Button TimeSl;
+    Button TimeLs;
+    Button BackToSearch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sort_by);
+
+        mainMenu = (Button) findViewById(R.id.mainMenu);
+        Rating = (Button) findViewById(R.id.Rating);
+        NameAz = (Button) findViewById(R.id.NameAZ);
+        NameZa = (Button) findViewById(R.id.NameZA);
+        TimeSl = (Button) findViewById(R.id.TimeSl);
+        TimeLs = (Button) findViewById(R.id.TimeLs);
+        BackToSearch = (Button) findViewById(R.id.BackToSearch);
     }
 
 
