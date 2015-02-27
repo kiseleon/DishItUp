@@ -16,6 +16,10 @@ public class SortBy extends ActionBarActivity {
     Button TimeLs;
     Button BackToSearch;
 
+    public String GetName(String TheName){
+        return TheName;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,7 @@ public class SortBy extends ActionBarActivity {
         TimeSl = (Button) findViewById(R.id.TimeSl);
         TimeLs = (Button) findViewById(R.id.TimeLs);
         BackToSearch = (Button) findViewById(R.id.BackToSearch);
+
     }
 
 
