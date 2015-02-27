@@ -5,5 +5,7 @@ package com.example.cs246.dishitup;
  * Created by Trenton on 2/25/2015.
  */
 public class sortByTest {
+    SortBy sortBy = new SortBy();
+
 
 }
