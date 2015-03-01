@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import java.util.Arrays;
+
 
 public class SortBy extends ActionBarActivity {
     Button mainMenu;
@@ -15,6 +17,14 @@ public class SortBy extends ActionBarActivity {
     Button TimeSl;
     Button TimeLs;
     Button BackToSearch;
+
+    String[] strings = {" Hello ", " This ", "Is ", "Sorting ", "Example"};
+
+    void sortTheString() {
+
+        Arrays.sort(strings);
+
+    }
 
     public String GetName(String TheName){
         return TheName;
