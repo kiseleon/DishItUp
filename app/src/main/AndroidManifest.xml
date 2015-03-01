@@ -36,6 +36,10 @@
             android:name=".SortBy"
             android:label="@string/title_activity_sort_by" >
         </activity>
+        <activity
+            android:name=".Filter"
+            android:label="@string/title_activity_filter" >
+        </activity>
     </application>
 
 </manifest>
