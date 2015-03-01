@@ -37,5 +37,4 @@ public class Search extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
 }
