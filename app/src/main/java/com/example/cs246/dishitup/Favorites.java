@@ -1,9 +1,11 @@
 package com.example.cs246.dishitup;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class Favorites extends ActionBarActivity {
@@ -35,5 +37,10 @@ public class Favorites extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToMenu(View view) {
+        Intent intent = new Intent(Favorites.this, MainActivity.class);
+        startActivity(intent);
     }
 }

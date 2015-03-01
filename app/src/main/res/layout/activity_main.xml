@@ -10,40 +10,43 @@
         android:layout_height="wrap_content"
         android:text="Search"
         android:onClick="launchSearch"
-        android:id="@+id/button"
+        android:id="@+id/searchButton"
         android:layout_marginTop="48dp"
-        android:layout_alignRight="@+id/button3"
-        android:layout_alignEnd="@+id/button3"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3" />
+        android:layout_alignRight="@+id/favoritesButton"
+        android:layout_alignEnd="@+id/favoritesButton"
+        android:layout_alignLeft="@+id/favoritesButton"
+        android:layout_alignStart="@+id/favoritesButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorites "
+        android:onClick="launchFavorites"
+        android:id="@+id/favoritesButton"
+        android:layout_below="@+id/searchButton"
+        android:layout_marginTop="41dp"
+        android:layout_alignRight="@+id/recentlyAddedButton"
+        android:layout_alignEnd="@+id/recentlyAddedButton"
+        android:layout_alignLeft="@+id/recentlyAddedButton"
+        android:layout_alignStart="@+id/recentlyAddedButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recently added"
-        android:id="@+id/button2"
-        android:layout_below="@+id/button3"
+        android:onClick="launchRecentlyAdded"
+        android:id="@+id/recentlyAddedButton"
+        android:layout_below="@+id/favoritesButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Favorites "
-        android:id="@+id/button3"
-        android:layout_below="@+id/button"
-        android:layout_marginTop="41dp"
-        android:layout_alignRight="@+id/button2"
-        android:layout_alignEnd="@+id/button2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Recently Viewed"
-        android:id="@+id/button4"
-        android:layout_below="@+id/button2"
+        android:onClick="launchRecentlyViewed"
+        android:id="@+id/recentlyViewedButton"
+        android:layout_below="@+id/recentlyAddedButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp" />
 </RelativeLayout>
