@@ -10,5 +10,6 @@
     <string name="title_activity_recently_viewed">RecentlyViewed</string>
     <string name="title_activity_sort_by">SortBy</string>
     <string name="title_activity_filter">Filter</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
