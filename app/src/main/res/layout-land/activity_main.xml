@@ -23,7 +23,7 @@
         android:text="Favorites "
         android:onClick="launchFavorites"
         android:id="@+id/favoritesButton"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/searchButton"
         android:layout_alignLeft="@+id/recentlyAddedButton"
         android:layout_alignStart="@+id/recentlyAddedButton"
@@ -39,7 +39,7 @@
         android:layout_below="@+id/favoritesButton"
         android:layout_alignLeft="@+id/recentlyViewedButton"
         android:layout_alignStart="@+id/recentlyViewedButton"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="20dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -49,6 +49,6 @@
         android:id="@+id/recentlyViewedButton"
         android:layout_below="@+id/recentlyAddedButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="20dp" />
     
 </RelativeLayout>
