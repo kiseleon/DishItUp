@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="rating"
         android:id="@+id/Rating"
-        android:layout_alignTop="@+id/NameAZ"
+        android:layout_below="@+id/mainMenu"
         android:layout_centerHorizontal="true" />
 
     <Button
