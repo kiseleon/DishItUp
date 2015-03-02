@@ -11,11 +11,11 @@
         android:text="Search"
         android:onClick="launchSearch"
         android:id="@+id/searchButton"
-        android:layout_marginTop="48dp"
-        android:layout_alignRight="@+id/favoritesButton"
-        android:layout_alignEnd="@+id/favoritesButton"
+        android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/favoritesButton"
-        android:layout_alignStart="@+id/favoritesButton" />
+        android:layout_alignStart="@+id/favoritesButton"
+        android:layout_alignRight="@+id/favoritesButton"
+        android:layout_alignEnd="@+id/favoritesButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -23,12 +23,12 @@
         android:text="Favorites "
         android:onClick="launchFavorites"
         android:id="@+id/favoritesButton"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/searchButton"
-        android:layout_marginTop="41dp"
-        android:layout_alignRight="@+id/recentlyAddedButton"
-        android:layout_alignEnd="@+id/recentlyAddedButton"
         android:layout_alignLeft="@+id/recentlyAddedButton"
-        android:layout_alignStart="@+id/recentlyAddedButton" />
+        android:layout_alignStart="@+id/recentlyAddedButton"
+        android:layout_alignRight="@+id/recentlyAddedButton"
+        android:layout_alignEnd="@+id/recentlyAddedButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -37,8 +37,9 @@
         android:onClick="launchRecentlyAdded"
         android:id="@+id/recentlyAddedButton"
         android:layout_below="@+id/favoritesButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp" />
+        android:layout_alignLeft="@+id/recentlyViewedButton"
+        android:layout_alignStart="@+id/recentlyViewedButton"
+        android:layout_marginTop="40dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,6 +49,6 @@
         android:id="@+id/recentlyViewedButton"
         android:layout_below="@+id/recentlyAddedButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
-
+        android:layout_marginTop="40dp" />
+    
 </RelativeLayout>

@@ -43,4 +43,20 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(MainActivity.this, Search.class);
         startActivity(intent);
     }
+
+    public void launchFavorites(View view) {
+        Intent intent = new Intent(MainActivity.this, Favorites.class);
+        startActivity(intent);
+    }
+
+    public void launchRecentlyAdded(View view) {
+        Intent intent = new Intent(MainActivity.this, RecentlyAdded.class);
+        startActivity(intent);
+    }
+
+
+    public void launchRecentlyViewed(View view) {
+        Intent intent = new Intent(MainActivity.this, RecentlyViewed.class);
+        startActivity(intent);
+    }
 }
