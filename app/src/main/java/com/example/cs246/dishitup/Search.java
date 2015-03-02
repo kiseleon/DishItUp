@@ -43,4 +43,9 @@ public class Search extends ActionBarActivity {
         Intent intent = new Intent(Search.this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void goSort(View view) {
+        Intent intent = new Intent(Search.this, SortBy.class);
+        startActivity(intent);
+    }
 }
