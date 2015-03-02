@@ -11,26 +11,58 @@
         android:layout_height="wrap_content"
         android:text="how much time do you have?"
         android:id="@+id/tHowMuchTime"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/TIngredient"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="126dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="what is the main ingredient?"
         android:id="@+id/TIngredient"
-        android:layout_below="@+id/tHowMuchTime"
+        android:layout_marginBottom="101dp"
+        android:layout_above="@+id/TCategory"
         android:layout_alignLeft="@+id/tHowMuchTime"
-        android:layout_alignStart="@+id/tHowMuchTime"
-        android:layout_marginTop="135dp" />
+        android:layout_alignStart="@+id/tHowMuchTime" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="What category?"
         android:id="@+id/TCategory"
+        android:layout_marginBottom="103dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main Menu"
+        android:id="@+id/mainMenu"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeText"
+        android:layout_above="@+id/TIngredient"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="44dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainIngredientText"
+        android:layout_above="@+id/TCategory"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/categoryText"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="217dp" />
+        android:layout_marginBottom="34dp" />
 
 </RelativeLayout>
