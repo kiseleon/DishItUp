@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Created by Jason on 3/5/2015.
- * I used a tutorial from Youtube to help me create this database
+ * I used a tutorial from Youtube to help me create this database control
  * https://www.youtube.com/watch?v=xKuM3cHO7G8
  */
 public class DatabaseControl extends SQLiteOpenHelper{
@@ -37,7 +37,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase database){
         database.execSQL("CREATE TABLE " + TABLE_RECIPES + "(" +
-                KEY_ID + "INTEGER PRIMARY KEY, " +
+                KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 KEY_NAME + " TEXT," + KEY_RATING + " TEXT," + KEY_COMMENT + " TEXT," +
                 KEY_IMGEREF + " TEXT," + KEY_COOKTIME + " TEXT," +
                 KEY_INGREDIENTS + " TEXT," + KEY_DIRECTIONS + " TEXT," + KEY_CATEGORIES + " TEXT)");
@@ -86,7 +86,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
         recipeCard.setComment(cursor.getString(3));
         recipeCard.setPictureRef(cursor.getString(4));
         recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
-        //for the next three we need to look through the string add multiple of each item
+        //for the next three we need to look through the string and pars them into individual parts instead of one big string
         recipeCard.addIngredient(cursor.getString(6));
         recipeCard.addDirection(cursor.getString(7));
         recipeCard.addCategory(cursor.getString(8));
