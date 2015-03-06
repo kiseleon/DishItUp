@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * Created by Jason on 3/5/2015.
+ * I used a tutorial from Youtube to help me create this database
+ * https://www.youtube.com/watch?v=xKuM3cHO7G8
  */
 public class DatabaseControl extends SQLiteOpenHelper{
 
@@ -38,7 +40,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
                 KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 KEY_NAME + " TEXT," + KEY_RATING + " TEXT," + KEY_COMMENT + " TEXT," +
                 KEY_IMGEREF + " TEXT," + KEY_COOKTIME + " TEXT," +
-                KEY_INGREDIENTS + " BLOB," + KEY_DIRECTIONS + " TEXT," + KEY_CATEGORIES + " BLOB)");
+                KEY_INGREDIENTS + " TEXT," + KEY_DIRECTIONS + " TEXT," + KEY_CATEGORIES + " TEXT)");
     }
 
     @Override
@@ -70,9 +72,9 @@ public class DatabaseControl extends SQLiteOpenHelper{
         SQLiteDatabase database = getReadableDatabase();
 
         Cursor cursor = database.query(TABLE_RECIPES, new String [] {KEY_ID, KEY_NAME,
-                        KEY_RATING,KEY_COMMENT, KEY_IMGEREF, KEY_COOKTIME, KEY_INGREDIENTS, KEY_DIRECTIONS,
-                        KEY_CATEGORIES}, KEY_ID + "=?", new String[] {String.valueOf(id)},
-                null,null,null,null);
+                        KEY_RATING,KEY_COMMENT, KEY_IMGEREF, KEY_COOKTIME, KEY_INGREDIENTS,
+                        KEY_DIRECTIONS, KEY_CATEGORIES}, KEY_ID + "=?", new String[]
+                        {String.valueOf(id)},null,null,null,null);
         if (cursor != null)
             cursor.moveToFirst();
 

@@ -10,10 +10,18 @@ import android.view.View;
 
 public class MainActivity extends ActionBarActivity {
 
+    DatabaseControl recipeDatabase;
+    MissionControl missionControl;
+    Rolodex rolodex;            //these are the three parts we need to get our recipe cards from the database into the Rolodex
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
+        recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
+        rolodex = new Rolodex(recipeDatabase); // this makes a rolodex with all of our existing recipeCards
+        missionControl = new MissionControl(rolodex); // makes our mission control object with a populated rolodex
     }
 
 

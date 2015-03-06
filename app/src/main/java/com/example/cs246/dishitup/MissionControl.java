@@ -4,7 +4,12 @@ package com.example.cs246.dishitup;
  * Created by Kevin on 2/25/2015.
  */
 public class MissionControl {
-    Rolodex rolodex = new Rolodex();
+
+    Rolodex rolodex;
+
+    MissionControl(Rolodex rolodex){
+        this.rolodex = rolodex;
+    }
 
     public Rolodex getRolodex() {return rolodex;}
 
@@ -14,9 +19,8 @@ public class MissionControl {
     public boolean remove(){
         return true;
     }
-    public void sort(){
+    public void sort(){ }
 
-    }
     public RecipeCard searchByName(String name){
         RecipeCard recipe;
         recipe = new RecipeCard();

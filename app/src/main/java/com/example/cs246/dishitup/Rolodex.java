@@ -10,8 +10,10 @@ public class Rolodex {
 
     private List<RecipeCard> recipeCardList;
 
-    Rolodex() {
-        recipeCardList = new ArrayList<>();
+    Rolodex() { recipeCardList = new ArrayList<>(); }
+
+    Rolodex(DatabaseControl databaseControl){
+        recipeCardList = databaseControl.getAllRecipeCards();
     }
 
     public void sort (String sortBy, boolean descending) {
