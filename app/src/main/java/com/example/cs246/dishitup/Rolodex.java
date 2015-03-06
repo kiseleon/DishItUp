@@ -1,6 +1,5 @@
 package com.example.cs246.dishitup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

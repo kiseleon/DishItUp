@@ -13,13 +13,13 @@ public class MissionControl {
 
     public Rolodex getRolodex() {return rolodex;}
 
-    public boolean create(){
+    public boolean createRecipeCard(){
+        return true;
+    } // when we implement this we need to pass a message to rolodex informing it that it needs to add a RecipeCard to the database
+    public boolean removeRecipeCard(){
         return true;
     }
-    public boolean remove(){
-        return true;
-    }
-    public void sort(){ }
+    public void sortCards(){ }
 
     public RecipeCard searchByName(String name){
         RecipeCard recipe;
