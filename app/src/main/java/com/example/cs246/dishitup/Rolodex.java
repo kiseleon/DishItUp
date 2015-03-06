@@ -10,8 +10,7 @@ public class Rolodex {
 
     private List<RecipeCard> recipeCardList;
 
-    Rolodex() { recipeCardList = new ArrayList<>(); }
-
+    //this constructor uses our database to populate the rolodex list
     Rolodex(DatabaseControl databaseControl){
         recipeCardList = databaseControl.getAllRecipeCards();
     }

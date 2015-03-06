@@ -17,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_main);
 
         recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
         rolodex = new Rolodex(recipeDatabase); // this makes a rolodex with all of our existing recipeCards
