@@ -6,14 +6,30 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.sql.Array;
+
+public class Search extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+
+    Spinner SortS;
+    //String[] sort =  {"Rateing", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
 
 
-public class Search extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        SortS = (Spinner) findViewById(R.id.SortS);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
+        SortS.setAdapter(adapter);
+        SortS.setOnItemSelectedListener(this);
     }
 
 
@@ -44,8 +60,23 @@ public class Search extends ActionBarActivity {
         startActivity(intent);
     }
 
+
+
+    //these are for what happens when you use the spinner must be overloaded
+
     public void goSort(View view) {
         Intent intent = new Intent(Search.this, SortBy.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        TextView myText = (TextView) view;
+        Toast.makeText(this, "you selected" + myText.getText(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

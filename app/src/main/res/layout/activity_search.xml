@@ -40,6 +40,16 @@
         android:id="@+id/listView"
         android:layout_below="@+id/mainMenu"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="93dp" />
+        android:layout_marginTop="303dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SortS"
+        android:layout_below="@+id/sortBy"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp"
+        android:spinnerMode="dropdown" />
 
 </RelativeLayout>
