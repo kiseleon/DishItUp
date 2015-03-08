@@ -37,7 +37,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase database){
         database.execSQL("CREATE TABLE " + TABLE_RECIPES + "(" +
-                KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                KEY_ID + "INTEGER PRIMARY KEY, " +
                 KEY_NAME + " TEXT," + KEY_RATING + " TEXT," + KEY_COMMENT + " TEXT," +
                 KEY_IMGEREF + " TEXT," + KEY_COOKTIME + " TEXT," +
                 KEY_INGREDIENTS + " TEXT," + KEY_DIRECTIONS + " TEXT," + KEY_CATEGORIES + " TEXT)");

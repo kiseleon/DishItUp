@@ -15,11 +15,13 @@
 
 
         <string-array name="sort">
+            <item>Click to Sort The Recipe</item>
             <item>Rateing</item>
             <item>A-Z</item>
             <item>Z-A</item>
             <item>Time Long to Short</item>
             <item>Time Short to Long</item>
+            <item>Filter</item>
         </string-array>
 
 
