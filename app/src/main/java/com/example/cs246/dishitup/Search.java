@@ -17,7 +17,7 @@ import java.sql.Array;
 public class Search extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner SortS;
-    //String[] sort =  {"Rateing", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
+    String[] items =  {"select the sort","Rateing", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
 
 
 
@@ -27,7 +27,8 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         setContentView(R.layout.activity_search);
 
         SortS = (Spinner) findViewById(R.id.SortS);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
+        //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
+        ArrayAdapter <String> adapter = new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, items);
         SortS.setAdapter(adapter);
         SortS.setOnItemSelectedListener(this);
     }
