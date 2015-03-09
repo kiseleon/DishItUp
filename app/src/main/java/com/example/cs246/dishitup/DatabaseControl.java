@@ -55,6 +55,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
 
         ContentValues values = new ContentValues();
 
+        values.put(KEY_ID, "null");
         values.put(KEY_NAME, recipeCard.getName());
         values.put(KEY_RATING, recipeCard.getRating());
         values.put(KEY_COMMENT, recipeCard.getComment());
