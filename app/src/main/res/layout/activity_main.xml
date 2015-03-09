@@ -24,7 +24,7 @@
         android:onClick="launchFavorites"
         android:id="@+id/favoritesButton"
         android:layout_below="@+id/searchButton"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="48dp"
         android:layout_alignRight="@+id/recentlyAddedButton"
         android:layout_alignEnd="@+id/recentlyAddedButton"
         android:layout_alignLeft="@+id/recentlyAddedButton"
@@ -38,7 +38,7 @@
         android:id="@+id/recentlyAddedButton"
         android:layout_below="@+id/favoritesButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp" />
+        android:layout_marginTop="48dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -48,6 +48,16 @@
         android:id="@+id/recentlyViewedButton"
         android:layout_below="@+id/recentlyAddedButton"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Recipe"
+        android:id="@+id/addRecipeButton"
+        android:layout_below="@+id/recentlyViewedButton"
+        android:layout_alignLeft="@+id/recentlyViewedButton"
+        android:layout_alignStart="@+id/recentlyViewedButton"
         android:layout_marginTop="48dp" />
 
 </RelativeLayout>

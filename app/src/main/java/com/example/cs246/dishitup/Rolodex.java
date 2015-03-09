@@ -1,5 +1,6 @@
 package com.example.cs246.dishitup;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,18 +35,12 @@ public class Rolodex {
             done = true;
             for (int i = 0; i < recipeCardList.size() - 1; ++i) {
                 int result =  recipeCardList.get(i + 1).getName().compareToIgnoreCase(recipeCardList.get(i).getName());
-                if (result > 0) {
+                if ((result > 0 && !descending) || (result < 0 && descending)) {
                     done = false;
-                    RecipeCard temp = recipeCardList.get(i);
-                    recipeCardList.set(i, recipeCardList.get(i + 1));
-                    recipeCardList.set(i + 1, temp);
+                    Collections.swap(recipeCardList, i, i + 1);
                 }
-
             }
-
         }
-
-
     }
 
 }
