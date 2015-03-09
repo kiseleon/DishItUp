@@ -23,6 +23,7 @@
             <item>Time Short to Long</item>
             <item>Filter</item>
         </string-array>
+    <string name="title_activity_add_new_recipe">AddNewRecipe</string>
 
 
 </resources>

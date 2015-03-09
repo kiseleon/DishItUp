@@ -17,7 +17,7 @@ import java.sql.Array;
 public class Search extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner SortS;
-    String[] items =  {"select the sort","Rateing", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
+    String[] items =  {"select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
 
 
 

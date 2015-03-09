@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="Dish It Up"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".Recipe"
             android:label="@string/title_activity_recipe" >
@@ -33,14 +33,16 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="MainActivity">
-
+            android:label="MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+        <activity
+            android:name=".AddNewRecipe"
+            android:label="@string/title_activity_add_new_recipe" >
         </activity>
     </application>
 
