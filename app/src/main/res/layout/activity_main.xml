@@ -55,6 +55,7 @@
         android:layout_height="wrap_content"
         android:text="Add New Recipe"
         android:id="@+id/addRecipeButton"
+        android:onClick="addRecipe"
         android:layout_below="@+id/recentlyViewedButton"
         android:layout_alignLeft="@+id/recentlyViewedButton"
         android:layout_alignStart="@+id/recentlyViewedButton"
