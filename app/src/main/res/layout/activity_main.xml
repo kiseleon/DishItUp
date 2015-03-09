@@ -61,4 +61,12 @@
         android:layout_alignStart="@+id/recentlyViewedButton"
         android:layout_marginTop="48dp" />
 
+    <LinearLayout android:id="@+id/LinearLayout01"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@drawable/food">
+    </LinearLayout>
+
 </RelativeLayout>
