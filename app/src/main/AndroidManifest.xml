@@ -13,7 +13,8 @@
         </activity>
         <activity
             android:name=".Search"
-            android:label="@string/title_activity_search" >
+            android:label="@string/title_activity_search"
+            android:theme="@style/ActionBar" >
         </activity>
         <activity
             android:name=".Favorites"

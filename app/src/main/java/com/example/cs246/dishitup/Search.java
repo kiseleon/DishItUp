@@ -73,7 +73,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         TextView myText = (TextView) view;
-        Toast.makeText(this, "you selected" + myText.getText(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "you selected " + myText.getText(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -1,6 +1,7 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light"/>
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
     <style name="AppTheme" parent="AppBaseTheme"/>
+    <style name="ActionBar" parent="Theme.AppCompat.Light" />
 
 </resources>
