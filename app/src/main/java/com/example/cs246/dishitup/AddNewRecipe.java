@@ -3,6 +3,7 @@ package com.example.cs246.dishitup;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,11 +45,15 @@ public class AddNewRecipe extends ActionBarActivity {
     }
 
     public void addRecipeToDatabase(View view) {
+        Log.i("Add Recipe Card", "Starting the add recipe to Database method");
+
         recipeCard = new RecipeCard();
         //here we need to set all values for the recipeCard here from the user input
-
-
+        if(recipeCard.getName() == null) {
+            Log.e("Empty Card", "You did not fill out the card");
+        }
         recipeDatabase.createRecipe(recipeCard);
+        Log.i("Recipe card added", "Recipe card added to the database");
         //here we need to tell the Rolodex to update itself to include this card
         Intent intent = new Intent(AddNewRecipe.this, MainActivity.class);
         startActivity(intent);
