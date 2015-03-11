@@ -46,11 +46,11 @@ public class AddNewRecipe extends ActionBarActivity {
 
     public void addRecipeToDatabase(View view) {
         recipeCard = new RecipeCard();
-        //set all values for the recipeCard here from the user input
+        //here we need to set all values for the recipeCard here from the user input
 
 
         recipeDatabase.createRecipe(recipeCard);
-
+        //here we need to tell the Rolodex to update itself to include this card
         Intent intent = new Intent(AddNewRecipe.this, MainActivity.class);
         startActivity(intent);
     }
