@@ -45,8 +45,13 @@ public class AddNewRecipe extends ActionBarActivity {
     }
 
     public void addRecipeToDatabase(View view) {
+        recipeCard = new RecipeCard();
         //set all values for the recipeCard here from the user input
 
+
         recipeDatabase.createRecipe(recipeCard);
+
+        Intent intent = new Intent(AddNewRecipe.this, MainActivity.class);
+        startActivity(intent);
     }
 }
