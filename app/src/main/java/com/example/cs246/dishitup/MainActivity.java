@@ -74,8 +74,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void addRecipe(View view) {
-        RecipeCard recipe;
-        recipe = new RecipeCard();
-        recipeDatabase.createRecipe(recipe);
+        RecipeCard recipe = new RecipeCard();
+        Intent intent = new Intent(MainActivity.this, RecentlyViewed.class);
+        startActivity(intent);
     }
 }

@@ -1,10 +1,14 @@
 package com.example.cs246.dishitup;
 
 
+import android.content.Intent;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
+import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
  * Created by Kevin on 2/25/2015.

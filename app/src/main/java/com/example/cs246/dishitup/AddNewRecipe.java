@@ -1,17 +1,24 @@
 package com.example.cs246.dishitup;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class AddNewRecipe extends ActionBarActivity {
+
+    Intent intent = getIntent();
+    RecipeCard recipeCard;
+    DatabaseControl recipeDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_recipe);
+        recipeDatabase = new DatabaseControl(getApplicationContext());
     }
 
 
@@ -35,5 +42,11 @@ public class AddNewRecipe extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addRecipeToDatabase(View view) {
+        //set all values for the recipeCard here from the user input
+
+        recipeDatabase.createRecipe(recipeCard);
     }
 }
