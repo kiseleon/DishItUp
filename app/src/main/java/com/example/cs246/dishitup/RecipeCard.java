@@ -25,31 +25,18 @@ public class RecipeCard {
     private Set<String> categories;
 
     RecipeCard() {
-        name = "Recipe Name";
-        rating = 100;
-        id = 1;
-        comment = "No comment.";
+        name = null;
+        rating = -1;
+        id = -1;
+        comment = null;
         pictureRef = null;
-        cookTime = 90;
+        cookTime = -1;
         ingredients = new ArrayList<>();
         directions = new ArrayList<>();
         categories = new TreeSet<>();
         categories.add("all"); // everything is part of the All set
     }
 
-    RecipeCard(int time) {
-        name = "Recipe Name with time";
-        rating = 100;
-        id = 1;
-        comment = "No comment at this time.";
-        pictureRef = null;
-        cookTime = time;
-        ingredients = new ArrayList<>();
-        directions = new ArrayList<>();
-        categories = new TreeSet<>();
-        categories.add("all"); // everything is part of the All set
-        categories.add("timed");
-    }
 
 
     public String getName() {return name;}

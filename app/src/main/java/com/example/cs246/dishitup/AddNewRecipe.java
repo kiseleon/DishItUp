@@ -10,7 +10,6 @@ import android.view.View;
 
 public class AddNewRecipe extends ActionBarActivity {
 
-    Intent intent = getIntent();
     RecipeCard recipeCard;
     DatabaseControl recipeDatabase;
 
