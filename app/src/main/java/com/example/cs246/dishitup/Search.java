@@ -42,7 +42,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         SortS.setAdapter(adapter);
         SortS.setOnItemSelectedListener(this);
 
-        testLog();
+        //testLog();
     }
 
 
