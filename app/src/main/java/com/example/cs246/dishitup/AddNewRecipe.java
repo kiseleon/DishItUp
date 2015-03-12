@@ -7,18 +7,35 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RatingBar;
 
 
 public class AddNewRecipe extends ActionBarActivity {
 
     RecipeCard recipeCard;
     DatabaseControl recipeDatabase;
+    EditText name;
+    EditText time;
+    RatingBar rating;
+    EditText ingredients;
+    EditText instructions;
+    EditText comments;
+    EditText categories;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_recipe);
         recipeDatabase = new DatabaseControl(getApplicationContext());
+        name = (EditText)findViewById(R.id.editName);
+        time = (EditText)findViewById(R.id.editTime);
+        rating = (RatingBar)findViewById(R.id.editRating);
+        ingredients = (EditText)findViewById(R.id.editIngredients);
+        instructions = (EditText)findViewById(R.id.editInstructions);
+        comments = (EditText)findViewById(R.id.editComments);
+        categories = (EditText)findViewById(R.id.editCategories);
     }
 
 
@@ -48,7 +65,14 @@ public class AddNewRecipe extends ActionBarActivity {
         Log.i("Add Recipe Card", "Starting the add recipe to Database method");
 
         recipeCard = new RecipeCard();
-        //here we need to set all values for the recipeCard here from the user input
+        recipeCard.setName(name.getText().toString());
+        recipeCard.setCookTime(Integer.valueOf(time.getText().toString()));
+        recipeCard.addIngredient(ingredients.getText().toString());
+        recipeCard.addDirection(instructions.getText().toString());
+        recipeCard.setComment(comments.getText().toString());
+        recipeCard.addCategory(categories.getText().toString());
+
+
         if(recipeCard.getName() == null) {
             Log.e("Empty Card", "You did not fill out the card");
         }
