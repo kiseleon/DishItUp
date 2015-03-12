@@ -2,6 +2,7 @@ package com.example.cs246.dishitup;
 
 
 import android.content.Intent;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ public class RecipeCard {
     private List<String> directions;
     private Set<String> categories;
 
+    private static final String RECIPE_CARD_TAG = "RecipeCard";
+
     RecipeCard() {
         name = null;
         rating = -1;
@@ -35,6 +38,11 @@ public class RecipeCard {
         directions = new ArrayList<>();
         categories = new TreeSet<>();
         categories.add("all"); // everything is part of the All set
+        if (!categories.contains("all")) {
+            Log.e(RECIPE_CARD_TAG, "all category failed to add");
+        }
+
+        Log.i(RECIPE_CARD_TAG, "Created a blank RecipeCard.");
     }
 
 
@@ -63,6 +71,8 @@ public class RecipeCard {
     public void removeCategory(String category) {
         if (hasCategory(category)) {
             categories.remove(category);
+        } else {
+            Log.i(RECIPE_CARD_TAG, "Category " + category + " wasn't in the list.");
         }
     }
 }
