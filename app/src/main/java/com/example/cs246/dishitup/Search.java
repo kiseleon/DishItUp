@@ -3,6 +3,7 @@ package com.example.cs246.dishitup;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,15 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
     Spinner SortS;
     String[] items =  {"select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
+    private static final String TAG_SEARCH = "search mode";
+
+
+    public void testLog(){
+        int i  = 2;
+        Log.i(TAG_SEARCH, "i =" + i);
+
+        Log.e(TAG_SEARCH, " i =" + i);
+    }
 
 
 
@@ -31,6 +41,8 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         ArrayAdapter <String> adapter = new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, items);
         SortS.setAdapter(adapter);
         SortS.setOnItemSelectedListener(this);
+
+        testLog();
     }
 
 
