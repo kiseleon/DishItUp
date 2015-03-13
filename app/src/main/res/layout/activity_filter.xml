@@ -42,27 +42,30 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timeText"
-        android:layout_above="@+id/TIngredient"
+        android:id="@+id/STime"
+        android:layout_alignTop="@+id/tHowMuchTime"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="44dp" />
+        android:layout_marginTop="37dp"
+        android:spinnerMode="dropdown" />
 
-    <EditText
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mainIngredientText"
+        android:id="@+id/SIngredient"
         android:layout_above="@+id/TCategory"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/TIngredient"
+        android:layout_alignStart="@+id/TIngredient"
+        android:spinnerMode="dropdown" />
 
-    <EditText
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/categoryText"
+        android:id="@+id/Scategory"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp" />
+        android:spinnerMode="dropdown" />
 
 </RelativeLayout>

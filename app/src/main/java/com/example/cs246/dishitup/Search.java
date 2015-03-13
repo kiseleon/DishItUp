@@ -19,6 +19,8 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
     Spinner SortS;
     String[] items =  {"select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
+
+    
     private static final String TAG_SEARCH = "search mode";
 
 
