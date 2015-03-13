@@ -43,4 +43,7 @@ public class Rolodex {
         }
     }
 
+    public void update(DatabaseControl databaseControl) {
+        recipeCardList = databaseControl.getAllRecipeCards();
+    }
 }

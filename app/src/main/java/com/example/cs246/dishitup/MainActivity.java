@@ -47,6 +47,16 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1)//if an activity returns a 1 the Rolodex will update.
+        {
+            rolodex.update(recipeDatabase);
+        }
+    }
+
     public void launchSearch(View view) {
         Intent intent = new Intent(MainActivity.this, Search.class);
         startActivity(intent);
@@ -71,5 +81,6 @@ public class MainActivity extends ActionBarActivity {
     public void launchAddNewRecipe(View view) {
         Intent intent = new Intent(MainActivity.this, AddNewRecipe.class);
         startActivity(intent);
+        rolodex.update(recipeDatabase);
     }
 }

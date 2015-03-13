@@ -1,5 +1,6 @@
 package com.example.cs246.dishitup;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
+
+import java.util.TooManyListenersException;
 
 
 public class AddNewRecipe extends ActionBarActivity {
@@ -64,6 +68,9 @@ public class AddNewRecipe extends ActionBarActivity {
     public void addRecipeToDatabase(View view) {
         Log.i("Add Recipe Card", "Starting the add recipe to Database method");
 
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+
         recipeCard = new RecipeCard();
         recipeCard.setName(name.getText().toString());
         recipeCard.setCookTime(Integer.valueOf(time.getText().toString()));
@@ -73,13 +80,22 @@ public class AddNewRecipe extends ActionBarActivity {
         recipeCard.addCategory(categories.getText().toString());
 
 
-        if(recipeCard.getName() == null) {
+        if(recipeCard.getName() == null || recipeCard.getName().equals("") ||// this is not working we need to verify that we have been given all the information that we need.
+                recipeCard.getCookTime() < 0 || recipeCard.getIngredients() == null ||
+                recipeCard.getDirections() == null){
             Log.e("Empty Card", "You did not fill out the card");
+            CharSequence text = ("The Recipe Card was not added you must include all " +
+                "recipe information");
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            finish();
         }
         recipeDatabase.createRecipe(recipeCard);
         Log.i("Recipe card added", "Recipe card added to the database");
-        //here we need to tell the Rolodex to update itself to include this card
-        Intent intent = new Intent(AddNewRecipe.this, MainActivity.class);
-        startActivity(intent);
+        CharSequence text = ("The Recipe Card"+ recipeCard.getName() +" was added to your " +
+                "recipe rolodex.");
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        finish();
     }
 }
