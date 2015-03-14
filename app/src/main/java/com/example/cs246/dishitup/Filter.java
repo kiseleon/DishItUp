@@ -18,9 +18,18 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
     Spinner SIngredient;
     Spinner SCategory;
 
-    String[] time = {"select time"};
+    String[] time = {"1 min", "5 min", "10 min", "30 min", "1 hr", "no time limit"};
     String[] ingredient = {"select ingredient"};
     String[] category = {"select category"};
+
+
+    void fillIngredient(){
+
+    }
+
+    void fillCadegory(){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
