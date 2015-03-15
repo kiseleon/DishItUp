@@ -32,7 +32,7 @@ public class RecipeCard {
         rating = -1;
         id = -1;
         comment = null;
-        pictureRef = null;
+        pictureRef = "@drawable/placeholder_image";
         cookTime = -1;
         ingredients = new ArrayList<>();
         directions = new ArrayList<>();
