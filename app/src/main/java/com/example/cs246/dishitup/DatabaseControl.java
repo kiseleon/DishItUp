@@ -63,7 +63,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
         values.put(KEY_COOKTIME, recipeCard.getCookTime());
         values.put(KEY_INGREDIENTS, recipeCard.getIngredients().toString());
         values.put(KEY_DIRECTIONS, recipeCard.getDirections().toString());
-        values.put(KEY_CATEGORIES, recipeCard.getCategories().toString());
+        values.put(KEY_CATEGORIES, recipeCard.getCategory());
 
         database.insert(TABLE_RECIPES, null, values);
         database.close();
@@ -90,7 +90,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
         //for the next three we need to look through the string and pars them into individual parts instead of one big string
         recipeCard.addIngredient(cursor.getString(6));
         recipeCard.addDirection(cursor.getString(7));
-        recipeCard.addCategory(cursor.getString(8));
+        recipeCard.setCategory(cursor.getString(8));
 
         return recipeCard;
     }
@@ -123,7 +123,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
         values.put(KEY_COOKTIME, recipeCard.getCookTime());
         values.put(KEY_INGREDIENTS, recipeCard.getIngredients().toString());
         values.put(KEY_DIRECTIONS, recipeCard.getDirections().toString());
-        values.put(KEY_CATEGORIES, recipeCard.getCategories().toString());
+        values.put(KEY_CATEGORIES, recipeCard.getCategory().toString());
 
         return database.update(TABLE_RECIPES, values, KEY_ID + "=?", new String[]
                 {String.valueOf(recipeCard.getId())});
@@ -147,7 +147,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
                 //for the next three we need to look through the string add multiple of each item
                 recipeCard.addIngredient(cursor.getString(6));
                 recipeCard.addDirection(cursor.getString(7));
-                recipeCard.addCategory(cursor.getString(8));
+                recipeCard.setCategory(cursor.getString(8));
                 recipeCards.add(recipeCard);
             }while (cursor.moveToNext());
         }
