@@ -77,7 +77,7 @@ public class AddNewRecipe extends ActionBarActivity {
         recipeCard.addIngredient(ingredients.getText().toString());
         recipeCard.addDirection(instructions.getText().toString());
         recipeCard.setComment(comments.getText().toString());
-        recipeCard.addCategory(categories.getText().toString());
+        recipeCard.setCategory(categories.getText().toString());
 
 
         if(recipeCard.getName() == null || recipeCard.getName().equals("") ||// this is not working we need to verify that we have been given all the information that we need.

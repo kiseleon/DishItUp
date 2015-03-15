@@ -23,7 +23,7 @@ public class RecipeCard {
     private int cookTime; // note: this is time in minutes
     private List<String> ingredients;
     private List<String> directions;
-    private Set<String> categories;
+    private String category;
 
     private static final String RECIPE_CARD_TAG = "RecipeCard";
 
@@ -36,11 +36,7 @@ public class RecipeCard {
         cookTime = -1;
         ingredients = new ArrayList<>();
         directions = new ArrayList<>();
-        categories = new TreeSet<>();
-        categories.add("all"); // everything is part of the All set
-        if (!categories.contains("all")) {
-            Log.e(RECIPE_CARD_TAG, "all category failed to add");
-        }
+        category = null;
 
         Log.i(RECIPE_CARD_TAG, "Created a blank RecipeCard.");
     }
@@ -55,9 +51,8 @@ public class RecipeCard {
     public int getCookTime() { return cookTime;} // gets it in minutes
     public List<String> getIngredients() {return ingredients;}
     public List<String> getDirections() {return directions;}
-    public Set<String> getCategories()  {return categories;}
+    public String getCategory()  {return category;}
 
-    public boolean hasCategory(String category) {return categories.contains(category);}
 
     public void setName(String name) {this.name = name;}
     public void setRating(int rating) {this.rating = rating;}
@@ -67,12 +62,6 @@ public class RecipeCard {
     public void setCookTime(int time) { cookTime = time;}
     public void addIngredient(String ingredient) {ingredients.add(ingredient);}
     public void addDirection(String direction) {directions.add(direction);}
-    public void addCategory(String category)  {categories.add(category);}
-    public void removeCategory(String category) {
-        if (hasCategory(category)) {
-            categories.remove(category);
-        } else {
-            Log.i(RECIPE_CARD_TAG, "Category " + category + " wasn't in the list.");
-        }
-    }
+    public void setCategory(String category)  {this.category = category;}
+
 }
