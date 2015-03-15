@@ -123,7 +123,7 @@ public class DatabaseControl extends SQLiteOpenHelper{
         values.put(KEY_COOKTIME, recipeCard.getCookTime());
         values.put(KEY_INGREDIENTS, recipeCard.getIngredients().toString());
         values.put(KEY_DIRECTIONS, recipeCard.getDirections().toString());
-        values.put(KEY_CATEGORIES, recipeCard.getCategory().toString());
+        values.put(KEY_CATEGORIES, recipeCard.getCategory());
 
         return database.update(TABLE_RECIPES, values, KEY_ID + "=?", new String[]
                 {String.valueOf(recipeCard.getId())});
