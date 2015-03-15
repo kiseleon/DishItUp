@@ -22,6 +22,8 @@ public class MainActivity extends ActionBarActivity {
         recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
         rolodex = new Rolodex(recipeDatabase); // this makes a rolodex with all of our existing recipeCards
         missionControl = new MissionControl(rolodex); // makes our mission control object with a populated rolodex
+
+        //recipeDatabase.deleteRecipeCard( );// the recipeCare that you would like to delete as a peramiter
     }
 
 
