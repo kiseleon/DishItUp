@@ -9,10 +9,18 @@ import java.util.List;
 public class Rolodex {
 
     private List<RecipeCard> recipeCardList;
+    private List<RecipeCard> filteredList;
+
+
 
     //this constructor uses our database to populate the rolodex list
     Rolodex(DatabaseControl databaseControl){
         recipeCardList = databaseControl.getAllRecipeCards();
+    }
+
+    public List<RecipeCard> getFilteredList(){
+
+        return filteredList;
     }
 
     public void sort (String sortBy, boolean descending) {
