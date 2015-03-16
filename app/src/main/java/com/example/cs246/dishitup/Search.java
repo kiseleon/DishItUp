@@ -31,6 +31,30 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         Log.e(TAG_SEARCH, " i =" + i);
     }
 
+     private void sortByRateing(){
+         String [] Filter = Roledex.getFilteredList();
+
+    }
+
+    private void sortByAZ(){
+        String [] Filter = Roledex.getFilteredList();
+
+    }
+
+    private void sortByZA(){
+        String [] Filter = Roledex.getFilteredList();
+
+    }
+
+    private void sortTimeShortLong(){
+        String [] Filter = Roledex.getFilteredList();
+
+    }
+
+    private void sortTimeLongSort(){
+        String [] Filter = Roledex.getFilteredList();
+
+    }
 
 
     @Override
