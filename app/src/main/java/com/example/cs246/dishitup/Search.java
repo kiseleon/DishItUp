@@ -71,8 +71,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     }
 
     public void goToMenu(View view) {
-        Intent intent = new Intent(Search.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
 

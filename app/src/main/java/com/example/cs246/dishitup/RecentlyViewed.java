@@ -39,7 +39,6 @@ public class RecentlyViewed extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
     public void goToMenu(View view) {
-        Intent intent = new Intent(RecentlyViewed.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

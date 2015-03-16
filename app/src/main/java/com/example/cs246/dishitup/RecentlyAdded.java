@@ -40,7 +40,6 @@ public class RecentlyAdded extends ActionBarActivity {
     }
 
     public void goToMenu(View view) {
-        Intent intent = new Intent(RecentlyAdded.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }

@@ -40,7 +40,6 @@ public class Favorites extends ActionBarActivity {
     }
 
     public void goToMenu(View view) {
-        Intent intent = new Intent(Favorites.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
