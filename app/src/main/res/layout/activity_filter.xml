@@ -56,9 +56,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/SIngredient"
         android:layout_above="@+id/TCategory"
-        android:layout_alignLeft="@+id/TIngredient"
-        android:layout_alignStart="@+id/TIngredient"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:layout_width="wrap_content"

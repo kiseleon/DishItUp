@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Array;
+import java.util.Arrays;
 
 public class Search extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
@@ -31,6 +32,32 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         Log.e(TAG_SEARCH, " i =" + i);
     }
 
+     private void sortByRateing(){
+       //  RecipeCard [] Filter = Roledex.getFilteredList();
+
+    }
+
+    private void sortByAZ(){
+       // RecipeCard [] Filter = Roledex.getFilteredList();
+       // Arrays.sort(Filter.getName());
+
+    }
+
+    private void sortByZA(){
+       // RecipeCard [] Filter = Roledex.getFilteredList();
+
+
+    }
+
+    private void sortTimeShortLong(){
+       // RecipeCard [] Filter = Roledex.getFilteredList();
+
+    }
+
+    private void sortTimeLongSort(){
+        //RecipeCard [] Filter = Roledex.getFilteredList();
+
+    }
 
 
     @Override
