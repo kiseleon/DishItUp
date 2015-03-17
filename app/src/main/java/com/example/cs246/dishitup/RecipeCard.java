@@ -21,6 +21,7 @@ public class RecipeCard {
     private String comment;
     private String pictureRef;
     private int cookTime; // note: this is time in minutes
+    private List<String> amounts;
     private List<String> ingredients;
     private List<String> directions;
     private Set<String> categories;
@@ -35,6 +36,7 @@ public class RecipeCard {
         pictureRef = "@drawable/placeholder_image";
         cookTime = -1;
         ingredients = new ArrayList<>();
+        amounts = new ArrayList<>();
         directions = new ArrayList<>();
         categories = new TreeSet<>();
         categories.add("all"); // everything is part of the All set
@@ -54,6 +56,7 @@ public class RecipeCard {
     public String getPictureRef() {return pictureRef;}
     public int getCookTime() { return cookTime;} // gets it in minutes
     public List<String> getIngredients() {return ingredients;}
+    public List<String> getAmounts() {return amounts;}
     public List<String> getDirections() {return directions;}
     public Set<String> getCategories()  {return categories;}
 
@@ -65,7 +68,12 @@ public class RecipeCard {
     public void setComment(String comment) {this.comment = comment;}
     public void setPictureRef(String pictureRef) {this.pictureRef = pictureRef;}
     public void setCookTime(int time) { cookTime = time;}
-    public void addIngredient(String ingredient) {ingredients.add(ingredient);}
+    public void addIngredient(String amount, String ingredient) {
+        amounts.add(amount);
+        ingredients.add(ingredient);
+        if (amounts.size() != ingredients.size())
+            Log.wtf(RECIPE_CARD_TAG, "Ingredients and Amounts are different lengths!");
+    }
     public void addDirection(String direction) {directions.add(direction);}
     public void addCategory(String category)  {categories.add(category);}
     public void removeCategory(String category) {
