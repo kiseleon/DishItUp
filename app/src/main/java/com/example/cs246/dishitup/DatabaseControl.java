@@ -63,6 +63,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
     public void createRecipe(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
 
+        // For creating the main table
         ContentValues values = new ContentValues();
 
         values.put(KEY_ID, "null");
@@ -75,7 +76,21 @@ public class DatabaseControl extends SQLiteOpenHelper {
         values.put(KEY_DIRECTIONS, recipeCard.getDirections().toString());
         //values.put(KEY_CATEGORIES, recipeCard.getCategories().toString());
 
-        database.insert(TABLE_RECIPES, null, values);
+        // the database insert give you the row ID as a return value
+        long id = database.insert(TABLE_RECIPES, null, values);
+
+        // add each category as its own row
+        for (String category : recipeCard.getCategories()) {
+            values = new ContentValues();
+            values.put(KEY_ID, id);
+            values.put(KEY_CATEGORIES, category);
+            database.insert(TABLE_CATEGORIES, null, values);
+        }
+
+
+
+
+
         database.close();
     }
 
