@@ -56,6 +56,8 @@ public class DatabaseControl extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion){
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPES);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORIES);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_INGREDIENTS);
 
         onCreate(database);
     }
@@ -87,7 +89,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
             database.insert(TABLE_CATEGORIES, null, values);
         }
 
-
+        // TODO: Add the ingredients/amounts to the ingredients table
 
 
 
@@ -113,9 +115,11 @@ public class DatabaseControl extends SQLiteOpenHelper {
         recipeCard.setPictureRef(cursor.getString(4));
         recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
         //for the next three we need to look through the string and pars them into individual parts instead of one big string
-        recipeCard.addIngredient(cursor.getString(6));
+        //recipeCard.addIngredient(cursor.getString(6));
         recipeCard.addDirection(cursor.getString(7));
-        recipeCard.addCategory(cursor.getString(8));
+        //recipeCard.addCategory(cursor.getString(8));
+
+        //TODO: get the ingredients/amounts and the categories from the respective tables
 
         return recipeCard;
     }
@@ -124,6 +128,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         database.delete(TABLE_RECIPES, KEY_ID + "=?", new String[]
                 {String.valueOf(recipeCard.getId())});
+        // TODO: Delete the associated ingredient table rows and category table rows
         database.close();
     }
 
@@ -149,6 +154,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         values.put(KEY_INGREDIENTS, recipeCard.getIngredients().toString());
         values.put(KEY_DIRECTIONS, recipeCard.getDirections().toString());
         values.put(KEY_CATEGORIES, recipeCard.getCategories().toString());
+        // TODO: Make this work with the two new tables
 
         return database.update(TABLE_RECIPES, values, KEY_ID + "=?", new String[]
                 {String.valueOf(recipeCard.getId())});
@@ -170,10 +176,12 @@ public class DatabaseControl extends SQLiteOpenHelper {
                 recipeCard.setPictureRef(cursor.getString(4));
                 recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
                 //for the next three we need to look through the string add multiple of each item
-                recipeCard.addIngredient(cursor.getString(6));
+                //recipeCard.addIngredient(cursor.getString(6));
                 recipeCard.addDirection(cursor.getString(7));
-                recipeCard.addCategory(cursor.getString(8));
+                //recipeCard.addCategory(cursor.getString(8));
                 recipeCards.add(recipeCard);
+
+                //TODO: make this set the categories and ingredients/amounts
             }while (cursor.moveToNext());
         }
         return recipeCards;
