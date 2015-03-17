@@ -14,9 +14,9 @@ import java.util.List;
  * I used a tutorial from Youtube to help me create this database control
  * https://www.youtube.com/watch?v=xKuM3cHO7G8
  */
-public class DatabaseControl extends SQLiteOpenHelper{
+public class DatabaseControl extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String DATABASE_NAME = "recipeCardManager",
             TABLE_RECIPES = "recipes",
@@ -26,8 +26,11 @@ public class DatabaseControl extends SQLiteOpenHelper{
             KEY_COMMENT = "comment",
             KEY_IMGEREF = "img",
             KEY_COOKTIME = "cookTime",
-            KEY_INGREDIENTS = "ingredients",
             KEY_DIRECTIONS = "directions",
+            TABLE_INGREDIENTS = "ingredientstable",
+            KEY_INGREDIENTS = "ingredients",
+            KEY_AMOUNTS = "amounts",
+            TABLE_CATEGORIES = "categoriestable",
             KEY_CATEGORIES = "categories";
 
     public DatabaseControl(Context context){
@@ -38,9 +41,16 @@ public class DatabaseControl extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase database){
         database.execSQL("CREATE TABLE " + TABLE_RECIPES + "(" +
                 KEY_ID + "INTEGER PRIMARY KEY, " +
-                KEY_NAME + " TEXT," + KEY_RATING + " TEXT," + KEY_COMMENT + " TEXT," +
-                KEY_IMGEREF + " TEXT," + KEY_COOKTIME + " TEXT," +
-                KEY_INGREDIENTS + " TEXT," + KEY_DIRECTIONS + " TEXT," + KEY_CATEGORIES + " TEXT)");
+                KEY_NAME + " TEXT," + KEY_RATING + " INTEGER," + KEY_COMMENT + " TEXT," +
+                KEY_IMGEREF + " TEXT," + KEY_COOKTIME + " INTEGER," +
+                KEY_DIRECTIONS + " TEXT)");
+
+        database.execSQL("CREATE TABLE " + TABLE_CATEGORIES + "(" +
+                KEY_ID + "INTEGER PRIMARY KEY, " + KEY_CATEGORIES + " TEXT)");
+
+        database.execSQL("CREATE TABLE " + TABLE_INGREDIENTS + "(" +
+                KEY_ID + "INTEGER PRIMARY KEY, " + KEY_INGREDIENTS + " TEXT, " +
+                KEY_AMOUNTS + " TEXT)");
     }
 
     @Override
@@ -61,9 +71,9 @@ public class DatabaseControl extends SQLiteOpenHelper{
         values.put(KEY_COMMENT, recipeCard.getComment());
         values.put(KEY_IMGEREF, recipeCard.getPictureRef());
         values.put(KEY_COOKTIME, recipeCard.getCookTime());
-        values.put(KEY_INGREDIENTS, recipeCard.getIngredients().toString());
+        //values.put(KEY_INGREDIENTS, recipeCard.getIngredients().toString());
         values.put(KEY_DIRECTIONS, recipeCard.getDirections().toString());
-        values.put(KEY_CATEGORIES, recipeCard.getCategories().toString());
+        //values.put(KEY_CATEGORIES, recipeCard.getCategories().toString());
 
         database.insert(TABLE_RECIPES, null, values);
         database.close();
