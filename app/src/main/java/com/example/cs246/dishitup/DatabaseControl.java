@@ -9,11 +9,19 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*
  * Created by Jason on 3/5/2015.
  * I used a tutorial from Youtube to help me create this database control
  * https://www.youtube.com/watch?v=xKuM3cHO7G8
  */
+
+/**
+ * This is a database manipulator that will store recipe cards
+ *
+ * @author Jason
+ * @see android.database.sqlite.SQLiteOpenHelper
+ */
+
 public class DatabaseControl extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 2;
@@ -37,6 +45,10 @@ public class DatabaseControl extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * On create requires you to pass the getApplicationContext() in order to setup the database
+     * @param database
+     */
     @Override
     public void onCreate(SQLiteDatabase database){
         database.execSQL("CREATE TABLE " + TABLE_RECIPES + "(" +
@@ -62,6 +74,13 @@ public class DatabaseControl extends SQLiteOpenHelper {
         onCreate(database);
     }
 
+    /**
+     * Takes a RecipeCard and uses the data from the recipe card to fill out a new row in the
+     * database.
+     *
+     * @param recipeCard A filled out recipe card should be passed to add a recipe card to the
+     *                   database
+     */
     public void createRecipe(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
 
@@ -96,6 +115,14 @@ public class DatabaseControl extends SQLiteOpenHelper {
         database.close();
     }
 
+    /**
+     * Will take an int id of a RecipeCard that is in the database and returns the RecipeCard
+     * at the id you have passed
+     *
+     * @param id the key id of the recipe card you want to find should be passed in
+     * @return returns a recipeCard object
+     */
+
     public RecipeCard getRecipeCard(int id){
         SQLiteDatabase database = getReadableDatabase();
 
@@ -124,6 +151,11 @@ public class DatabaseControl extends SQLiteOpenHelper {
         return recipeCard;
     }
 
+    /**
+     * Will delete any RecipeCard in the database given the RecipeCard you want to delete.
+     * @param recipeCard The RecipeCard that you want to delete must be passed in
+     */
+
     public void deleteRecipeCard(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
         database.delete(TABLE_RECIPES, KEY_ID + "=?", new String[]
@@ -131,6 +163,11 @@ public class DatabaseControl extends SQLiteOpenHelper {
         // TODO: Delete the associated ingredient table rows and category table rows
         database.close();
     }
+
+    /**
+     * Will return the number of RecipeCards in the database
+     * @return returns an int of the number of RecipesCards in the database
+     */
 
     public int getRecipeCount(){
         SQLiteDatabase database = getReadableDatabase();
@@ -140,6 +177,12 @@ public class DatabaseControl extends SQLiteOpenHelper {
 
         return cursor.getCount();
     }
+
+    /**
+     * Pass in a RecipeCard that you have made changes to and it will update itself in the database
+     * @param recipeCard
+     * @return returns the id of the RecipeCard
+     */
 
     public int updateRecipe(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
