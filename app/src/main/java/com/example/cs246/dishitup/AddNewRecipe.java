@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import java.util.TooManyListenersException;
 
-
+/**
+ * A class for getting input from the user to create a recipe
+ */
 public class AddNewRecipe extends ActionBarActivity {
 
     RecipeCard recipeCard;
@@ -42,6 +44,47 @@ public class AddNewRecipe extends ActionBarActivity {
         categories = (EditText)findViewById(R.id.editCategories);
     }
 
+    /**
+     * Adds the category from the category field to the RecipeCard
+     * @param view The view calling the function
+     */
+    public void addCategory(View view) {
+        // Add category to the recipe card
+
+        // retrieve list of categories
+
+        // update list of categories
+
+    }
+
+    /**
+     * Removes the category from the category field from the RecipeCard
+     * @param view The view calling the function
+     */
+    public void removeCategory(View view) {
+        // Remove category from recipe card
+
+        // retrieve list of categories
+
+        // update list of categories
+
+    }
+
+    /**
+     * Adds the ingredient and amount from their respective fields to the RecipeCard
+     * @param view The view calling the function
+     */
+    public void addIngredient(View view) {
+        //TODO: Implement this method
+    }
+
+    /**
+     * Removes the ingredient and amount from their respective fields from the RecipeCard
+     * @param view
+     */
+    public void removeIngredient(View view) {
+        //TODO: Implement this method
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
