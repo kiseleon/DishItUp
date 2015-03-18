@@ -47,7 +47,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
 
     /**
      * On create requires you to pass the getApplicationContext() in order to setup the database
-     * @param database
+     * @param database needs the location of the database you want to use.
      */
     @Override
     public void onCreate(SQLiteDatabase database){
@@ -180,7 +180,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
 
     /**
      * Pass in a RecipeCard that you have made changes to and it will update itself in the database
-     * @param recipeCard
+     * @param recipeCard takes a RecipeCard
      * @return returns the id of the RecipeCard
      */
 
