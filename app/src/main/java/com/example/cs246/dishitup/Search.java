@@ -16,6 +16,11 @@ import android.widget.Toast;
 import java.sql.Array;
 import java.util.Arrays;
 
+/**
+ * allows the user to rearrange the list of recipes
+ *
+ * @author Trenton
+ */
 public class Search extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner SortS;
@@ -24,7 +29,11 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     
     private static final String TAG_SEARCH = "search mode";
 
-
+    /**
+     * this runs a test on the TAG_SEARCH
+     * @exception this tells you that i == 2
+     *
+     */
     public void testLog(){
         int i  = 2;
         Log.i(TAG_SEARCH, "i =" + i);
@@ -32,28 +41,43 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         Log.e(TAG_SEARCH, " i =" + i);
     }
 
+    /**
+     * calls database and sorts by rating
+     */
      private void sortByRateing(){
        //  RecipeCard [] Filter = Roledex.getFilteredList();
 
     }
 
+    /**
+     * calls database, sorts alphabetically
+     */
     private void sortByAZ(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
        // Arrays.sort(Filter.getName());
 
     }
 
+    /**
+     * calls database, sorts reverse alphabetically
+     */
     private void sortByZA(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
 
 
     }
 
+    /**
+     * calls database, sort time short to long
+     */
     private void sortTimeShortLong(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
 
     }
 
+    /**
+     * calls database, long to short
+     */
     private void sortTimeLongSort(){
         //RecipeCard [] Filter = Roledex.getFilteredList();
 

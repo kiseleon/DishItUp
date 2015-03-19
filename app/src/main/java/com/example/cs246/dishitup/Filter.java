@@ -11,7 +11,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+/**
+ * add or remove recipes form rolodex biased on user input
+ *
+ * @author Trenton
+ */
 public class Filter extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
 
     Spinner STime;

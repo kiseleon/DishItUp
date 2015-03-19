@@ -10,7 +10,11 @@ import android.widget.Button;
 
 import java.util.Arrays;
 
-
+/**
+ * allows the user to sort or filter list of recipes
+ *
+ * @author Trenton
+ */
 public class SortBy extends ActionBarActivity {
     Button mainMenu;
     Button Rating;

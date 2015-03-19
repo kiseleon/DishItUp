@@ -7,7 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
+/**
+ * allows you to navigate the app, creates the database
+ *
+ * @author Trenton Kevin Jason
+ */
 public class MainActivity extends ActionBarActivity {
 
     DatabaseControl recipeDatabase;
