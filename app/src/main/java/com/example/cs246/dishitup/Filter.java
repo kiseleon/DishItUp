@@ -1,5 +1,6 @@
 package com.example.cs246.dishitup;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,22 +20,31 @@ import android.widget.Toast;
  */
 public class Filter extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
 
-    Spinner STime;
-    Spinner SIngredient;
-    Spinner SCategory;
-
-    String[] time = {"1 min", "5 min", "10 min", "30 min", "1 hr", "no time limit"};
-    String[] ingredient = {"select ingredient"};
-    String[] category = {"select category"};
+//    Spinner STime;
 
 
-    void fillIngredient(){
+//    String[] time = {"1 min", "5 min", "10 min", "30 min", "60min", "no time limit"};
+
+    public void searchTime(){
+        EditText time = (EditText) findViewById(R.id.editTextTime);
+
+        time.getText();
+    }
+    public void searchCategory(){
+       // Intent intent = new Intent(this, DisplayScript.class);
+        EditText category = (EditText) findViewById(R.id.editTextCategory);
+
+        category.getText();
 
     }
+     public void searchMainIngredient(){
+        // Intent intent = new Intent(this, DisplayScript.class);
+         EditText ingredient = (EditText) findViewById(R.id.editTextIngredient);
 
-    void fillCadegory(){
+         ingredient.getText();
+     }
 
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,28 +52,12 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
         setContentView(R.layout.activity_filter);
 
 
-        STime = (Spinner) findViewById(R.id.STime);
-        //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
-        ArrayAdapter<String> Tadapter = new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, time);
-        STime.setAdapter(Tadapter);
-        STime.setOnItemSelectedListener(this);
+//        STime = (Spinner) findViewById(R.id.STime);
+//        //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
+//        ArrayAdapter<String> Tadapter = new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, time);
+//        STime.setAdapter(Tadapter);
+//        STime.setOnItemSelectedListener(this);
 
-
-
-        SIngredient = (Spinner) findViewById(R.id.SortS);
-        //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
-        ArrayAdapter <String> Iadapter = new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, ingredient);
-        SIngredient.setAdapter(Iadapter);
-        SIngredient.setOnItemSelectedListener(this);
-
-
-
-
-        SCategory = (Spinner) findViewById(R.id.SortS);
-        //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
-        ArrayAdapter <String> Cadapter = new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, category);
-        SCategory.setAdapter(Cadapter);
-        SCategory.setOnItemSelectedListener(this);
     }
 
 
