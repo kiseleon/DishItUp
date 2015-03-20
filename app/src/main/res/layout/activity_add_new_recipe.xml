@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
                 android:id="@+id/ingredientsRow"
-                android:minHeight="90dp">
+                android:minHeight="180dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -119,12 +119,31 @@
                             android:hint="Ingredient"
                             android:layout_weight="4" />
 
+
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/ingredientButtonRow">
+
                         <ImageButton
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:id="@+id/addIngredientButton"
-                            android:layout_column="2"
+                            android:layout_column="0"
                             android:src="@android:drawable/ic_input_add"
+                            android:contentDescription="Add Ingredient"
+                            android:layout_weight="1"
+                            android:cropToPadding="false" />
+
+                        <ImageButton
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/removeIngredientButton"
+                            android:layout_column="1"
+                            android:src="@android:drawable/ic_delete"
                             android:contentDescription="Add Ingredient"
                             android:layout_weight="1"
                             android:cropToPadding="false" />
@@ -133,15 +152,14 @@
 
                     <TableRow
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/listRow">
+                        android:layout_height="fill_parent">
 
-                        <ListView
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/ingredientsList"
-                            android:layout_column="0"
-                            android:layout_span="3" />
+                            android:text="Ingredients go here"
+                            android:id="@+id/ingredientsView"
+                            android:layout_column="0" />
                     </TableRow>
 
                 </TableLayout>
