@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="how much time do you have?"
+        android:text="How much time do you have in min?"
         android:id="@+id/tHowMuchTime"
         android:layout_above="@+id/TIngredient"
         android:layout_centerHorizontal="true"
@@ -42,30 +42,47 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Spinner
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/STime"
+        android:id="@+id/editTextTime"
         android:layout_alignTop="@+id/tHowMuchTime"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
-        android:spinnerMode="dropdown" />
+        android:layout_marginTop="42dp"
+        android:layout_alignRight="@+id/TIngredient"
+        android:layout_alignEnd="@+id/TIngredient"
+        android:layout_alignLeft="@+id/tHowMuchTime"
+        android:layout_alignStart="@+id/tHowMuchTime" />
 
-    <Spinner
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/SIngredient"
+        android:id="@+id/textView4"
         android:layout_above="@+id/TCategory"
-        android:spinnerMode="dropdown"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignRight="@+id/TIngredient"
+        android:layout_alignEnd="@+id/TIngredient"
+        android:layout_alignLeft="@+id/TIngredient"
+        android:layout_alignStart="@+id/TIngredient" />
 
-    <Spinner
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Scategory"
+        android:id="@+id/editTextIngredient"
+        android:layout_above="@+id/textView4"
+        android:inputType="numberSigned"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCategory"
+        android:inputType="numberSigned"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:spinnerMode="dropdown" />
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_alignRight="@+id/textView4"
+         />
 
 </RelativeLayout>
