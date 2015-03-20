@@ -23,7 +23,7 @@ public class RecipeCard {
     private int cookTime; // note: this is time in minutes
     private List<String> amounts;
     private List<String> ingredients;
-    private List<String> directions;
+    private String directions;
     private Set<String> categories;
 
     private static final String RECIPE_CARD_TAG = "RecipeCard";
@@ -37,7 +37,7 @@ public class RecipeCard {
         cookTime = -1;
         ingredients = new ArrayList<>();
         amounts = new ArrayList<>();
-        directions = new ArrayList<>();
+        directions = null;
         categories = new TreeSet<>();
         categories.add("all"); // everything is part of the All set
         if (!categories.contains("all")) {
@@ -57,7 +57,7 @@ public class RecipeCard {
     public int getCookTime() { return cookTime;} // gets it in minutes
     public List<String> getIngredients() {return ingredients;}
     public List<String> getAmounts() {return amounts;}
-    public List<String> getDirections() {return directions;}
+    public String getDirections() {return directions;}
     public Set<String> getCategories()  {return categories;}
 
     public boolean hasCategory(String category) {return categories.contains(category);}
@@ -74,7 +74,31 @@ public class RecipeCard {
         if (amounts.size() != ingredients.size())
             Log.wtf(RECIPE_CARD_TAG, "Ingredients and Amounts are different lengths!");
     }
-    public void addDirection(String direction) {directions.add(direction);}
+
+    /**
+     * Removes all instances of the ingredient (and its associated amount) from the RecipeCard
+     * In cases where multiple instances of the same ingredient exist, all instances will be removed.
+     * @param ingredient The ingredient to remove
+     */
+    public void removeIngredient(String ingredient) {
+        if (ingredients.contains(ingredient)) {
+            boolean done = false;
+
+            while (!done) {
+                done = true;
+                for (int i = 0; (i < ingredients.size()) && (done); i++) {
+                    if (ingredients.get(i).equals(ingredient)) {
+                        ingredients.remove(i);
+                        amounts.remove(i);
+                        done = false;
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void setDirections(String directions) {this.directions = directions;}
     public void addCategory(String category)  {categories.add(category);}
     public void removeCategory(String category) {
         if (hasCategory(category)) {

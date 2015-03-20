@@ -10,8 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
 import java.util.TooManyListenersException;
 
 /**
@@ -28,7 +30,7 @@ public class AddNewRecipe extends ActionBarActivity {
     EditText instructions;
     EditText comments;
     EditText categories;
-
+    EditText amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +40,12 @@ public class AddNewRecipe extends ActionBarActivity {
         name = (EditText)findViewById(R.id.editName);
         time = (EditText)findViewById(R.id.editTime);
         rating = (RatingBar)findViewById(R.id.editRating);
+        amount = (EditText) findViewById(R.id.amountField);
         ingredients = (EditText)findViewById(R.id.ingredientField);
         instructions = (EditText)findViewById(R.id.editInstructions);
         comments = (EditText)findViewById(R.id.editComments);
         categories = (EditText)findViewById(R.id.categoriesField);
+        recipeCard = new RecipeCard();
     }
 
     /**
@@ -75,7 +79,11 @@ public class AddNewRecipe extends ActionBarActivity {
      * @param view The view calling the function
      */
     public void addIngredient(View view) {
-        //TODO: Implement this method
+        // add the ingredient
+        recipeCard.addIngredient(amount.getText().toString(), ingredients.getText().toString());
+
+        // update the ingredient field
+        updateIngredients(view);
     }
 
     /**
@@ -83,7 +91,25 @@ public class AddNewRecipe extends ActionBarActivity {
      * @param view
      */
     public void removeIngredient(View view) {
-        //TODO: Implement this method
+        // remove the ingredient
+        recipeCard.removeIngredient(ingredients.getText().toString());
+
+        // update the ingredient field
+        updateIngredients(view);
+    }
+
+
+    private void updateIngredients(View view) {
+        TextView ingredientView = (TextView) findViewById(R.id.ingredientsView);
+        List<String> ingredientList = recipeCard.getIngredients();
+        List<String> amountList = recipeCard.getAmounts();
+        String output = "";
+
+        for (int i = 0; i < ingredientList.size(); i++) {
+            output += amountList.get(i) + " " + ingredientList.get(i) + "\n";
+        }
+
+        ingredientView.setText(output);
     }
 
     @Override
@@ -118,7 +144,7 @@ public class AddNewRecipe extends ActionBarActivity {
         recipeCard.setName(name.getText().toString());
         recipeCard.setCookTime(Integer.valueOf(time.getText().toString()));
 
-        recipeCard.addDirection(instructions.getText().toString());
+        recipeCard.setDirections(instructions.getText().toString());
         recipeCard.setComment(comments.getText().toString());
 
         // Adding ingredients and categories will be a little more complicated soon

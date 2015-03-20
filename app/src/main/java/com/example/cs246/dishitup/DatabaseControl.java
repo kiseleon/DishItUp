@@ -143,7 +143,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
         //for the next three we need to look through the string and pars them into individual parts instead of one big string
         //recipeCard.addIngredient(cursor.getString(6));
-        recipeCard.addDirection(cursor.getString(7));
+        recipeCard.setDirections(cursor.getString(7));
         //recipeCard.addCategory(cursor.getString(8));
 
         //TODO: get the ingredients/amounts and the categories from the respective tables
@@ -220,7 +220,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
                 recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
                 //for the next three we need to look through the string add multiple of each item
                 //recipeCard.addIngredient(cursor.getString(6));
-                recipeCard.addDirection(cursor.getString(7));
+                recipeCard.setDirections(cursor.getString(7));
                 //recipeCard.addCategory(cursor.getString(8));
                 recipeCards.add(recipeCard);
 

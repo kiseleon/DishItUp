@@ -136,7 +136,8 @@
                             android:src="@android:drawable/ic_input_add"
                             android:contentDescription="Add Ingredient"
                             android:layout_weight="1"
-                            android:cropToPadding="false" />
+                            android:cropToPadding="false"
+                            android:onClick="addIngredient" />
 
                         <ImageButton
                             android:layout_width="fill_parent"
@@ -144,9 +145,10 @@
                             android:id="@+id/removeIngredientButton"
                             android:layout_column="1"
                             android:src="@android:drawable/ic_delete"
-                            android:contentDescription="Add Ingredient"
+                            android:contentDescription="Remove Ingredient"
                             android:layout_weight="1"
-                            android:cropToPadding="false" />
+                            android:cropToPadding="false"
+                            android:onClick="removeIngredient" />
 
                     </TableRow>
 
