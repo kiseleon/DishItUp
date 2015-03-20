@@ -38,10 +38,10 @@ public class AddNewRecipe extends ActionBarActivity {
         name = (EditText)findViewById(R.id.editName);
         time = (EditText)findViewById(R.id.editTime);
         rating = (RatingBar)findViewById(R.id.editRating);
-        ingredients = (EditText)findViewById(R.id.editIngredients);
+        ingredients = (EditText)findViewById(R.id.ingredientField);
         instructions = (EditText)findViewById(R.id.editInstructions);
         comments = (EditText)findViewById(R.id.editComments);
-        categories = (EditText)findViewById(R.id.editCategories);
+        categories = (EditText)findViewById(R.id.categoriesField);
     }
 
     /**
