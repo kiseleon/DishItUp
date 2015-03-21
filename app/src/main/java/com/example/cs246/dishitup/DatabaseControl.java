@@ -94,7 +94,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         values.put(KEY_IMGEREF, recipeCard.getPictureRef());
         values.put(KEY_COOKTIME, recipeCard.getCookTime());
         //values.put(KEY_INGREDIENTS, recipeCard.getIngredients().toString());
-        values.put(KEY_DIRECTIONS, recipeCard.getDirections().toString());
+        values.put(KEY_DIRECTIONS, recipeCard.getDirections());
         //values.put(KEY_CATEGORIES, recipeCard.getCategories().toString());
 
         // the database insert give you the row ID as a return value
@@ -141,7 +141,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
         recipeCard.setComment(cursor.getString(3));
         recipeCard.setPictureRef(cursor.getString(4));
         recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
-        //for the next three we need to look through the string and pars them into individual parts instead of one big string
         //recipeCard.addIngredient(cursor.getString(6));
         recipeCard.setDirections(cursor.getString(7));
         //recipeCard.addCategory(cursor.getString(8));
@@ -195,7 +194,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         values.put(KEY_IMGEREF, recipeCard.getPictureRef());
         values.put(KEY_COOKTIME, recipeCard.getCookTime());
         values.put(KEY_INGREDIENTS, recipeCard.getIngredients().toString());
-        values.put(KEY_DIRECTIONS, recipeCard.getDirections().toString());
+        values.put(KEY_DIRECTIONS, recipeCard.getDirections());
         values.put(KEY_CATEGORIES, recipeCard.getCategories().toString());
         // TODO: Make this work with the two new tables
 
@@ -203,6 +202,11 @@ public class DatabaseControl extends SQLiteOpenHelper {
                 {String.valueOf(recipeCard.getId())});
     }
 
+    /**
+     * This class will return a list of all RecipeCard objects in the database
+     *
+     * @return List of RecipeCards
+     */
     public List<RecipeCard> getAllRecipeCards(){
         List<RecipeCard> recipeCards = new ArrayList<>();
 
@@ -218,7 +222,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
                 recipeCard.setComment(cursor.getString(3));
                 recipeCard.setPictureRef(cursor.getString(4));
                 recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
-                //for the next three we need to look through the string add multiple of each item
                 //recipeCard.addIngredient(cursor.getString(6));
                 recipeCard.setDirections(cursor.getString(7));
                 //recipeCard.addCategory(cursor.getString(8));

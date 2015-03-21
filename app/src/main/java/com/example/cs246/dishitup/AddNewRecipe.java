@@ -88,7 +88,7 @@ public class AddNewRecipe extends ActionBarActivity {
 
     /**
      * Removes the ingredient and amount from their respective fields from the RecipeCard
-     * @param view
+     * @param view takes a view as a parameter
      */
     public void removeIngredient(View view) {
         // remove the ingredient
