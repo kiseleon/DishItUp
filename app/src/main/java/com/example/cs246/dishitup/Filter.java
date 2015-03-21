@@ -26,22 +26,29 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
 //    String[] time = {"1 min", "5 min", "10 min", "30 min", "60min", "no time limit"};
 
     public void searchTime(){
+        Intent intent = new Intent(this, Search.class);
         EditText time = (EditText) findViewById(R.id.editTextTime);
 
-        time.getText();
+        // this need to go through the database and get all the time that is =<
+
+        startActivity(intent);
     }
+
     public void searchCategory(){
-       // Intent intent = new Intent(this, DisplayScript.class);
+        Intent intent = new Intent(this, Search.class);
         EditText category = (EditText) findViewById(R.id.editTextCategory);
 
-        category.getText();
+        // this needs to go through the database and get all the time that is ==
 
+        startActivity(intent);
     }
      public void searchMainIngredient(){
-        // Intent intent = new Intent(this, DisplayScript.class);
+         Intent intent = new Intent(this, Search.class);
          EditText ingredient = (EditText) findViewById(R.id.editTextIngredient);
 
-         ingredient.getText();
+         // this needs to go through the database and get all the ingredient that is ==
+
+         startActivity(intent);
      }
 
 
