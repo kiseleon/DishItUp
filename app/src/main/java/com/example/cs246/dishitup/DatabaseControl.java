@@ -51,11 +51,15 @@ public class DatabaseControl extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase database){
-        database.execSQL("CREATE TABLE " + TABLE_RECIPES + "(" +
-                KEY_ID + "INTEGER PRIMARY KEY, " +
-                KEY_NAME + " TEXT," + KEY_RATING + " INTEGER," + KEY_COMMENT + " TEXT," +
-                KEY_IMGEREF + " TEXT," + KEY_COOKTIME + " INTEGER," +
-                KEY_DIRECTIONS + " TEXT)");
+        database.execSQL("CREATE TABLE " +
+                TABLE_RECIPES + "(" +
+                KEY_ID +             "INTEGER PRIMARY KEY, " +
+                KEY_NAME +           " TEXT," +
+                KEY_RATING +         " INTEGER," +
+                KEY_COMMENT +        " TEXT," +
+                KEY_IMGEREF +        " TEXT," +
+                KEY_COOKTIME +       " INTEGER," +
+                KEY_DIRECTIONS +     " TEXT)");
 
         database.execSQL("CREATE TABLE " + TABLE_CATEGORIES + "(" +
                 KEY_ID + "INTEGER PRIMARY KEY, " + KEY_CATEGORIES + " TEXT)");

@@ -90,6 +90,7 @@
         android:layout_height="wrap_content"
         android:text="Filter"
         android:id="@+id/BTime"
+        android:onClick="searchTime"
         android:layout_alignTop="@+id/editTextTime"
         android:layout_toRightOf="@+id/editTextTime"
         android:layout_toEndOf="@+id/editTextTime" />
@@ -99,6 +100,7 @@
         android:layout_height="wrap_content"
         android:text="Filter"
         android:id="@+id/BIngredient"
+        android:onClick="searchIngredient"
         android:layout_alignTop="@+id/editTextIngredient"
         android:layout_alignLeft="@+id/BTime"
         android:layout_alignStart="@+id/BTime" />
@@ -108,6 +110,7 @@
         android:layout_height="wrap_content"
         android:text="Filter"
         android:id="@+id/BCategory"
+        android:onClick="searchCategory"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/BIngredient"
         android:layout_alignStart="@+id/BIngredient" />

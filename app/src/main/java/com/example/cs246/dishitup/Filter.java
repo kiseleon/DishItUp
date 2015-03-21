@@ -49,19 +49,20 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
         startActivity(intent);
     }
 
-    public void searchCategory(){
+    public void searchCategory(SQLiteDatabase database){
         Intent intent = new Intent(this, Search.class);
         EditText category = (EditText) findViewById(R.id.editTextCategory);
 
         // this needs to go through the database and get all the time that is ==
-
+        database.execSQL("SELECT KEY_CATEGORIES FROM recipeCardManager.TABLE_CATEGORIES ORDER BY KEY_CATEGORIES = userInputCategory");
         startActivity(intent);
     }
-     public void searchIngredient(){
+     public void searchIngredient(SQLiteDatabase database){
          Intent intent = new Intent(this, Search.class);
          EditText ingredient = (EditText) findViewById(R.id.editTextIngredient);
 
          // this needs to go through the database and get all the ingredient that is ==
+         database.execSQL("SELECT KEY_INGREDIENTS FROM recipeCardManager.TABLE_INGREDIENTS ORDER BY KEY_INGREDIENTS = userInputIngredient");
 
          startActivity(intent);
      }
