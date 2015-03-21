@@ -13,6 +13,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//this is what casey did
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * add or remove recipes form rolodex biased on user input
  *
@@ -25,11 +35,16 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
 
 //    String[] time = {"1 min", "5 min", "10 min", "30 min", "60min", "no time limit"};
 
-    public void searchTime(){
+    public void searchTime(SQLiteDatabase database){
         Intent intent = new Intent(this, Search.class);
         EditText time = (EditText) findViewById(R.id.editTextTime);
 
         // this need to go through the database and get all the time that is =<
+        // the vatrialbe userInputTime is to select the time and below
+
+        database.execSQL("SELECT KEY_COOKTIME FROM recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME >= userInputTime");
+
+
 
         startActivity(intent);
     }
@@ -42,7 +57,7 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
 
         startActivity(intent);
     }
-     public void searchMainIngredient(){
+     public void searchIngredient(){
          Intent intent = new Intent(this, Search.class);
          EditText ingredient = (EditText) findViewById(R.id.editTextIngredient);
 
