@@ -39,10 +39,6 @@ public class RecipeCard {
         amounts = new ArrayList<>();
         directions = null;
         categories = new TreeSet<>();
-        categories.add("all"); // everything is part of the All set
-        if (!categories.contains("all")) {
-            Log.e(RECIPE_CARD_TAG, "all category failed to add");
-        }
 
         Log.i(RECIPE_CARD_TAG, "Created a blank RecipeCard.");
     }

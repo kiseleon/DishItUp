@@ -157,7 +157,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ingredients go here"
+                            android:text=""
                             android:id="@+id/ingredientsView"
                             android:layout_column="0" />
                     </TableRow>
@@ -247,7 +247,8 @@
                             android:layout_column="1"
                             android:src="@android:drawable/ic_input_add"
                             android:cropToPadding="false"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:onClick="addCategory" />
 
                         <ImageButton
                             android:layout_width="wrap_content"
@@ -255,7 +256,8 @@
                             android:id="@+id/removeCategoryButton"
                             android:layout_column="2"
                             android:src="@android:drawable/ic_delete"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:onClick="removeCategory" />
 
                     </TableRow>
 
@@ -266,7 +268,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Easy, Fun, Quick"
+                            android:text=""
                             android:id="@+id/categoriesView"
                             android:layout_column="0"
                             android:layout_span="3" />

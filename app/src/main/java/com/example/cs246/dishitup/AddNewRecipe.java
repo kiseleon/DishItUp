@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Set;
 import java.util.TooManyListenersException;
 
 /**
@@ -54,11 +55,10 @@ public class AddNewRecipe extends ActionBarActivity {
      */
     public void addCategory(View view) {
         // Add category to the recipe card
-
-        // retrieve list of categories
+        recipeCard.addCategory(categories.getText().toString());
 
         // update list of categories
-
+        updateCategories();
     }
 
     /**
@@ -67,11 +67,25 @@ public class AddNewRecipe extends ActionBarActivity {
      */
     public void removeCategory(View view) {
         // Remove category from recipe card
-
-        // retrieve list of categories
+        recipeCard.removeCategory(categories.getText().toString());
 
         // update list of categories
+        updateCategories();
+    }
 
+    private void updateCategories() {
+        TextView categoryView = (TextView) findViewById(R.id.categoriesView);
+        // retrieve categories
+        Set<String> categorylist = recipeCard.getCategories();
+
+        String output = "";
+
+        // update the view
+        for (String category : categorylist) {
+            output += category + "\n";
+        }
+
+        categoryView.setText(output);
     }
 
     /**
@@ -111,6 +125,8 @@ public class AddNewRecipe extends ActionBarActivity {
 
         ingredientView.setText(output);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
