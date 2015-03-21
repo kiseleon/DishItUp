@@ -42,7 +42,7 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
         // this need to go through the database and get all the time that is =<
         // the vatrialbe userInputTime is to select the time and below
 
-        database.execSQL("SELECT KEY_COOKTIME FROM recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME >= userInputTime");
+        database.execSQL("SELECT KEY_COOKTIME FROM recipeCardManager.TABLE_RECIPES"); //ORDER BY KEY_COOKTIME >= userInputTime");
 
 
 
@@ -54,7 +54,7 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
         EditText category = (EditText) findViewById(R.id.editTextCategory);
 
         // this needs to go through the database and get all the time that is ==
-        database.execSQL("SELECT KEY_CATEGORIES FROM recipeCardManager.TABLE_CATEGORIES ORDER BY KEY_CATEGORIES = userInputCategory");
+        database.execSQL("SELECT KEY_CATEGORIES FROM recipeCardManager.TABLE_CATEGORIES");
         startActivity(intent);
     }
      public void searchIngredient(SQLiteDatabase database){
@@ -62,7 +62,7 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
          EditText ingredient = (EditText) findViewById(R.id.editTextIngredient);
 
          // this needs to go through the database and get all the ingredient that is ==
-         database.execSQL("SELECT KEY_INGREDIENTS FROM recipeCardManager.TABLE_INGREDIENTS ORDER BY KEY_INGREDIENTS = userInputIngredient");
+         database.execSQL("SELECT KEY_INGREDIENTS FROM recipeCardManager.TABLE_INGREDIENTS");
 
          startActivity(intent);
      }
