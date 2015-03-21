@@ -85,4 +85,31 @@
         android:layout_alignRight="@+id/textView4"
          />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:id="@+id/BTime"
+        android:layout_alignTop="@+id/editTextTime"
+        android:layout_toRightOf="@+id/editTextTime"
+        android:layout_toEndOf="@+id/editTextTime" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:id="@+id/BIngredient"
+        android:layout_alignTop="@+id/editTextIngredient"
+        android:layout_alignLeft="@+id/BTime"
+        android:layout_alignStart="@+id/BTime" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:id="@+id/BCategory"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/BIngredient"
+        android:layout_alignStart="@+id/BIngredient" />
+
 </RelativeLayout>
