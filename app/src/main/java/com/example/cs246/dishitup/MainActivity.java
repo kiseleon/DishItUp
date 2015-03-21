@@ -16,7 +16,7 @@ public class MainActivity extends ActionBarActivity {
 
     DatabaseControl recipeDatabase;
     //MissionControl missionControl;
-    ///Rolodex rolodex;            //these are the three parts we need to get our recipe cards from the database into the Rolodex
+    ///Rolodex rolodex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,22 +65,6 @@ public class MainActivity extends ActionBarActivity {
 
     public void launchSearch(View view) {
         Intent intent = new Intent(MainActivity.this, Search.class);
-        startActivity(intent);
-    }
-
-    public void launchFavorites(View view) {
-        Intent intent = new Intent(MainActivity.this, Favorites.class);
-        startActivity(intent);
-    }
-
-    public void launchRecentlyAdded(View view) {
-        Intent intent = new Intent(MainActivity.this, RecentlyAdded.class);
-        startActivity(intent);
-    }
-
-
-    public void launchRecentlyViewed(View view) {
-        Intent intent = new Intent(MainActivity.this, RecentlyViewed.class);
         startActivity(intent);
     }
 
