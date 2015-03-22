@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,29 +43,32 @@ public class DatabaseControl extends SQLiteOpenHelper {
     private static final String KEY_DIRECTIONS = "directions";
 
     //ingredientsTable column names
+    private static final String KEY_INGID = "_id";
     private static final String KEY_LOOKUPINGREDENTS = "ingredientsID";
     private static final String KEY_INGREDIENT = "ingredients";
     private static final String KEY_AMOUNTS = "amounts";
 
     //categoriesTable column names
+    private static final String KEY_CATID = "_id";
     private static final String KEY_LOOKUPCATEGORIES = "categoriesID";
     private static final String KEY_CATEGORIES = "categories";
 
     //Recipe table
     private static final String CREATE_TABLE_RECIPES = "CREATE TABLE"
             + TABLE_RECIPES + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-            + KEY_NAME + "TEXT," + KEY_RATING + "TEXT," + KEY_COMMENT + "TEXT,"
-            + KEY_IMGEREF + "TEXT," + KEY_COOKTIME + "TEXT," + KEY_DIRECTIONS
+            + KEY_NAME + "TEXT," + KEY_RATING + "INTEGER," + KEY_COMMENT + "TEXT,"
+            + KEY_IMGEREF + "TEXT," + KEY_COOKTIME + "INTEGER," + KEY_DIRECTIONS
             + "TEXT" + ")";
     //Ingredients table
     private static final String CREATE_TABLE_INGREDIENTS = "CREATE TABLE"
-            + TABLE_INGREDIENTS + "(" + KEY_LOOKUPINGREDENTS + " INTEGER,"
-            + KEY_INGREDIENT + "TEXT," + KEY_AMOUNTS + "TEXT" + ")";
+            + TABLE_INGREDIENTS + "(" + KEY_INGID + " INTEGER PRIMARY KEY "
+            + KEY_LOOKUPINGREDENTS + " INTEGER," + KEY_INGREDIENT + "TEXT,"
+            + KEY_AMOUNTS + "TEXT" + ")";
 
     //Categories table
     private static final String CREATE_TABLE_CATEGORIES = "CREATE TABLE"
-            + TABLE_CATEGORIES + "("+ KEY_LOOKUPCATEGORIES + "INTEGER,"
-            + KEY_CATEGORIES + "TEXT" + ")";
+            + TABLE_CATEGORIES + "(" + KEY_CATID + " INTEGER PRIMARY KEY "
+            + KEY_LOOKUPCATEGORIES + "INTEGER," + KEY_CATEGORIES + "TEXT)";
 
     public DatabaseControl(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -142,30 +146,28 @@ public class DatabaseControl extends SQLiteOpenHelper {
      * @param id the key id of the recipe card you want to find should be passed in
      * @return returns a recipeCard object
      */
-
     public RecipeCard getRecipeCard(int id){
         SQLiteDatabase database = getReadableDatabase();
         RecipeCard recipeCard = new RecipeCard();
 
-        Cursor cursor = database.query(TABLE_RECIPES, new String [] {KEY_ID, KEY_NAME,
-                        KEY_RATING,KEY_COMMENT, KEY_IMGEREF, KEY_COOKTIME, KEY_DIRECTIONS},
-                        KEY_ID + "=?", new String[] {String.valueOf(id)},null,null,null,null);
+        String selectQuery = "SELECT * FROM " + TABLE_RECIPES + " WHERE "
+                + KEY_ID + " = " + id;
+
+        Cursor cursor = database.rawQuery(selectQuery, null);
         if (cursor != null)
             cursor.moveToFirst();
 
-
         assert cursor != null;
-        recipeCard.setId(Integer.parseInt(cursor.getString(0)));
-        recipeCard.setName(cursor.getString(1));
-        recipeCard.setRating(Integer.parseInt(cursor.getString(2)));
-        recipeCard.setComment(cursor.getString(3));
-        recipeCard.setPictureRef(cursor.getString(4));
-        recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
+        recipeCard.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+        recipeCard.setName(cursor.getString(cursor.getColumnIndex(KEY_NAME)));
+        recipeCard.setRating(cursor.getInt(cursor.getColumnIndex(KEY_RATING)));
+        recipeCard.setComment(cursor.getString(cursor.getColumnIndex(KEY_COMMENT)));
+        recipeCard.setPictureRef(cursor.getString(cursor.getColumnIndex(KEY_IMGEREF)));
+        recipeCard.setCookTime(cursor.getInt(cursor.getColumnIndex(KEY_COOKTIME)));
+        recipeCard.setDirections(cursor.getString(cursor.getColumnIndex(KEY_DIRECTIONS)));
+        //TODO figure out how to get all the rows that have the same KEY_LOOKUPINGREDENTS or KEY_LOOKUPCATEGORIES AND ADD THEM TO THE RECIPE CARD
         //recipeCard.addIngredient(cursor.getString(6));
-        recipeCard.setDirections(cursor.getString(7));
         //recipeCard.addCategory(cursor.getString(8));
-
-        //TODO: get the ingredients/amounts and the categories from the respective tables
 
         return recipeCard;
     }
@@ -174,12 +176,11 @@ public class DatabaseControl extends SQLiteOpenHelper {
      * Will delete any RecipeCard in the database given the RecipeCard you want to delete.
      * @param recipeCard The RecipeCard that you want to delete must be passed in
      */
-
+    //TODO: rebuild this method to handle the new 3 table solution
     public void deleteRecipeCard(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
         database.delete(TABLE_RECIPES, KEY_ID + "=?", new String[]
                 {String.valueOf(recipeCard.getId())});
-        // TODO: Delete the associated ingredient table rows and category table rows
         database.close();
     }
 
@@ -202,7 +203,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
      * @param recipeCard takes a RecipeCard
      * @return returns the id of the RecipeCard
      */
-
+    //TODO: rebuild this method to handle the new 3 table solution
     public int updateRecipe(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
 
@@ -214,7 +215,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
         values.put(KEY_IMGEREF, recipeCard.getPictureRef());
         values.put(KEY_COOKTIME, recipeCard.getCookTime());
         values.put(KEY_DIRECTIONS, recipeCard.getDirections());
-        // TODO: Make this work with the two new tables
 
         return database.update(TABLE_RECIPES, values, KEY_ID + "=?", new String[]
                 {String.valueOf(recipeCard.getId())});
@@ -225,6 +225,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
      *
      * @return List of RecipeCards
      */
+    //TODO: rebuild this method to handle the new 3 table solution
     public List<RecipeCard> getAllRecipeCards(){
         List<RecipeCard> recipeCards = new ArrayList<>();
 
@@ -245,7 +246,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
                 //recipeCard.addCategory(cursor.getString(8));
                 recipeCards.add(recipeCard);
 
-                //TODO: make this set the categories and ingredients/amounts
             }while (cursor.moveToNext());
         }
         return recipeCards;
