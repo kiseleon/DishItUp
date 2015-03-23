@@ -163,9 +163,7 @@ public class AddNewRecipe extends ActionBarActivity {
         recipeCard.setDirections(instructions.getText().toString());
         recipeCard.setComment(comments.getText().toString());
 
-        // Adding ingredients and categories will be a little more complicated soon
-        recipeCard.addIngredient("Amount", ingredients.getText().toString()); // TODO: Actually get the amount
-        recipeCard.addCategory(categories.getText().toString());
+        // RecipeCard already has the ingredients/amounts/etc, so we don't need to add them here
 
         if(recipeCard.getName() == null || recipeCard.getName().equals("") ||// this is not working we need to verify that we have been given all the information that we need.
                 recipeCard.getCookTime() < 0 || recipeCard.getIngredients() == null ||
