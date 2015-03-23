@@ -25,7 +25,7 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 0;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
@@ -165,9 +165,37 @@ public class DatabaseControl extends SQLiteOpenHelper {
         recipeCard.setPictureRef(cursor.getString(cursor.getColumnIndex(KEY_IMGEREF)));
         recipeCard.setCookTime(cursor.getInt(cursor.getColumnIndex(KEY_COOKTIME)));
         recipeCard.setDirections(cursor.getString(cursor.getColumnIndex(KEY_DIRECTIONS)));
-        //TODO figure out how to get all the rows that have the same KEY_LOOKUPINGREDENTS or KEY_LOOKUPCATEGORIES AND ADD THEM TO THE RECIPE CARD
-        //recipeCard.addIngredient(cursor.getString(6));
-        //recipeCard.addCategory(cursor.getString(8));
+
+        //get ingredients
+        selectQuery = "SELECT * FROM " + TABLE_INGREDIENTS + " WHERE "
+                + KEY_LOOKUPINGREDENTS + " = " + id;
+
+        cursor = database.rawQuery(selectQuery, null);
+
+        if(cursor != null)
+            cursor.moveToFirst();
+
+        assert cursor != null;
+        for(int i = 0; i < cursor.getCount(); i++) {
+            recipeCard.addIngredient(cursor.getString(cursor.getColumnIndex(KEY_INGREDIENT))
+                    , cursor.getString(cursor.getColumnIndex(KEY_AMOUNTS)));
+            cursor.moveToNext();
+        }
+
+        //get categories
+        selectQuery = "SELECT * FROM " + TABLE_CATEGORIES + " WHERE "
+                + KEY_LOOKUPCATEGORIES + " = " + id;
+
+        cursor = database.rawQuery(selectQuery, null);
+
+        if(cursor != null)
+            cursor.moveToFirst();
+
+        assert cursor != null;
+        for(int i = 0; i < cursor.getCount(); i++) {
+            recipeCard.addCategory(cursor.getString(cursor.getColumnIndex(KEY_CATEGORIES)));
+            cursor.moveToNext();
+        }
 
         return recipeCard;
     }
