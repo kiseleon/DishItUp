@@ -177,8 +177,8 @@ public class AddNewRecipe extends ActionBarActivity {
         }
         recipeDatabase.createRecipe(recipeCard);
         Log.i("Recipe card added", "Recipe card added to the database");
-        CharSequence text = ("The Recipe Card"+ recipeCard.getName() +" was added to your " +
-                "recipe rolodex.");
+        CharSequence text = ("The Recipe Card "+ recipeCard.getName() +" was added to your " +
+                "recipes.");
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
         finish();
