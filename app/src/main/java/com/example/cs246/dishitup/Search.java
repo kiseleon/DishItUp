@@ -138,8 +138,30 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
     }
 
-//    @Override
-//    public void onClick(View v){
-//        String.valueOf(SortS.getSelectedItem());
-//    }
+
+    public void spinnerSelect(){
+
+        String spinVar = String.valueOf(SortS.getSelectedItem());
+        //select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short
+        if(spinVar.equals("select the sort")){
+
+        }else if(spinVar.equals("Rating")){
+            sortByRateing();
+
+        }else if(spinVar.equals("Rating")){
+            sortByAZ();
+
+        }else if(spinVar.equals("Rating")){
+            sortByZA();
+
+        }else if(spinVar.equals("Rating")){
+
+        }else if(spinVar.equals("Rating")){
+
+        }else
+        {
+            System.out.println("panic and cry this is never suposed to happen");
+        }
+
+    }
 }
