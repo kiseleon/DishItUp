@@ -54,21 +54,21 @@ public class DatabaseControl extends SQLiteOpenHelper {
     private static final String KEY_CATEGORIES = "categories";
 
     //Recipe table
-    private static final String CREATE_TABLE_RECIPES = "CREATE TABLE"
-            + TABLE_RECIPES + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-            + KEY_NAME + "TEXT," + KEY_RATING + "INTEGER," + KEY_COMMENT + "TEXT,"
-            + KEY_IMGEREF + "TEXT," + KEY_COOKTIME + "INTEGER," + KEY_DIRECTIONS
+    private static final String CREATE_TABLE_RECIPES = "CREATE TABLE "
+            + TABLE_RECIPES + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
+            + KEY_NAME + "TEXT, " + KEY_RATING + "INTEGER, " + KEY_COMMENT + "TEXT, "
+            + KEY_IMGEREF + "TEXT, " + KEY_COOKTIME + "INTEGER, " + KEY_DIRECTIONS
             + "TEXT" + ")";
     //Ingredients table
-    private static final String CREATE_TABLE_INGREDIENTS = "CREATE TABLE"
-            + TABLE_INGREDIENTS + "(" + KEY_INGID + " INTEGER PRIMARY KEY "
-            + KEY_LOOKUPINGREDENTS + " INTEGER," + KEY_INGREDIENT + "TEXT,"
-            + KEY_AMOUNTS + "TEXT" + ")";
+    private static final String CREATE_TABLE_INGREDIENTS = "CREATE TABLE "
+            + TABLE_INGREDIENTS + "(" + KEY_INGID + " INTEGER PRIMARY KEY, "
+            + KEY_LOOKUPINGREDENTS + " INTEGER, " + KEY_INGREDIENT + "TEXT, "
+            + KEY_AMOUNTS + "TEXT " + ")";
 
     //Categories table
-    private static final String CREATE_TABLE_CATEGORIES = "CREATE TABLE"
-            + TABLE_CATEGORIES + "(" + KEY_CATID + " INTEGER PRIMARY KEY "
-            + KEY_LOOKUPCATEGORIES + "INTEGER," + KEY_CATEGORIES + "TEXT)";
+    private static final String CREATE_TABLE_CATEGORIES = "CREATE TABLE "
+            + TABLE_CATEGORIES + "(" + KEY_CATID + " INTEGER PRIMARY KEY, "
+            + KEY_LOOKUPCATEGORIES + "INTEGER, " + KEY_CATEGORIES + "TEXT )";
 
     public DatabaseControl(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
