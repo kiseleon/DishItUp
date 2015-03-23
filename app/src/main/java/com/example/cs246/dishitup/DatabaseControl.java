@@ -25,7 +25,7 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 0;
+    private static final int DATABASE_VERSION = 3;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
@@ -216,7 +216,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
      * Will return the number of RecipeCards in the database
      * @return returns an int of the number of RecipesCards in the database
      */
-
     public int getRecipeCount(){
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_RECIPES, null);
