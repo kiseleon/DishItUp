@@ -125,14 +125,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         finish();
     }
 
-
-
     //these are for what happens when you use the spinner must be overloaded
-
-    public void goSort(View view) {
-        Intent intent = new Intent(Search.this, SortBy.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -144,4 +137,9 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+//    @Override
+//    public void onClick(View v){
+//        String.valueOf(SortS.getSelectedItem());
+//    }
 }
