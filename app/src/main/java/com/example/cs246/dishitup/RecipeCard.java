@@ -1,6 +1,8 @@
 package com.example.cs246.dishitup;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -9,9 +11,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
+ * This class displays and temporarily stores the data for a recipe.
  * Created by Kevin on 2/25/2015.
  */
-public class RecipeCard {
+public class RecipeCard implements Parcelable {
     private String name;
     private int rating;
     private int id;
@@ -100,4 +103,66 @@ public class RecipeCard {
             Log.i(RECIPE_CARD_TAG, "Category " + category + " wasn't in the list.");
         }
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * Writes the contents of the RecipeCard to the destination Parcel
+     * @param dest Destination Parcel
+     * @param flags ???
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeInt(this.id);
+        dest.writeString(this.name);
+        dest.writeInt(this.rating);
+        dest.writeInt(this.cookTime);
+        dest.writeString(this.pictureRef);
+        dest.writeString(this.comment);
+        dest.writeString(this.directions);
+        dest.writeList((List) this.categories);
+        dest.writeList(this.amounts);
+        dest.writeList(this.ingredients);
+
+    }
+
+    /**
+     * Non-default constructor to create a RecipeCard
+     * @param parcel Source Parcel
+     */
+    public RecipeCard(Parcel parcel) {
+        this.id = parcel.readInt();
+        this.name = parcel.readString();
+        this.rating = parcel.readInt();
+        this.cookTime = parcel.readInt();
+        this.pictureRef = parcel.readString();
+        this.comment = parcel.readString();
+        this.directions = parcel.readString();
+        this.categories = (Set<String>) parcel.readArrayList(null);
+        this.amounts = parcel.readArrayList(null);
+        this.ingredients = parcel.readArrayList(null);
+    }
+
+    // Method to recreate a Question from a Parcel
+    public static Creator<RecipeCard> CREATOR = new Creator<RecipeCard>() {
+
+        @Override
+        public RecipeCard createFromParcel(Parcel source) {
+            return new RecipeCard(source);
+        }
+
+        @Override
+        public RecipeCard[] newArray(int size) {
+            return new RecipeCard[size];
+        }
+
+    };
+
+
+
+
 }
