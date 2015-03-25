@@ -252,7 +252,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
      *
      * @return List of RecipeCards
      */
-    //TODO: rebuild this method to handle the new 3 table solution
     public List<RecipeCard> getAllRecipeCards(){
         List<RecipeCard> recipeCards = new ArrayList<>();
 
@@ -262,16 +261,54 @@ public class DatabaseControl extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 RecipeCard recipeCard = new RecipeCard();
-                recipeCard.setId(Integer.parseInt(cursor.getString(0)));
-                recipeCard.setName(cursor.getString(1));
-                recipeCard.setRating(Integer.parseInt(cursor.getString(2)));
-                recipeCard.setComment(cursor.getString(3));
-                recipeCard.setPictureRef(cursor.getString(4));
-                recipeCard.setCookTime(Integer.parseInt(cursor.getString(5)));
-                //recipeCard.addIngredient(cursor.getString(6));
-                recipeCard.setDirections(cursor.getString(7));
-                //recipeCard.addCategory(cursor.getString(8));
-                recipeCards.add(recipeCard);
+
+                int id = cursor.getInt(cursor.getColumnIndex(KEY_ID));
+                String selectQuery = "SELECT * FROM " + TABLE_RECIPES + " WHERE "
+                        + KEY_ID + " = " + id;
+
+                cursor = database.rawQuery(selectQuery, null);
+                if (cursor != null)
+                    cursor.moveToFirst();
+
+                assert cursor != null;
+                recipeCard.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+                recipeCard.setName(cursor.getString(cursor.getColumnIndex(KEY_NAME)));
+                recipeCard.setRating(cursor.getInt(cursor.getColumnIndex(KEY_RATING)));
+                recipeCard.setComment(cursor.getString(cursor.getColumnIndex(KEY_COMMENT)));
+                recipeCard.setPictureRef(cursor.getString(cursor.getColumnIndex(KEY_IMGEREF)));
+                recipeCard.setCookTime(cursor.getInt(cursor.getColumnIndex(KEY_COOKTIME)));
+                recipeCard.setDirections(cursor.getString(cursor.getColumnIndex(KEY_DIRECTIONS)));
+
+                //get ingredients
+                selectQuery = "SELECT * FROM " + TABLE_INGREDIENTS + " WHERE "
+                        + KEY_LOOKUPINGREDENTS + " = " + id;
+
+                cursor = database.rawQuery(selectQuery, null);
+
+                if(cursor != null)
+                    cursor.moveToFirst();
+
+                assert cursor != null;
+                for(int i = 0; i < cursor.getCount(); i++) {
+                    recipeCard.addIngredient(cursor.getString(cursor.getColumnIndex(KEY_INGREDIENT))
+                            , cursor.getString(cursor.getColumnIndex(KEY_AMOUNTS)));
+                    cursor.moveToNext();
+                }
+
+                //get categories
+                selectQuery = "SELECT * FROM " + TABLE_CATEGORIES + " WHERE "
+                        + KEY_LOOKUPCATEGORIES + " = " + id;
+
+                cursor = database.rawQuery(selectQuery, null);
+
+                if(cursor != null)
+                    cursor.moveToFirst();
+
+                assert cursor != null;
+                for(int i = 0; i < cursor.getCount(); i++) {
+                    recipeCard.addCategory(cursor.getString(cursor.getColumnIndex(KEY_CATEGORIES)));
+                    cursor.moveToNext();
+                }
 
             }while (cursor.moveToNext());
         }
