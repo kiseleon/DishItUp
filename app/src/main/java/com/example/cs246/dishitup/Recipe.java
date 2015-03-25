@@ -1,17 +1,56 @@
 package com.example.cs246.dishitup;
 
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 
 public class Recipe extends ActionBarActivity {
+    TextView recipeName;
+    ImageView recipeImage;
+    RatingBar recipeRating;
+    //TextView recipeTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        recipeName = (TextView) findViewById(R.id.recipeName);
+        recipeImage = (ImageView)   findViewById(R.id.recipeImage);
+        recipeRating = (RatingBar) findViewById(R.id.ratingBar);
+        //recipeTime = (TextView) findViewById(R.id.textTime)
+
+        RecipeCard recipe = GlobalRecipe.recipeCard;
+
+        // set the name
+        recipeName.setText(recipe.getName());
+
+        // set the rating
+        recipeRating.setRating(recipe.getRating());
+
+        //TODO: Finish displaying the recipe
+        // set the cook time - //TODO: Why isn't this in the layout?
+
+        // set the instructions
+
+        //
+
+
+        // Set the image
+        int imageResource = getResources().getIdentifier(recipe.getPictureRef(), null, getPackageName());
+        Drawable res = getResources().getDrawable(imageResource);
+        recipeImage.setImageDrawable(res);
+
+
+
+
     }
 
 

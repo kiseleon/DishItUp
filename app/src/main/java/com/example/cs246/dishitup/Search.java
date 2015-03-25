@@ -125,6 +125,25 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         finish();
     }
 
+
+    public void goToDummyRecipe(View view) {
+        // first, just go to the recipe and see what it looks like
+        Intent intent = new Intent(Search.this, Recipe.class);
+        // set the global recipe
+        GlobalRecipe.getInstance().recipeCard.setName("Dummy");
+        GlobalRecipe.getInstance().recipeCard.setCookTime(60);
+        GlobalRecipe.getInstance().recipeCard.addCategory("Dummy");
+        GlobalRecipe.getInstance().recipeCard.addIngredient("12 cups", "dummies");
+        GlobalRecipe.getInstance().recipeCard.setRating(3);
+        GlobalRecipe.getInstance().recipeCard.setDirections("Dummy\nDummy\nDummy");
+        GlobalRecipe.getInstance().recipeCard.setPictureRef("@drawable/placeholder_image");
+        GlobalRecipe.getInstance().recipeCard.setId(0);
+        GlobalRecipe.getInstance().recipeCard.setComment("Dummy comment");
+
+        // start the new activity
+        startActivity(intent);
+    }
+
     //these are for what happens when you use the spinner must be overloaded
 
     @Override
