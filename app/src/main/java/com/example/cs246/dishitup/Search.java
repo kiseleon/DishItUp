@@ -172,16 +172,17 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         }else if(spinVar.equals("Rating")){
             sortByRateing();
 
-        }else if(spinVar.equals("Rating")){
+        }else if(spinVar.equals("A-Z")){
             sortByAZ();
 
-        }else if(spinVar.equals("Rating")){
+        }else if(spinVar.equals("Z-A")){
             sortByZA();
 
-        }else if(spinVar.equals("Rating")){
+        }else if(spinVar.equals("Time Short to Long")){
+            sortTimeShortLong();
 
-        }else if(spinVar.equals("Rating")){
-
+        }else if(spinVar.equals("Time Long to Short")){
+            sortTimeLongSort();
         }else
         {
             System.out.println("panic and cry this is never suposed to happen");
