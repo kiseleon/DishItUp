@@ -143,7 +143,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
         // Create the intent
         Intent intent = new Intent(Search.this, Recipe.class);
-        intent.putExtra("com.example.cs246.dishitup", recipe);
+        intent.putExtra("RecipeCard", recipe);
 
         // start the new activity
         startActivity(intent);

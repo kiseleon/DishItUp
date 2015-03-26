@@ -1,9 +1,17 @@
 package com.example.cs246.dishitup;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -14,10 +22,10 @@ import android.widget.TextView;
 public class Recipe extends ActionBarActivity {
     RecipeCard recipe;
 
-    TextView recipeName;
+
+    TextView recipeName; // Also holds the cook time
     ImageView recipeImage;
     RatingBar recipeRating;
-    //TextView recipeTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +33,28 @@ public class Recipe extends ActionBarActivity {
         setContentView(R.layout.activity_recipe);
 
         Bundle b = getIntent().getExtras();
-        recipe = b.getParcelable("com.example.cs246.dishitup");
+        recipe = b.getParcelable("RecipeCard");
 
         recipeName = (TextView) findViewById(R.id.recipeName);
         recipeImage = (ImageView)   findViewById(R.id.recipeImage);
         recipeRating = (RatingBar) findViewById(R.id.ratingBar);
-        //recipeTime = (TextView) findViewById(R.id.textTime)
 
-        RecipeCard recipe = GlobalRecipe.recipeCard;
+        // set the name and cooktime using spannable strings
+        // this enables multiple sizes/colors/etc of text within a single TextView
+        SpannableStringBuilder builder = new SpannableStringBuilder();
 
-        // set the name
-        recipeName.setText(recipe.getName());
+        String name = recipe.getName();
+        SpannableString spannableName = new SpannableString(name);
+        spannableName.setSpan(new StyleSpan(Typeface.BOLD), 0, name.length(), 0);
+        builder.append(spannableName);
+
+        String time = "\n(" + Integer.toString(recipe.getCookTime()) + " minutes)";
+        SpannableString spannableTime = new SpannableString(time);
+        spannableTime.setSpan(new ForegroundColorSpan(Color.GRAY), 0, time.length(), 0);
+        spannableTime.setSpan(new StyleSpan(Typeface.ITALIC), 0, time.length(), 0);
+        builder.append(spannableTime);
+
+        recipeName.setText(builder, TextView.BufferType.SPANNABLE);
 
         // set the rating
         recipeRating.setRating(recipe.getRating());
