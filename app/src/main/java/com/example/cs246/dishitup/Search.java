@@ -127,18 +127,23 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
 
     public void goToDummyRecipe(View view) {
-        // first, just go to the recipe and see what it looks like
+
+        // Create the recipe card
+        RecipeCard recipe = new RecipeCard();
+        recipe.setId(1);
+        recipe.setName("Dummy Name");
+        recipe.setComment("Dummy Comment");
+        recipe.setCookTime(60);
+        recipe.setDirections("This\nis\ndummy\ninstructions\n");
+        recipe.setRating(2);
+        recipe.addIngredient("1/2 whole", "Dummy");
+        recipe.addIngredient("3/8 T", "Essence of Dummy");
+        recipe.addCategory("Dummy Category");
+        recipe.addCategory("Second Category");
+
+        // Create the intent
         Intent intent = new Intent(Search.this, Recipe.class);
-        // set the global recipe
-        GlobalRecipe.getInstance().recipeCard.setName("Dummy");
-        GlobalRecipe.getInstance().recipeCard.setCookTime(60);
-        GlobalRecipe.getInstance().recipeCard.addCategory("Dummy");
-        GlobalRecipe.getInstance().recipeCard.addIngredient("12 cups", "dummies");
-        GlobalRecipe.getInstance().recipeCard.setRating(3);
-        GlobalRecipe.getInstance().recipeCard.setDirections("Dummy\nDummy\nDummy");
-        GlobalRecipe.getInstance().recipeCard.setPictureRef("@drawable/placeholder_image");
-        GlobalRecipe.getInstance().recipeCard.setId(0);
-        GlobalRecipe.getInstance().recipeCard.setComment("Dummy comment");
+        intent.putExtra("com.example.cs246.dishitup", recipe);
 
         // start the new activity
         startActivity(intent);

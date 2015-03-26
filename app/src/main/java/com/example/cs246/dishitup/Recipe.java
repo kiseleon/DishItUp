@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 
 public class Recipe extends ActionBarActivity {
+    RecipeCard recipe;
+
     TextView recipeName;
     ImageView recipeImage;
     RatingBar recipeRating;
@@ -21,6 +23,9 @@ public class Recipe extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        Bundle b = getIntent().getExtras();
+        recipe = b.getParcelable("com.example.cs246.dishitup");
 
         recipeName = (TextView) findViewById(R.id.recipeName);
         recipeImage = (ImageView)   findViewById(R.id.recipeImage);

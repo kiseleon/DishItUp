@@ -124,7 +124,7 @@ public class RecipeCard implements Parcelable {
         dest.writeString(this.pictureRef);
         dest.writeString(this.comment);
         dest.writeString(this.directions);
-        dest.writeList((List) this.categories);
+        dest.writeStringList(new ArrayList<String>(categories));
         dest.writeList(this.amounts);
         dest.writeList(this.ingredients);
 
@@ -142,9 +142,21 @@ public class RecipeCard implements Parcelable {
         this.pictureRef = parcel.readString();
         this.comment = parcel.readString();
         this.directions = parcel.readString();
-        this.categories = (Set<String>) parcel.readArrayList(null);
-        this.amounts = parcel.readArrayList(null);
-        this.ingredients = parcel.readArrayList(null);
+
+        this.categories = new TreeSet<>();
+        List<String> categoryList = new ArrayList<>();
+        parcel.readStringList(categoryList);
+        if (!categoryList.isEmpty()) {
+            for (String s : categoryList) {
+                Log.d(RECIPE_CARD_TAG, "Adding category " + s);
+                addCategory(s);
+            }
+        }
+        this.amounts = new ArrayList<>();
+        this.ingredients = new ArrayList<>();
+        parcel.readStringList(this.amounts);
+        parcel.readStringList(this.ingredients);
+
     }
 
     // Method to recreate a Question from a Parcel
