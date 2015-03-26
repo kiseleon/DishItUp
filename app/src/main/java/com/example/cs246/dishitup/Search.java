@@ -48,7 +48,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
      private void sortByRateing(){
        //  RecipeCard [] Filter = Roledex.getFilteredList();
-         database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_RATEING ASC");
+         database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_RATING ASC");
 
     }
 
@@ -166,7 +166,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     }
 
 
-    public void spinnerSelect(){
+    public void spinnerSelect(View view){
 
         String spinVar = String.valueOf(SortS.getSelectedItem());
         //select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short
