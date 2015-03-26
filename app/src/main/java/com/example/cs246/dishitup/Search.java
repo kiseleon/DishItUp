@@ -1,6 +1,7 @@
 package com.example.cs246.dishitup;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
     Spinner SortS;
     String[] items =  {"select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
+    SQLiteDatabase database;
 
     
     private static final String TAG_SEARCH = "search mode";
@@ -46,6 +48,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
      private void sortByRateing(){
        //  RecipeCard [] Filter = Roledex.getFilteredList();
+         database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_RATEING ASC");
 
     }
 
@@ -55,7 +58,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     private void sortByAZ(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
        // Arrays.sort(Filter.getName());
-
+        database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_NAME ASC");
     }
 
     /**
@@ -63,7 +66,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
     private void sortByZA(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
-
+        database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_NAME DESC");
 
     }
 
@@ -72,7 +75,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
     private void sortTimeShortLong(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
-
+        database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME ASC");
     }
 
     /**
@@ -80,7 +83,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
     private void sortTimeLongSort(){
         //RecipeCard [] Filter = Roledex.getFilteredList();
-
+        database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME DESC");
     }
 
 
@@ -172,16 +175,17 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         }else if(spinVar.equals("Rating")){
             sortByRateing();
 
-        }else if(spinVar.equals("Rating")){
+        }else if(spinVar.equals("A-Z")){
             sortByAZ();
 
-        }else if(spinVar.equals("Rating")){
+        }else if(spinVar.equals("Z-A")){
             sortByZA();
 
-        }else if(spinVar.equals("Rating")){
+        }else if(spinVar.equals("Time Short to Long")){
+            sortTimeShortLong();
 
-        }else if(spinVar.equals("Rating")){
-
+        }else if(spinVar.equals("Time Long to Short")){
+            sortTimeLongSort();
         }else
         {
             System.out.println("panic and cry this is never suposed to happen");
