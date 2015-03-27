@@ -104,6 +104,20 @@ public class RecipeCard implements Parcelable {
         }
     }
 
+    public String getIngredientListAsString() {
+        String output = "";
+        Log.d(RECIPE_CARD_TAG, "Amounts == Ingredients: " + (amounts.size() == ingredients.size()));
+        Log.d(RECIPE_CARD_TAG, "Amounts.size = " + amounts.size());
+        Log.d(RECIPE_CARD_TAG, "Ingredients.size = " + ingredients.size());
+        for (int i = 0; i < ingredients.size(); i++) {
+            Log.d(RECIPE_CARD_TAG, "Adding ingredient/amount " + i);
+            output += " - " + amounts.get(i) + " " + ingredients.get(i) + "\n";
+
+
+        }
+        return output;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -125,9 +139,8 @@ public class RecipeCard implements Parcelable {
         dest.writeString(this.comment);
         dest.writeString(this.directions);
         dest.writeStringList(new ArrayList<String>(categories));
-        dest.writeList(this.amounts);
-        dest.writeList(this.ingredients);
-
+        dest.writeStringList(this.amounts);
+        dest.writeStringList(this.ingredients);
     }
 
     /**

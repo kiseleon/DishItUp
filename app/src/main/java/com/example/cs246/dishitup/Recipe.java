@@ -3,15 +3,12 @@ package com.example.cs246.dishitup;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
-import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
-import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -26,6 +23,9 @@ public class Recipe extends ActionBarActivity {
     TextView recipeName; // Also holds the cook time
     ImageView recipeImage;
     RatingBar recipeRating;
+    TextView recipeIngredients;
+    TextView recipeDirections;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,8 @@ public class Recipe extends ActionBarActivity {
         recipeName = (TextView) findViewById(R.id.recipeName);
         recipeImage = (ImageView)   findViewById(R.id.recipeImage);
         recipeRating = (RatingBar) findViewById(R.id.ratingBar);
+        recipeIngredients = (TextView) findViewById(R.id.recipeIngredients);
+        recipeDirections = (TextView) findViewById(R.id.recipeDirections);
 
         // set the name and cooktime using spannable strings
         // this enables multiple sizes/colors/etc of text within a single TextView
@@ -56,24 +58,38 @@ public class Recipe extends ActionBarActivity {
 
         recipeName.setText(builder, TextView.BufferType.SPANNABLE);
 
+
         // set the rating
         recipeRating.setRating(recipe.getRating());
 
-        //TODO: Finish displaying the recipe
-        // set the cook time - //TODO: Why isn't this in the layout?
+        // set the ingredients
+        builder.clear();
+
+        String ingredientsTitle = "Ingredients:";
+        SpannableString spannableIngredientsTitle = new SpannableString(ingredientsTitle);
+        spannableIngredientsTitle.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, ingredientsTitle.length(), 0);
+
+        builder.append(spannableIngredientsTitle);
+        builder.append("\n" + recipe.getIngredientListAsString());
+
+        recipeIngredients.setText(builder, TextView.BufferType.SPANNABLE);
 
         // set the instructions
+        builder.clear();
 
-        //
+        String directionsTitle = "Directions:";
+        SpannableString spannableDirectionsTitle = new SpannableString(directionsTitle);
+        spannableDirectionsTitle.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, directionsTitle.length(), 0);
 
+        builder.append(spannableDirectionsTitle);
+        builder.append("\n" + recipe.getDirections());
+
+        recipeDirections.setText(builder, TextView.BufferType.SPANNABLE);
 
         // Set the image
         int imageResource = getResources().getIdentifier(recipe.getPictureRef(), null, getPackageName());
         Drawable res = getResources().getDrawable(imageResource);
         recipeImage.setImageDrawable(res);
-
-
-
 
     }
 
