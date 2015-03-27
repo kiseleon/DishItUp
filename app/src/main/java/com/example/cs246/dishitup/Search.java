@@ -2,6 +2,7 @@ package com.example.cs246.dishitup;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     Spinner SortS;
     String[] items =  {"select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
     SQLiteDatabase database;
+    DatabaseControl recipeDatabase;
 
     
     private static final String TAG_SEARCH = "search mode";
@@ -92,6 +94,9 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
+        database = recipeDatabase.getWritableDatabase();
+
         SortS = (Spinner) findViewById(R.id.SortS);
         //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
         ArrayAdapter <String> adapter = new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, items);
@@ -128,6 +133,16 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         finish();
     }
 
+    public void goToRecipe(int id) {
+        RecipeCard recipe = recipeDatabase.getRecipeCard(id);
+
+        // Create the intent
+        Intent intent = new Intent(Search.this, Recipe.class);
+        intent.putExtra("RecipeCard", recipe);
+
+        // start the new activity
+        startActivity(intent);
+    }
 
     public void goToDummyRecipe(View view) {
 
