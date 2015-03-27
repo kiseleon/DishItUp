@@ -171,6 +171,8 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // TODO: This is where you should call the different sorts
+
         TextView myText = (TextView) view;
         Toast.makeText(this, "you selected " + myText.getText(), Toast.LENGTH_SHORT).show();
     }
