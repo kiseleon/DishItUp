@@ -12,8 +12,6 @@ import java.util.List;
 
 /*
  * Created by Jason on 3/5/2015.
- * I used a tutorial from Youtube to help me create this database control
- * https://www.youtube.com/watch?v=xKuM3cHO7G8
  */
 
 /**
@@ -25,7 +23,7 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
@@ -58,7 +56,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
             + TABLE_RECIPES + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
             + KEY_NAME + "TEXT, " + KEY_RATING + "INTEGER, " + KEY_COMMENT + "TEXT, "
             + KEY_IMGEREF + "TEXT, " + KEY_COOKTIME + "INTEGER, " + KEY_DIRECTIONS
-            + "TEXT" + ")";
+            + " TEXT )";
     //Ingredients table
     private static final String CREATE_TABLE_INGREDIENTS = "CREATE TABLE "
             + TABLE_INGREDIENTS + "(" + KEY_INGID + " INTEGER PRIMARY KEY, "
@@ -93,7 +91,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
 
         onCreate(database);
     }
-
     /**
      * Takes a RecipeCard and uses the data from the recipe card to fill out a new row in the
      * database.
