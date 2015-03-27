@@ -128,6 +128,10 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         finish();
     }
 
+    public void goToFilter(View view) {
+        Intent intent = new Intent(Search.this, Filter.class);
+        startActivity(intent);
+    }
 
     public void goToDummyRecipe(View view) {
 
