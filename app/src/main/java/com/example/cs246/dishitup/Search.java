@@ -52,9 +52,13 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     /**
      * calls database and sorts by rating
      */
-     private void sortByRateing(){
+     private void sortByRating(){
        //  RecipeCard [] Filter = Roledex.getFilteredList();
-         database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_RATING ASC");
+         String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_RATING + ";";
+
+         Cursor cursor = database.rawQuery(query, null);
+
+         updateRecipeList(cursor);
 
     }
 
@@ -64,7 +68,13 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     private void sortByAZ(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
        // Arrays.sort(Filter.getName());
-        database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_NAME ASC");
+        //database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_NAME ASC");
+
+        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_NAME + " ASC ;";
+
+        Cursor cursor = database.rawQuery(query, null);
+
+        updateRecipeList(cursor);
     }
 
     /**
@@ -72,8 +82,13 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
     private void sortByZA(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
-        database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_NAME DESC");
+       // database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_NAME DESC");
 
+        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_NAME + " DESC ;";
+
+        Cursor cursor = database.rawQuery(query, null);
+
+        updateRecipeList(cursor);
     }
 
     /**
@@ -81,7 +96,13 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
     private void sortTimeShortLong(){
        // RecipeCard [] Filter = Roledex.getFilteredList();
-        database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME ASC");
+        //database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME ASC");
+
+        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_COOKTIME + " ASC ;";
+
+        Cursor cursor = database.rawQuery(query, null);
+
+        updateRecipeList(cursor);
     }
 
     /**
@@ -89,7 +110,13 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
     private void sortTimeLongSort(){
         //RecipeCard [] Filter = Roledex.getFilteredList();
-        database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME DESC");
+        //database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME DESC");
+
+        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_COOKTIME + " DESC ;";
+
+        Cursor cursor = database.rawQuery(query, null);
+
+        updateRecipeList(cursor);
     }
 
 
@@ -148,6 +175,10 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         finish();
     }
 
+    /**
+     * Creates a SimpleCursorAdapter to output the recipes to the ListView
+     * @param cursor The cursor of the recipe table that will be added to the ListView
+     */
     public void updateRecipeList(Cursor cursor) {
 
         ListView listView = (ListView) findViewById(R.id.ResDisp);
@@ -156,8 +187,6 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         int[] toControlIDs = new int[] {R.id.idTab, R.id.nameTab, R.id.ratingTab, R.id.timeTab};
 
         listView.setAdapter(new SimpleCursorAdapter(this, R.layout.tabitem, cursor, fromColumns, toControlIDs, 0));
-
-
 
     }
 
@@ -198,6 +227,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         TextView myText = (TextView) view;
         Toast.makeText(this, "you selected " + myText.getText(), Toast.LENGTH_SHORT).show();
+        spinnerSelect(view);
     }
 
     @Override
@@ -213,7 +243,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         if(spinVar.equals("select the sort")){
 
         }else if(spinVar.equals("Rating")){
-            sortByRateing();
+            sortByRating();
 
         }else if(spinVar.equals("A-Z")){
             sortByAZ();
