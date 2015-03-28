@@ -1,6 +1,7 @@
 package com.example.cs246.dishitup;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,12 +11,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * allows the user to rearrange the list of recipes
@@ -27,10 +31,32 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     Spinner SortS;
     String[] items =  {"select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
     SQLiteDatabase database;
-
-    
     private static final String TAG_SEARCH = "search mode";
+    private ListView listView;
 
+
+    private void populateArrayAdapter(Cursor cursor){
+        List<String> arrayList = new ArrayList<String>();
+
+            // if Cursor is contains results
+            if (cursor != null) {
+        // move cursor to first row
+        if (cursor.moveToFirst()) {
+            do {
+                // Get version from Cursor
+                String name = cursor.getString(cursor.getColumnIndex("KEY_NAME"));
+                // add the bookName into the bookTitles ArrayList
+                arrayList.add(name);
+                // move to next row
+            } while (cursor.moveToNext());
+        }
+    }
+            // initiate the listadapter
+   // todo ArrayAdapter myAdapter = new ArrayAdapter(this,,arrayList);// R.layout.row_layout, R.id.listText, bookTitles);
+            // assign the list adapter
+     // todo  listView.setAdapter(myAdapter);
+
+    }
     /**
      * this runs a test on the TAG_SEARCH
      * @exception this tells you that i == 2
@@ -98,6 +124,8 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         SortS.setAdapter(adapter);
         SortS.setOnItemSelectedListener(this);
 
+        listView = (ListView) findViewById(R.id.ResDisp);
+
         //testLog();
     }
 
@@ -124,6 +152,13 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         return super.onOptionsItemSelected(item);
     }
 
+    public void goToFilter(View view){
+        // Create the intent
+        Intent intent = new Intent(Search.this, Filter.class);
+
+        // start the new activity
+        startActivity(intent);
+    }
     public void goToMenu(View view) {
         finish();
     }

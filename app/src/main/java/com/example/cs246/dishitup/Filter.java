@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,10 +31,13 @@ import java.util.HashMap;
  */
 public class Filter extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
 
-//    Spinner STime;
+    Button BTime;
+    Button BIngredient;
+    Button BCategory;
 
-
-//    String[] time = {"1 min", "5 min", "10 min", "30 min", "60min", "no time limit"};
+    EditText editTextTime;
+    EditText editTextIngredient;
+    EditText editTextCategory;
 
     public void searchTime(SQLiteDatabase database){
         Intent intent = new Intent(this, Search.class);
@@ -73,6 +77,16 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
+
+
+
+         BTime = (Button) findViewById(R.id.BTime);
+         BIngredient = (Button) findViewById(R.id.BIngredient);
+         BCategory = (Button) findViewById(R.id.BCategory);
+
+         editTextTime = (EditText)findViewById(R.id.editTextTime);
+         editTextIngredient = (EditText)findViewById(R.id.editTextIngredient);
+         editTextCategory = (EditText)findViewById(R.id.editTextCategory);
 
 
 //        STime = (Spinner) findViewById(R.id.STime);
