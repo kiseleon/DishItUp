@@ -27,29 +27,29 @@ public class DatabaseControl extends SQLiteOpenHelper {
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
-    private static final String TABLE_INGREDIENTS = "ingredientsTable";
-    private static final String TABLE_CATEGORIES = "categoriesTable";
-    private static final String TABLE_RECIPES = "recipes";
+    public static final String TABLE_INGREDIENTS = "ingredientsTable";
+    public static final String TABLE_CATEGORIES = "categoriesTable";
+    public static final String TABLE_RECIPES = "recipes";
 
     //Recipes column names
-    private static final String KEY_ID = "_id";
-    private static final String KEY_NAME = "name";
-    private static final String KEY_RATING = "rating";
-    private static final String KEY_COMMENT = "comment";
-    private static final String KEY_IMGEREF = "img";
-    private static final String KEY_COOKTIME = "cookTime";
-    private static final String KEY_DIRECTIONS = "directions";
+    public static final String KEY_ID = "_id";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_RATING = "rating";
+    public static final String KEY_COMMENT = "comment";
+    public static final String KEY_IMGEREF = "img";
+    public static final String KEY_COOKTIME = "cookTime";
+    public static final String KEY_DIRECTIONS = "directions";
 
     //ingredientsTable column names
-    private static final String KEY_INGID = "_id";
-    private static final String KEY_LOOKUPINGREDENTS = "ingredientsID";
-    private static final String KEY_INGREDIENT = "ingredients";
-    private static final String KEY_AMOUNTS = "amounts";
+    public static final String KEY_INGID = "_id";
+    public static final String KEY_LOOKUPINGREDENTS = "ingredientsID";
+    public static final String KEY_INGREDIENT = "ingredients";
+    public static final String KEY_AMOUNTS = "amounts";
 
     //categoriesTable column names
-    private static final String KEY_CATID = "_id";
-    private static final String KEY_LOOKUPCATEGORIES = "categoriesID";
-    private static final String KEY_CATEGORIES = "categories";
+    public static final String KEY_CATID = "_id";
+    public static final String KEY_LOOKUPCATEGORIES = "categoriesID";
+    public static final String KEY_CATEGORIES = "categories";
 
     //Recipe table
     private static final String CREATE_TABLE_RECIPES = "CREATE TABLE "

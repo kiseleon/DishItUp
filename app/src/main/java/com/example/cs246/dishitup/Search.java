@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,32 +33,10 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     Spinner SortS;
     String[] items =  {"select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
     SQLiteDatabase database;
+    DatabaseControl databaseControl;
+    
     private static final String TAG_SEARCH = "search mode";
-    private ListView listView;
 
-
-    private void populateArrayAdapter(Cursor cursor){
-        List<String> arrayList = new ArrayList<String>();
-
-            // if Cursor is contains results
-            if (cursor != null) {
-        // move cursor to first row
-        if (cursor.moveToFirst()) {
-            do {
-                // Get version from Cursor
-                String name = cursor.getString(cursor.getColumnIndex("KEY_NAME"));
-                // add the bookName into the bookTitles ArrayList
-                arrayList.add(name);
-                // move to next row
-            } while (cursor.moveToNext());
-        }
-    }
-            // initiate the listadapter
-   // todo ArrayAdapter myAdapter = new ArrayAdapter(this,,arrayList);// R.layout.row_layout, R.id.listText, bookTitles);
-            // assign the list adapter
-     // todo  listView.setAdapter(myAdapter);
-
-    }
     /**
      * this runs a test on the TAG_SEARCH
      * @exception this tells you that i == 2
@@ -118,13 +98,18 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        databaseControl = new DatabaseControl(getApplicationContext());
+        database = databaseControl.getWritableDatabase();
+
         SortS = (Spinner) findViewById(R.id.SortS);
         //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
         ArrayAdapter <String> adapter = new ArrayAdapter <String> (this, android.R.layout.simple_spinner_item, items);
         SortS.setAdapter(adapter);
         SortS.setOnItemSelectedListener(this);
 
-        listView = (ListView) findViewById(R.id.ResDisp);
+        String query = "SELECT * FROM " + DatabaseControl.TABLE_RECIPES + ";";
+
+        updateRecipeList(database.rawQuery(query, null));
 
         //testLog();
     }
@@ -163,22 +148,42 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         finish();
     }
 
+    public void updateRecipeList(Cursor cursor) {
+
+        ListView listView = (ListView) findViewById(R.id.ResDisp);
+
+        String[] fromColumns = new String[] {databaseControl.KEY_ID, databaseControl.KEY_NAME, databaseControl.KEY_RATING, databaseControl.KEY_COOKTIME};
+        int[] toControlIDs = new int[] {R.id.idTab, R.id.nameTab, R.id.ratingTab, R.id.timeTab};
+
+        listView.setAdapter(new SimpleCursorAdapter(this, R.layout.tabitem, cursor, fromColumns, toControlIDs, 0));
+
+
+
+    }
+
 
     public void goToDummyRecipe(View view) {
 
-        // Create the recipe card
-        RecipeCard recipe = new RecipeCard();
-        recipe.setId(1);
-        recipe.setName("Dummy Name");
-        recipe.setComment("Dummy Comment");
-        recipe.setCookTime(60);
-        recipe.setDirections("This\nis\ndummy\ninstructions\n");
-        recipe.setRating(2);
-        recipe.addIngredient("1/2 whole", "Dummy");
-        recipe.addIngredient("3/8 T", "Essence of Dummy");
-        recipe.addCategory("Dummy Category");
-        recipe.addCategory("Second Category");
+        List<RecipeCard> recipeList = databaseControl.getAllRecipeCards();
 
+        RecipeCard recipe;
+
+        if (recipeList.size() > 0) {
+            recipe = recipeList.get(recipeList.size() - 1);
+        } else {
+            // Create the dummy recipe card
+            recipe = new RecipeCard();
+            recipe.setId(1);
+            recipe.setName("Dummy Name");
+            recipe.setComment("Dummy Comment");
+            recipe.setCookTime(60);
+            recipe.setDirections("This\nis\ndummy\ninstructions\n");
+            recipe.setRating(2);
+            recipe.addIngredient("1/2 whole", "Dummy");
+            recipe.addIngredient("3/8 T", "Essence of Dummy");
+            recipe.addCategory("Dummy Category");
+            recipe.addCategory("Second Category");
+        }
         // Create the intent
         Intent intent = new Intent(Search.this, Recipe.class);
         intent.putExtra("RecipeCard", recipe);
