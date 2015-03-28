@@ -126,6 +126,10 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
         Toast.makeText(this, "you selected " + myText.getText(), Toast.LENGTH_SHORT).show();
     }
 
+    public void goToMenu(View view) {
+        finish();
+    }
+
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
