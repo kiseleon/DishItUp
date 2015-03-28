@@ -57,6 +57,9 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
         Intent intent = new Intent(this, Search.class);
         EditText category = (EditText) findViewById(R.id.editTextCategory);
 
+        String message = category.getText().toString();
+      //  intent.putExtra(EXTRA_MESSAGE, message);
+
         // this needs to go through the database and get all the time that is ==
         database.execSQL("SELECT KEY_CATEGORIES FROM recipeCardManager.TABLE_CATEGORIES");
         startActivity(intent);
