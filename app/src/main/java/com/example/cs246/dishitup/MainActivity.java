@@ -78,7 +78,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void displayRecipe(View view) {
-        RecipeCard recipe = recipeDatabase.getRecipeCard(3);
+        RecipeCard recipe = recipeDatabase.getRecipeCard(1);
         List<RecipeCard> recipeCards = new ArrayList<>();
 
         recipeCards = recipeDatabase.getAllRecipeCards();
