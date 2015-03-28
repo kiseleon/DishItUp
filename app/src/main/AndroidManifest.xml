@@ -16,6 +16,15 @@
             android:label="@string/title_activity_search"
             android:theme="@style/ActionBar" >
         </activity>
+
+
+        <activity
+            android:name=".Filter"
+            android:label="@string/title_activity_filter"
+            android:theme="@style/ActionBar" >
+        </activity>
+
+
         <activity
             android:name=".Favorites"
             android:label="@string/title_activity_favorites" >
@@ -27,10 +36,6 @@
         <activity
             android:name=".RecentlyViewed"
             android:label="@string/title_activity_recently_viewed" >
-        </activity>
-        <activity
-            android:name=".SortBy"
-            android:label="@string/title_activity_sort_by" >
         </activity>
         <activity
             android:name=".MainActivity"
