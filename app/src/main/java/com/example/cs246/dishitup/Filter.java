@@ -43,12 +43,12 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
         Intent intent = new Intent(this, Search.class);
         EditText time = (EditText) findViewById(R.id.editTextTime);
 
+        String message = time.getText().toString();
+
         // this need to go through the database and get all the time that is =<
         // the vatrialbe userInputTime is to select the time and below
 
-        database.execSQL("SELECT KEY_COOKTIME FROM recipeCardManager.TABLE_RECIPES"); //ORDER BY KEY_COOKTIME >= userInputTime");
-
-
+        database.execSQL("SELECT KEY_COOKTIME FROM recipeCardManager.TABLE_RECIPES WHERE KEY_COOKTIME = " + message); //ORDER BY KEY_COOKTIME >= userInputTime");
 
         startActivity(intent);
     }
@@ -61,15 +61,17 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
       //  intent.putExtra(EXTRA_MESSAGE, message);
 
         // this needs to go through the database and get all the time that is ==
-        database.execSQL("SELECT KEY_CATEGORIES FROM recipeCardManager.TABLE_CATEGORIES");
+        database.execSQL("SELECT KEY_CATEGORIES FROM recipeCardManager.TABLE_CATEGORIES WHERE  KEY_CATEGORIES = " +  message);
         startActivity(intent);
     }
      public void searchIngredient(SQLiteDatabase database){
          Intent intent = new Intent(this, Search.class);
          EditText ingredient = (EditText) findViewById(R.id.editTextIngredient);
 
+         String message = ingredient.getText().toString();
+
          // this needs to go through the database and get all the ingredient that is ==
-         database.execSQL("SELECT KEY_INGREDIENTS FROM recipeCardManager.TABLE_INGREDIENTS");
+         database.execSQL("SELECT KEY_INGREDIENTS FROM recipeCardManager.TABLE_INGREDIENTS WHERE KEY_INGREDIENTS = " + message);
 
          startActivity(intent);
      }
