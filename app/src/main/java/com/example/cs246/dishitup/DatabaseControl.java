@@ -23,7 +23,7 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 6;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
@@ -53,20 +53,20 @@ public class DatabaseControl extends SQLiteOpenHelper {
 
     //Recipe table
     private static final String CREATE_TABLE_RECIPES = "CREATE TABLE "
-            + TABLE_RECIPES + "(" + KEY_ID + " INTEGER PRIMARY KEY, "
-            + KEY_NAME + "TEXT, " + KEY_RATING + "INTEGER, " + KEY_COMMENT + "TEXT, "
-            + KEY_IMGEREF + "TEXT, " + KEY_COOKTIME + "INTEGER, " + KEY_DIRECTIONS
-            + " TEXT )";
+            + TABLE_RECIPES + " (" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + KEY_NAME + " TEXT, " + KEY_RATING + " INTEGER, " + KEY_COMMENT + " TEXT, "
+            + KEY_IMGEREF + " TEXT, " + KEY_COOKTIME + " INTEGER, " + KEY_DIRECTIONS
+            + " TEXT);";
     //Ingredients table
     private static final String CREATE_TABLE_INGREDIENTS = "CREATE TABLE "
-            + TABLE_INGREDIENTS + "(" + KEY_INGID + " INTEGER PRIMARY KEY, "
-            + KEY_LOOKUPINGREDENTS + " INTEGER, " + KEY_INGREDIENT + "TEXT, "
-            + KEY_AMOUNTS + "TEXT " + ")";
+            + TABLE_INGREDIENTS + " (" + KEY_INGID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + KEY_LOOKUPINGREDENTS + " INTEGER, " + KEY_INGREDIENT + " TEXT, "
+            + KEY_AMOUNTS + " TEXT);";
 
     //Categories table
     private static final String CREATE_TABLE_CATEGORIES = "CREATE TABLE "
-            + TABLE_CATEGORIES + "(" + KEY_CATID + " INTEGER PRIMARY KEY, "
-            + KEY_LOOKUPCATEGORIES + "INTEGER, " + KEY_CATEGORIES + "TEXT )";
+            + TABLE_CATEGORIES + " (" + KEY_CATID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + KEY_LOOKUPCATEGORIES + " INTEGER, " + KEY_CATEGORIES + " TEXT);";
 
     public DatabaseControl(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -103,6 +103,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, recipeCard.getName());
+        System.out.println("Putting " + recipeCard.getName());
         values.put(KEY_RATING, recipeCard.getRating());
         values.put(KEY_COMMENT, recipeCard.getComment());
         values.put(KEY_IMGEREF, recipeCard.getPictureRef());
@@ -280,33 +281,33 @@ public class DatabaseControl extends SQLiteOpenHelper {
                 selectQuery = "SELECT * FROM " + TABLE_INGREDIENTS + " WHERE "
                         + KEY_LOOKUPINGREDENTS + " = " + id;
 
-                cursor = database.rawQuery(selectQuery, null);
+                Cursor cursor2 = database.rawQuery(selectQuery, null);
 
-                if(cursor != null)
-                    cursor.moveToFirst();
+                if(cursor2 != null)
+                    cursor2.moveToFirst();
 
-                assert cursor != null;
-                for(int i = 0; i < cursor.getCount(); i++) {
-                    recipeCard.addIngredient(cursor.getString(cursor.getColumnIndex(KEY_INGREDIENT))
-                            , cursor.getString(cursor.getColumnIndex(KEY_AMOUNTS)));
-                    cursor.moveToNext();
+                assert cursor2 != null;
+                for(int i = 0; i < cursor2.getCount(); i++) {
+                    recipeCard.addIngredient(cursor2.getString(cursor2.getColumnIndex(KEY_INGREDIENT))
+                            , cursor2.getString(cursor2.getColumnIndex(KEY_AMOUNTS)));
+                    cursor2.moveToNext();
                 }
 
                 //get categories
                 selectQuery = "SELECT * FROM " + TABLE_CATEGORIES + " WHERE "
                         + KEY_LOOKUPCATEGORIES + " = " + id;
 
-                cursor = database.rawQuery(selectQuery, null);
+                Cursor cursor3 = database.rawQuery(selectQuery, null);
 
-                if(cursor != null)
-                    cursor.moveToFirst();
+                if(cursor3 != null)
+                    cursor3.moveToFirst();
 
-                assert cursor != null;
-                for(int i = 0; i < cursor.getCount(); i++) {
-                    recipeCard.addCategory(cursor.getString(cursor.getColumnIndex(KEY_CATEGORIES)));
-                    cursor.moveToNext();
+                assert cursor3 != null;
+                for(int i = 0; i < cursor3.getCount(); i++) {
+                    recipeCard.addCategory(cursor3.getString(cursor3.getColumnIndex(KEY_CATEGORIES)));
+                    cursor3.moveToNext();
                 }
-
+                recipeCards.add(recipeCard);
             }while (cursor.moveToNext());
         }
         return recipeCards;

@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * allows you to navigate the app, creates the database
  *
@@ -72,5 +75,20 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent(MainActivity.this, AddNewRecipe.class);
         startActivity(intent);
         //rolodex.update(recipeDatabase);
+    }
+
+    public void displayRecipe(View view) {
+        RecipeCard recipe = recipeDatabase.getRecipeCard(2);
+        List<RecipeCard> recipeCards = new ArrayList<>();
+
+        recipeCards = recipeDatabase.getAllRecipeCards();
+
+        String name = recipe.getName();
+
+        System.out.println(name);
+
+        for (RecipeCard recipes : recipeCards){
+            System.out.println(recipes.getName());
+        }
     }
 }
