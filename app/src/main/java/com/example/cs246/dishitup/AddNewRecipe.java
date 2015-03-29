@@ -156,7 +156,6 @@ public class AddNewRecipe extends ActionBarActivity {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_LONG;
 
-        recipeCard = new RecipeCard();
         recipeCard.setName(name.getText().toString());
         recipeCard.setCookTime(Integer.valueOf(time.getText().toString()));
 
