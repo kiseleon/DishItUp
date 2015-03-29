@@ -26,6 +26,8 @@ public class Recipe extends ActionBarActivity {
     RatingBar recipeRating;
     TextView recipeIngredients;
     TextView recipeDirections;
+    TextView recipeComment;
+    TextView recipeCategories;
 
 
     @Override
@@ -41,6 +43,9 @@ public class Recipe extends ActionBarActivity {
         recipeRating = (RatingBar) findViewById(R.id.ratingBar);
         recipeIngredients = (TextView) findViewById(R.id.recipeIngredients);
         recipeDirections = (TextView) findViewById(R.id.recipeDirections);
+        recipeComment = (TextView) findViewById(R.id.recipeComment);
+        recipeCategories = (TextView) findViewById(R.id.recipeCategories);
+
 
         // set the name and cooktime using spannable strings
         // this enables multiple sizes/colors/etc of text within a single TextView
@@ -91,6 +96,20 @@ public class Recipe extends ActionBarActivity {
         int imageResource = getResources().getIdentifier(recipe.getPictureRef(), null, getPackageName());
         Drawable res = getResources().getDrawable(imageResource);
         recipeImage.setImageDrawable(res);
+
+        // set the comment
+        // TODO: Flesh this out to look nice
+        recipeComment.setText(recipe.getComment());
+
+        // set the categories
+        // TODO: Flesh this out to look nice
+        String categories = "";
+
+        for (String s : recipe.getCategories()) {
+            categories += s + "\n";
+        }
+
+        recipeCategories.setText(categories);
 
     }
 

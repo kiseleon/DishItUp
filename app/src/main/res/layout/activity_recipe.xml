@@ -80,6 +80,20 @@
             android:id="@+id/recipeDirections"
             android:textSize="25dp" />
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="comment"
+            android:id="@+id/recipeComment"
+            android:textSize="25dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Categories"
+            android:id="@+id/recipeCategories"
+            android:textSize="25dp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

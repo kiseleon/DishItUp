@@ -160,6 +160,8 @@ public class AddNewRecipe extends ActionBarActivity {
         recipeCard.setName(name.getText().toString());
         recipeCard.setCookTime(Integer.valueOf(time.getText().toString()));
 
+        recipeCard.setRating((int) rating.getRating());
+
         recipeCard.setDirections(instructions.getText().toString());
         recipeCard.setComment(comments.getText().toString());
 
