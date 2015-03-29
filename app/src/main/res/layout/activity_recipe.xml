@@ -63,7 +63,8 @@
             android:id="@+id/ratingBar"
             android:numStars="5"
             android:layout_gravity="left"
-            android:stepSize="1" />
+            android:stepSize="1"
+            android:isIndicator="true" />
 
         <TextView
             android:layout_width="fill_parent"
