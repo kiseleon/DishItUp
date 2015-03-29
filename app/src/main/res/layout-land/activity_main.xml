@@ -16,34 +16,8 @@
         android:layout_marginTop="5dp"
         android:layout_alignRight="@+id/button"
         android:layout_alignEnd="@+id/button"
-        android:layout_alignLeft="@+id/favoritesButton"
-        android:layout_alignStart="@+id/favoritesButton" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Favorites "
-        android:onClick="launchFavorites"
-        android:id="@+id/favoritesButton"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/searchButton"
-        android:layout_alignLeft="@+id/recentlyAddedButton"
-        android:layout_alignStart="@+id/recentlyAddedButton"
-        android:layout_alignRight="@+id/recentlyAddedButton"
-        android:layout_alignEnd="@+id/recentlyAddedButton" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recently added"
-        android:onClick="launchRecentlyAdded"
-        android:id="@+id/recentlyAddedButton"
-        android:layout_below="@+id/favoritesButton"
         android:layout_alignLeft="@+id/recentlyViewedButton"
-        android:layout_alignStart="@+id/recentlyViewedButton"
-        android:layout_marginTop="5dp"
-        android:layout_alignRight="@+id/recentlyViewedButton"
-        android:layout_alignEnd="@+id/recentlyViewedButton" />
+        android:layout_alignStart="@+id/recentlyViewedButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -51,9 +25,9 @@
         android:text="Recently Viewed"
         android:onClick="launchRecentlyViewed"
         android:id="@+id/recentlyViewedButton"
-        android:layout_below="@+id/recentlyAddedButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/searchButton" />
 
     <Button
         android:layout_width="wrap_content"
