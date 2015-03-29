@@ -13,41 +13,11 @@
         android:onClick="launchSearch"
         android:id="@+id/searchButton"
         android:layout_marginTop="48dp"
-        android:layout_alignRight="@+id/favoritesButton"
-        android:layout_alignEnd="@+id/favoritesButton"
-        android:layout_alignLeft="@+id/favoritesButton"
-        android:layout_alignStart="@+id/favoritesButton"
         android:maxWidth="200dp"
         android:nestedScrollingEnabled="false"
-        android:minWidth="200dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Favorites "
-        android:onClick=""
-        android:id="@+id/favoritesButton"
-        android:layout_below="@+id/searchButton"
-        android:layout_marginTop="48dp"
-        android:layout_alignRight="@+id/recentlyAddedButton"
-        android:layout_alignEnd="@+id/recentlyAddedButton"
-        android:layout_alignLeft="@+id/recentlyAddedButton"
-        android:layout_alignStart="@+id/recentlyAddedButton"
-        android:maxWidth="200dp"
-        android:minWidth="200dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recently added"
-        android:onClick=""
-        android:id="@+id/recentlyAddedButton"
-        android:layout_below="@+id/favoritesButton"
-        android:layout_marginTop="48dp"
+        android:minWidth="200dp"
         android:layout_alignRight="@+id/recentlyViewedButton"
-        android:layout_alignEnd="@+id/recentlyViewedButton"
-        android:maxWidth="200dp"
-        android:minWidth="200dp" />
+        android:layout_alignEnd="@+id/recentlyViewedButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -55,11 +25,11 @@
         android:text="Recently Viewed"
         android:onClick=""
         android:id="@+id/recentlyViewedButton"
-        android:layout_below="@+id/recentlyAddedButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
         android:minWidth="200dp"
-        android:maxWidth="200dp" />
+        android:maxWidth="200dp"
+        android:layout_below="@+id/searchButton" />
 
     <Button
         android:layout_width="wrap_content"
