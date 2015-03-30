@@ -138,7 +138,7 @@ public class RecipeCard implements Parcelable {
         dest.writeString(this.pictureRef);
         dest.writeString(this.comment);
         dest.writeString(this.directions);
-        dest.writeStringList(new ArrayList<String>(categories));
+        dest.writeStringList(new ArrayList<>(categories));
         dest.writeStringList(this.amounts);
         dest.writeStringList(this.ingredients);
     }

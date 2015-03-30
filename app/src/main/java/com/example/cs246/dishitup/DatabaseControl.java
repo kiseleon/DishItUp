@@ -256,6 +256,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         List<RecipeCard> recipeCards = new ArrayList<>();
 
         int cardCount = this.getRecipeCount();
+        //this will iterate through the database adding all of it to a list of recipe cards
         for (int i = 1; i <= cardCount; i++){
             RecipeCard recipe = this.getRecipeCard(i);
             recipeCards.add(recipe);
