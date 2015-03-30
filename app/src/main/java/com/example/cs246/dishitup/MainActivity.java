@@ -18,8 +18,6 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity {
 
     DatabaseControl recipeDatabase;
-    //MissionControl missionControl;
-    ///Rolodex rolodex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +25,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
-        //rolodex = new Rolodex(recipeDatabase); // this makes a rolodex with all of our existing recipeCards
-        //missionControl = new MissionControl(rolodex); // makes our mission control object with a populated rolodex
-
-        //recipeDatabase.deleteRecipeCard( );// the recipeCare that you would like to delete as a peramiter
     }
 
 
@@ -64,6 +58,5 @@ public class MainActivity extends ActionBarActivity {
     public void launchAddNewRecipe(View view) {
         Intent intent = new Intent(MainActivity.this, AddNewRecipe.class);
         startActivity(intent);
-        //rolodex.update(recipeDatabase);
     }
 }
