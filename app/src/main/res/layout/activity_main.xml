@@ -46,13 +46,4 @@
         android:maxWidth="200dp"
         android:minWidth="200dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Display recipe"
-        android:id="@+id/displayR"
-        android:onClick="displayRecipe"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

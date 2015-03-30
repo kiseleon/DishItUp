@@ -66,19 +66,4 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
         //rolodex.update(recipeDatabase);
     }
-
-    public void displayRecipe(View view) {
-        RecipeCard recipe = recipeDatabase.getRecipeCard(1);
-        List<RecipeCard> recipeCards;
-
-        recipeCards = recipeDatabase.getAllRecipeCards();
-
-        String name = recipe.getName();
-
-        System.out.println(name);
-
-        for(RecipeCard recipes : recipeCards){
-            System.out.println(recipes.getName());
-        }
-    }
 }
