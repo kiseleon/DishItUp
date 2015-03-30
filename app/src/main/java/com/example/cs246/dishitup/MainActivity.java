@@ -18,8 +18,6 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity {
 
     DatabaseControl recipeDatabase;
-    //MissionControl missionControl;
-    ///Rolodex rolodex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +28,6 @@ public class MainActivity extends ActionBarActivity {
         FilterData.clearFilter();
 
         recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
-        //rolodex = new Rolodex(recipeDatabase); // this makes a rolodex with all of our existing recipeCards
-        //missionControl = new MissionControl(rolodex); // makes our mission control object with a populated rolodex
-
-        //recipeDatabase.deleteRecipeCard( );// the recipeCare that you would like to delete as a peramiter
     }
 
 
@@ -59,16 +53,6 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==1)//if an activity returns a 1 the Rolodex will update.
-        {
-            // rolodex.update(recipeDatabase);
-        }
-    }
-
     public void launchSearch(View view) {
         Intent intent = new Intent(MainActivity.this, Search.class);
         startActivity(intent);
@@ -77,21 +61,5 @@ public class MainActivity extends ActionBarActivity {
     public void launchAddNewRecipe(View view) {
         Intent intent = new Intent(MainActivity.this, AddNewRecipe.class);
         startActivity(intent);
-        //rolodex.update(recipeDatabase);
-    }
-
-    public void displayRecipe(View view) {
-        RecipeCard recipe = recipeDatabase.getRecipeCard(1);
-        List<RecipeCard> recipeCards = new ArrayList<>();
-
-        recipeCards = recipeDatabase.getAllRecipeCards();
-
-        String name = recipe.getName();
-
-        System.out.println(name);
-
-        for(RecipeCard recipes : recipeCards){
-            System.out.println(recipes.getName());
-        }
     }
 }

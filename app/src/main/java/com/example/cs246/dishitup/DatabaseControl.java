@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -203,11 +204,19 @@ public class DatabaseControl extends SQLiteOpenHelper {
      * Will delete any RecipeCard in the database given the RecipeCard you want to delete.
      * @param recipeCard The RecipeCard that you want to delete must be passed in
      */
-    //TODO: rebuild this method to handle the new 3 table solution
     public void deleteRecipeCard(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
-        database.delete(TABLE_RECIPES, KEY_ID + "=?", new String[]
+        database.delete(TABLE_RECIPES, KEY_ID + " =? ", new String[]
                 {String.valueOf(recipeCard.getId())});
+
+        //Delete ingredients
+        database.delete(TABLE_INGREDIENTS, KEY_LOOKUPINGREDENTS + " =? ", new String[]
+                {String.valueOf(recipeCard.getId())});
+
+        //Delete categories
+        database.delete(TABLE_CATEGORIES, KEY_LOOKUPCATEGORIES + " =? ", new String[]
+                {String.valueOf(recipeCard.getId())});
+
         database.close();
     }
 
@@ -228,23 +237,14 @@ public class DatabaseControl extends SQLiteOpenHelper {
     /**
      * Pass in a RecipeCard that you have made changes to and it will update itself in the database
      * @param recipeCard takes a RecipeCard
-     * @return returns the id of the RecipeCard
      */
-    //TODO: rebuild this method to handle the new 3 table solution
-    public int updateRecipe(RecipeCard recipeCard){
+    public void updateRecipe(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
 
-        ContentValues values = new ContentValues();
+        this.deleteRecipeCard(recipeCard);
+        this.createRecipe(recipeCard);
 
-        values.put(KEY_NAME, recipeCard.getName());
-        values.put(KEY_RATING, recipeCard.getRating());
-        values.put(KEY_COMMENT, recipeCard.getComment());
-        values.put(KEY_IMGEREF, recipeCard.getPictureRef());
-        values.put(KEY_COOKTIME, recipeCard.getCookTime());
-        values.put(KEY_DIRECTIONS, recipeCard.getDirections());
-
-        return database.update(TABLE_RECIPES, values, KEY_ID + "=?", new String[]
-                {String.valueOf(recipeCard.getId())});
+        database.close();
     }
 
     /**
@@ -256,8 +256,8 @@ public class DatabaseControl extends SQLiteOpenHelper {
         List<RecipeCard> recipeCards = new ArrayList<>();
 
         int cardCount = this.getRecipeCount();
+        //this will iterate through the database adding all of it to a list of recipe cards
         for (int i = 1; i <= cardCount; i++){
-
             RecipeCard recipe = this.getRecipeCard(i);
             recipeCards.add(recipe);
         }
