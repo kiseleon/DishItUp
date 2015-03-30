@@ -3,6 +3,7 @@ package com.example.cs246.dishitup;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,8 @@ import java.util.HashMap;
  */
 public class Filter extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
 
+    private final String TAG_FILTER = "filter";
+
     Button BTime;
     Button BIngredient;
     Button BCategory;
@@ -39,41 +42,40 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
     EditText editTextIngredient;
     EditText editTextCategory;
 
-    public void searchTime(SQLiteDatabase database){
-        Intent intent = new Intent(this, Search.class);
-        EditText time = (EditText) findViewById(R.id.editTextTime);
+    public void searchTime(View view){
 
-        String message = time.getText().toString();
+        Log.d(TAG_FILTER, "Time EditText contains string: " + editTextTime.getText().toString());
 
-        // this need to go through the database and get all the time that is =<
-        // the vatrialbe userInputTime is to select the time and below
+        int cookTime = Integer.parseInt(editTextTime.getText().toString());
 
-        database.execSQL("SELECT KEY_COOKTIME FROM recipeCardManager.TABLE_RECIPES WHERE KEY_COOKTIME = " + message); //ORDER BY KEY_COOKTIME >= userInputTime");
+        //int cooktime = Integer.getInteger(editTextTime.getText().toString());
 
-        startActivity(intent);
+        Log.d(TAG_FILTER, "Filtering by time: " + cookTime);
+
+        FilterData.timeFilter(cookTime);
+
+        finish();
     }
 
-    public void searchCategory(SQLiteDatabase database){
-        Intent intent = new Intent(this, Search.class);
-        EditText category = (EditText) findViewById(R.id.editTextCategory);
+    public void searchCategory(View view){
 
-        String message = category.getText().toString();
-      //  intent.putExtra(EXTRA_MESSAGE, message);
+        String message = editTextCategory.getText().toString();
 
-        // this needs to go through the database and get all the time that is ==
-        database.execSQL("SELECT KEY_CATEGORIES FROM recipeCardManager.TABLE_CATEGORIES WHERE  KEY_CATEGORIES = " +  message);
-        startActivity(intent);
+        Log.d(TAG_FILTER, "Filtering by category: " + message);
+
+        FilterData.categoryFilter(message);
+
+        finish();
     }
-     public void searchIngredient(SQLiteDatabase database){
-         Intent intent = new Intent(this, Search.class);
-         EditText ingredient = (EditText) findViewById(R.id.editTextIngredient);
+     public void searchIngredient(View view){
 
-         String message = ingredient.getText().toString();
+         String message = editTextIngredient.getText().toString();
 
-         // this needs to go through the database and get all the ingredient that is ==
-         database.execSQL("SELECT KEY_INGREDIENTS FROM recipeCardManager.TABLE_INGREDIENTS WHERE KEY_INGREDIENTS = " + message);
+         Log.d(TAG_FILTER, "Filtering by ingredient: " + message);
 
-         startActivity(intent);
+         FilterData.ingredientFilter(message);
+
+         finish();
      }
 
 

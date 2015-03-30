@@ -26,6 +26,9 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FilterData.initializeFilter(getApplicationContext());
+        FilterData.clearFilter();
+
         recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
         //rolodex = new Rolodex(recipeDatabase); // this makes a rolodex with all of our existing recipeCards
         //missionControl = new MissionControl(rolodex); // makes our mission control object with a populated rolodex

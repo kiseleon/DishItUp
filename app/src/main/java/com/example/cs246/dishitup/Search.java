@@ -54,11 +54,19 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
      */
      private void sortByRating(){
        //  RecipeCard [] Filter = Roledex.getFilteredList();
-         String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_RATING + ";";
+
+
+         String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + FilterData.getFilter() + " ORDER BY " + databaseControl.KEY_RATING + " ;";
+
+         Log.d(TAG_SEARCH, "Sorting by Rating with query: " + query);
+
+         database = databaseControl.getReadableDatabase();
 
          Cursor cursor = database.rawQuery(query, null);
 
          updateRecipeList(cursor);
+
+         database.close();
 
     }
 
@@ -70,11 +78,17 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
        // Arrays.sort(Filter.getName());
         //database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_NAME ASC");
 
-        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_NAME + " ASC ;";
+        database = databaseControl.getReadableDatabase();
+
+        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + FilterData.getFilter() + " ORDER BY " + databaseControl.KEY_NAME + " ASC ;";
+
+        Log.d(TAG_SEARCH, "Sorting A-Z with query: " + query);
 
         Cursor cursor = database.rawQuery(query, null);
 
         updateRecipeList(cursor);
+
+        database.close();
     }
 
     /**
@@ -84,11 +98,17 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
        // RecipeCard [] Filter = Roledex.getFilteredList();
        // database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_NAME DESC");
 
-        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_NAME + " DESC ;";
+        database = databaseControl.getReadableDatabase();
+
+        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + FilterData.getFilter() + " ORDER BY " + databaseControl.KEY_NAME + " DESC ;";
+
+        Log.d(TAG_SEARCH, "Sorting Z-A with query: " + query);
 
         Cursor cursor = database.rawQuery(query, null);
 
         updateRecipeList(cursor);
+
+        database.close();
     }
 
     /**
@@ -98,11 +118,17 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
        // RecipeCard [] Filter = Roledex.getFilteredList();
         //database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME ASC");
 
-        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_COOKTIME + " ASC ;";
+        database = databaseControl.getReadableDatabase();
+
+        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + FilterData.getFilter() + " ORDER BY " + databaseControl.KEY_COOKTIME + " ASC ;";
+
+        Log.d(TAG_SEARCH, "Sorting Time Short-Long with query: " + query);
 
         Cursor cursor = database.rawQuery(query, null);
 
         updateRecipeList(cursor);
+
+        database.close();
     }
 
     /**
@@ -112,11 +138,17 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         //RecipeCard [] Filter = Roledex.getFilteredList();
         //database.execSQL("recipeCardManager.TABLE_RECIPES ORDER BY KEY_COOKTIME DESC");
 
-        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + " ORDER BY " + databaseControl.KEY_COOKTIME + " DESC ;";
+        database = databaseControl.getReadableDatabase();
+
+        String query = "SELECT * FROM " + databaseControl.TABLE_RECIPES + FilterData.getFilter() + " ORDER BY " + databaseControl.KEY_COOKTIME + " DESC ;";
+
+        Log.d(TAG_SEARCH, "Sorting Time Long-Short with query: " + query);
 
         Cursor cursor = database.rawQuery(query, null);
 
         updateRecipeList(cursor);
+
+        database.close();
     }
 
 
@@ -126,7 +158,6 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         setContentView(R.layout.activity_search);
 
         databaseControl = new DatabaseControl(getApplicationContext());
-        database = databaseControl.getWritableDatabase();
 
         SortS = (Spinner) findViewById(R.id.SortS);
         //ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_spinner_item);
@@ -134,13 +165,16 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         SortS.setAdapter(adapter);
         SortS.setOnItemSelectedListener(this);
 
-        String query = "SELECT * FROM " + DatabaseControl.TABLE_RECIPES + ";";
-
-        updateRecipeList(database.rawQuery(query, null));
 
         //testLog();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        sortByAZ();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -193,6 +227,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
     public void goToDummyRecipe(View view) {
 
+        database = databaseControl.getReadableDatabase();
         List<RecipeCard> recipeList = databaseControl.getAllRecipeCards();
 
         RecipeCard recipe;
@@ -213,6 +248,9 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
             recipe.addCategory("Dummy Category");
             recipe.addCategory("Second Category");
         }
+
+        database.close();
+
         // Create the intent
         Intent intent = new Intent(Search.this, Recipe.class);
         intent.putExtra("RecipeCard", recipe);
