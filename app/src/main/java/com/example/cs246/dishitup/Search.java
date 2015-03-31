@@ -31,7 +31,7 @@ import java.util.List;
 public class Search extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner SortS;
-    String[] items =  {"select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short"};
+    String[] items =  {"Sort By:","Rating", "A-Z", "Z-A", "Time (Short to Long)", "Time (Long to Short)"};
     SQLiteDatabase database;
     DatabaseControl databaseControl;
     
@@ -173,7 +173,9 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     protected void onStart() {
         super.onStart();
 
-        sortByAZ();
+        View view = SortS.getSelectedView();
+        spinnerSelect(view);
+
     }
 
     @Override
@@ -278,8 +280,8 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
         String spinVar = String.valueOf(SortS.getSelectedItem());
         //select the sort","Rating", "A-Z", "Z-A", "Time Short to Long", "Time Long to Short
-        if(spinVar.equals("select the sort")){
-
+        if(spinVar.equals("Sort By:")){
+            sortByAZ();
         }else if(spinVar.equals("Rating")){
             sortByRating();
 
@@ -289,10 +291,10 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         }else if(spinVar.equals("Z-A")){
             sortByZA();
 
-        }else if(spinVar.equals("Time Short to Long")){
+        }else if(spinVar.equals("Time (Short to Long)")){
             sortTimeShortLong();
 
-        }else if(spinVar.equals("Time Long to Short")){
+        }else if(spinVar.equals("Time (Long to Short)")){
             sortTimeLongSort();
         }else
         {
