@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
@@ -82,6 +82,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         database.execSQL(CREATE_TABLE_RECIPES);
         database.execSQL(CREATE_TABLE_INGREDIENTS);
         database.execSQL(CREATE_TABLE_CATEGORIES);
+        this.addDefaultCards();
     }
 
     @Override
@@ -263,5 +264,119 @@ public class DatabaseControl extends SQLiteOpenHelper {
         }
 
         return recipeCards;
+    }
+
+    //This method just adds default recipe cards to the database when it is created for the first time
+    private void addDefaultCards(){
+
+        RecipeCard recipe = new RecipeCard();
+        recipe.setName("One Pan Mexican Quinoa");
+        recipe.setComment("None");
+        recipe.setCookTime(30);
+        recipe.setDirections("Heat oil on medium" +
+                "\nAdd garlic and sautee until fragrant, about 1 minute." +
+                "\nAdd remaining ingredients and bring to a boil." +
+                "\nReduce heat and cover." +
+                "\nSimmer for 20-25 minutes or until liquid is absorbed and quinoa is fully cooked." +
+                "\nRemove from heat and fluff." +
+                "\nAdd desired toppings\n");
+        recipe.setRating(4);
+        recipe.addIngredient("1 Tbsp", "Olive Oil");
+        recipe.addIngredient("2 Cloves", "Garlic, Minced");
+        recipe.addIngredient("1 Cup", "Quinoa, Rinsed");
+        recipe.addIngredient("1 1/4 Cup", "Chicken Broth");
+        recipe.addIngredient("1 Can", "Black Beans, Drained");
+        recipe.addIngredient("1 Can", "Tomatoes, Diced");
+        recipe.addIngredient("1 1/2 Cup", "Corn");
+        recipe.addIngredient("1 1/2 tsp", "Cumin");
+        recipe.addIngredient("To Taste", "Salt");
+        recipe.addCategory("Dinner");
+
+        this.createRecipe(recipe);
+
+        recipe = new RecipeCard();
+        recipe.setName("Lemon Cheesecake");
+        recipe.setComment("So Good!");
+        recipe.setCookTime(600);
+        recipe.setDirections("Preheat oven to 325 degrees." +
+                "\nPrepare spring form pan by wrapping the outside in aluminum foil." +
+                "\nMake graham cracker crust in spring form pan." +
+                "\nWhen complete, place spring form pan in a large casserole dish" +
+                "\nTo make cheesecake, beat cream cheese and sugar until smooth." +
+                "\nAdd sour cream and mix until combined." +
+                "\nAdd eggs one at a time, beating until just combined." +
+                "\nStir in lemon juice and zest." +
+                "\nPour over graham cracker crust in spring form pan." +
+                "\nAdd watter to the casserole dish until it reaches halfway up the spring form pan." +
+                "\nBake cheesecake for 45 to 50 minutes, or until outside is set but center " +
+                "remains jiggly." +
+                "\nRemove from the oven and leave in the water bath for one hour." +
+                "\nRemove from water bath and cover with plastic wrap." +
+                "\nChill for at least 8 hours or up to 24 hours before serving.\n");
+        recipe.setRating(5);
+        recipe.addIngredient("1", "Graham Cracker Crust Recipe");
+        recipe.addIngredient("3 8oz packages", "Cream Cheese");
+        recipe.addIngredient("1 Cup", "Sugar");
+        recipe.addIngredient("1 Cup", "Sour Cream");
+        recipe.addIngredient("3", "Eggs");
+        recipe.addIngredient("1 lemon", "Zest and Juice");
+        recipe.addCategory("Deserts");
+
+        recipe = new RecipeCard();
+        recipe.setName("German Pancakes");
+        recipe.setComment("Great with applesauce");
+        recipe.setCookTime(25);
+        recipe.setDirections("Preheat oven to 400 degrees." +
+                "\nPlace butter in a 9x13 backing dish and place in heating oven until melted." +
+                "\nMeanwhile, beat eggs, milk, flour, and salt until combined and smooth." +
+                "\nPour over melted butter and bake for 20 minutes or until set and puffy." +
+                "\nTop with fruit, jam, syrup, or other favorite toppings and serve.\n");
+        recipe.setRating(4);
+        recipe.addIngredient("3 Tbsp", "Butter");
+        recipe.addIngredient("6", "Eggs");
+        recipe.addIngredient("1 Cup", "Milk");
+        recipe.addIngredient("1 Cup", "Flour");
+        recipe.addIngredient("1/2 tsp", "Salt");
+        recipe.addCategory("Breakfast");
+
+        this.createRecipe(recipe);
+
+        recipe = new RecipeCard();
+        recipe.setName("Alfredo Sauce");
+        recipe.setComment("No Comment");
+        recipe.setCookTime(10);
+        recipe.setDirections("Melt butter in sauce pan over medium heat." +
+                "\nAdd garlic and sautee until fragrant, about 1 minute." +
+                "\nWhisk in flour and let cook 1-2 minutes." +
+                "\nWhisk in cream slowly until flour mixture is completely dissolved." +
+                "\nContinue to cook, stirring frequently, until mixture thickens." +
+                "\nRemove form heat and add cheeses, stirring until completely melted." +
+                "\nAdd salt and pepper." +
+                "\nServe over plain pasta or pasta with chicken.\n");
+        recipe.setRating(2);
+        recipe.addIngredient("2 Tbsp", "Butter");
+        recipe.addIngredient("2 Cloves", "Garlic");
+        recipe.addIngredient("3 Tbsp", "Flour");
+        recipe.addIngredient("2 Cups", "Heavy Cream");
+        recipe.addIngredient("1 Cup", "Mozzarella Cheese");
+        recipe.addIngredient("1/2 Cup", "Parmesan Cheese");
+        recipe.addIngredient("To Taste", "Salt/Pepper");
+        recipe.addCategory("Dinners");
+        recipe.addCategory("Sauces");
+
+        this.createRecipe(recipe);
+
+        recipe = new RecipeCard();
+        recipe.setName("Dummy Name");
+        recipe.setComment("Dummy Comment");
+        recipe.setCookTime(60);
+        recipe.setDirections("This\nis\ndummy\ninstructions\n");
+        recipe.setRating(2);
+        recipe.addIngredient("1/2 whole", "Dummy");
+        recipe.addIngredient("3/8 T", "Essence of Dummy");
+        recipe.addCategory("Dummy Category");
+        recipe.addCategory("Second Category");
+
+        this.createRecipe(recipe);
     }
 }

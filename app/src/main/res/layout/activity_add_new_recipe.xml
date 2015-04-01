@@ -14,7 +14,7 @@
         tools:context="com.example.cs246.dishitup.AddNewRecipe"
         android:weightSum="1"
         android:baselineAligned="false"
-        android:background="@drawable/bacround">
+        >
 
         <TableLayout
             android:layout_width="wrap_content"
