@@ -82,7 +82,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         database.execSQL(CREATE_TABLE_RECIPES);
         database.execSQL(CREATE_TABLE_INGREDIENTS);
         database.execSQL(CREATE_TABLE_CATEGORIES);
-        this.addDefaultCards();
+        addDefaultCards();
     }
 
     @Override
