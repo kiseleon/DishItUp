@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
@@ -82,7 +82,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
         database.execSQL(CREATE_TABLE_RECIPES);
         database.execSQL(CREATE_TABLE_INGREDIENTS);
         database.execSQL(CREATE_TABLE_CATEGORIES);
-        addDefaultCards();
     }
 
     @Override
@@ -267,7 +266,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
     }
 
     //This method just adds default recipe cards to the database when it is created for the first time
-    private void addDefaultCards(){
+    public void addDefaultCards(){
 
         RecipeCard recipe = new RecipeCard();
         recipe.setName("One Pan Mexican Quinoa");
@@ -292,7 +291,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         recipe.addIngredient("To Taste", "Salt");
         recipe.addCategory("Dinner");
 
-        this.createRecipe(recipe);
+        createRecipe(recipe);
 
         recipe = new RecipeCard();
         recipe.setName("Lemon Cheesecake");
@@ -339,7 +338,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         recipe.addIngredient("1/2 tsp", "Salt");
         recipe.addCategory("Breakfast");
 
-        this.createRecipe(recipe);
+        createRecipe(recipe);
 
         recipe = new RecipeCard();
         recipe.setName("Alfredo Sauce");
@@ -364,7 +363,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         recipe.addCategory("Dinners");
         recipe.addCategory("Sauces");
 
-        this.createRecipe(recipe);
+        createRecipe(recipe);
 
         recipe = new RecipeCard();
         recipe.setName("Dummy Name");
@@ -377,6 +376,6 @@ public class DatabaseControl extends SQLiteOpenHelper {
         recipe.addCategory("Dummy Category");
         recipe.addCategory("Second Category");
 
-        this.createRecipe(recipe);
+        createRecipe(recipe);
     }
 }
