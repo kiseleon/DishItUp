@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CursorAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
@@ -34,7 +36,8 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     String[] items =  {"Sort By:","Rating", "A-Z", "Z-A", "Time (Short to Long)", "Time (Long to Short)"};
     SQLiteDatabase database;
     DatabaseControl databaseControl;
-    
+    ListView recipeListView;
+
     private static final String TAG_SEARCH = "search mode";
 
     /**
@@ -165,6 +168,29 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         SortS.setAdapter(adapter);
         SortS.setOnItemSelectedListener(this);
 
+        recipeListView = (ListView) findViewById(R.id.ResDisp);
+
+        recipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parentAdapter, View row, int position, long rowid) {
+                Log.e("OnItemSelect", "You clicked!");
+                Log.e("Row Item Clicked", String.valueOf(position));
+                // TODO Auto-generated method stub
+
+                ViewGroup group = (ViewGroup) parentAdapter.getChildAt(position);
+                TextView idView = (TextView) group.findViewById(R.id.idTab);
+
+                Log.e("OnItemSelect", idView.getText().toString());
+
+                int id = Integer.parseInt(idView.getText().toString());
+                Log.e("OnItemSelect", "Id: " + id);
+                RecipeCard recipe = databaseControl.getRecipeCard(id);
+                Intent intent = new Intent(Search.this, Recipe.class);
+                intent.putExtra("RecipeCard", recipe);
+
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //testLog();
     }
