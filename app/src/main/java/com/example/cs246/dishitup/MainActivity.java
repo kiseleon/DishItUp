@@ -28,6 +28,9 @@ public class MainActivity extends ActionBarActivity {
         FilterData.clearFilter();
 
         recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
+        if (recipeDatabase.getRecipeCount() < 2){
+            recipeDatabase.addDefaultCards();
+        }
     }
 
 
