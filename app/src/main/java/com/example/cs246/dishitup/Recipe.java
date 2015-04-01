@@ -99,14 +99,14 @@ public class Recipe extends ActionBarActivity {
 
         // set the comment
         // TODO: Flesh this out to look nice
-        recipeComment.setText(recipe.getComment());
+        recipeComment.setText("Comment:\n -" + recipe.getComment());
 
         // set the categories
         // TODO: Flesh this out to look nice
-        String categories = "";
+        String categories = "Categories:\n";
 
         for (String s : recipe.getCategories()) {
-            categories += s + "\n";
+            categories += " -" + s + "\n";
         }
 
         recipeCategories.setText(categories);
