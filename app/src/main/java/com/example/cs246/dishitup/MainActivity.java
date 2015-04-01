@@ -24,6 +24,9 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        FilterData.initializeFilter(getApplicationContext());
+        FilterData.clearFilter();
+
         recipeDatabase = new DatabaseControl(getApplicationContext());  //this gets or database of recipeCards
     }
 
