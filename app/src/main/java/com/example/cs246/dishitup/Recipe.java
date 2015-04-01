@@ -98,18 +98,36 @@ public class Recipe extends ActionBarActivity {
         recipeImage.setImageDrawable(res);
 
         // set the comment
-        // TODO: Flesh this out to look nice
-        recipeComment.setText("Comment:\n -" + recipe.getComment());
+        builder.clear();
+
+        String commentTitle = "Comment:";
+        SpannableString spannableCommentTitle = new SpannableString(commentTitle);
+        spannableCommentTitle.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, commentTitle.length(), 0);
+
+        builder.append(spannableCommentTitle);
+        builder.append("\n" + recipe.getComment());
+
+        recipeComment.setText(builder, TextView.BufferType.SPANNABLE);
 
         // set the categories
-        // TODO: Flesh this out to look nice
-        String categories = "Categories:\n";
+        builder.clear();
+
+        String categoriesTitle = "Categories:";
+        SpannableString spannableCategoriesTitle = new SpannableString(categoriesTitle);
+        spannableCategoriesTitle.setSpan(new StyleSpan(Typeface.BOLD_ITALIC), 0, categoriesTitle.length(), 0);
+
+        builder.append(spannableCategoriesTitle);
+
+        // get the list of categories
+        String categorylist = "";
 
         for (String s : recipe.getCategories()) {
-            categories += " -" + s + "\n";
+            categorylist += "\n" + s;
         }
 
-        recipeCategories.setText(categories);
+        builder.append(categorylist);
+
+        recipeCategories.setText(builder, TextView.BufferType.SPANNABLE);
 
     }
 
