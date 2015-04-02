@@ -5,15 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Created by Jason on 3/5/2015.
- */
 
 /**
  * This is a database manipulator that will store recipe cards
@@ -24,13 +18,14 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 9;
+    private static final int DATABASE_VERSION = 10;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
     public static final String TABLE_INGREDIENTS = "ingredientsTable";
     public static final String TABLE_CATEGORIES = "categoriesTable";
     public static final String TABLE_RECIPES = "recipes";
+    public static final String TABLE_SHOPPINGLIST = "shoppingList";
 
     //Recipes column names
     public static final String KEY_ID = "_id";
@@ -52,6 +47,10 @@ public class DatabaseControl extends SQLiteOpenHelper {
     public static final String KEY_LOOKUPCATEGORIES = "categoriesID";
     public static final String KEY_CATEGORIES = "categories";
 
+    //shoppingTable column names
+    public static final String KEY_SHOPINGID = "_id";
+    public static final String KEY_ITEM = "item";
+
     //Recipe table
     private static final String CREATE_TABLE_RECIPES = "CREATE TABLE "
             + TABLE_RECIPES + " (" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -69,6 +68,11 @@ public class DatabaseControl extends SQLiteOpenHelper {
             + TABLE_CATEGORIES + " (" + KEY_CATID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + KEY_LOOKUPCATEGORIES + " INTEGER, " + KEY_CATEGORIES + " TEXT);";
 
+    //Shopping list table
+    private static final String CREATE_TABLE_SHOPPINGLIST = "CREATE TABLE "
+            + TABLE_SHOPPINGLIST + " (" + KEY_SHOPINGID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + KEY_ITEM + " TEXT);";
+
     public DatabaseControl(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -82,6 +86,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         database.execSQL(CREATE_TABLE_RECIPES);
         database.execSQL(CREATE_TABLE_INGREDIENTS);
         database.execSQL(CREATE_TABLE_CATEGORIES);
+        database.execSQL(CREATE_TABLE_SHOPPINGLIST);
     }
 
     @Override
@@ -89,6 +94,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPES);
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORIES);
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_INGREDIENTS);
+        database.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_SHOPPINGLIST);
 
         onCreate(database);
     }
@@ -263,5 +269,47 @@ public class DatabaseControl extends SQLiteOpenHelper {
         }
 
         return recipeCards;
+    }
+
+    /**
+     *
+     * @param recipeCard takes a RecipeCard object and adds its ingredients to the shopping list
+     *                   table
+     */
+    public void addItemsToShoppingList(RecipeCard recipeCard){
+        SQLiteDatabase database = getWritableDatabase();
+
+        List<String> ingredientList = recipeCard.getIngredients();
+
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_SHOPPINGLIST, null);
+        int cursorCount = cursor.getCount();
+        cursor.close();
+
+        for(int i = 0; i < ingredientList.size(); i++){
+            boolean contains = false;
+            for(int x = 1; x < cursorCount; x++){//checks to see if the ingredient is in the table
+                String rowIngredient;
+                String ingredientToAdd = ingredientList.get(i);
+                String selectQuery = "SELECT * FROM " + TABLE_SHOPPINGLIST + " WHERE "
+                        + KEY_ID + " = " + x;
+
+                Cursor cursor2 = database.rawQuery(selectQuery, null);
+                if (cursor2 != null)
+                    cursor2.moveToFirst();
+                assert cursor2 != null;
+                rowIngredient = cursor2.getString(cursor2.getColumnIndex(KEY_ITEM));
+                cursor2.close();
+
+                contains = rowIngredient.equals(ingredientToAdd);
+            }
+            if(!contains){//adds ingredient if it was not in the table
+                ContentValues values = new ContentValues();
+                values.put(KEY_ITEM, ingredientList.get(i));
+                //insert row
+                database.insert(TABLE_SHOPPINGLIST, null, values);
+            }
+        }
+
+        database.close();
     }
 }

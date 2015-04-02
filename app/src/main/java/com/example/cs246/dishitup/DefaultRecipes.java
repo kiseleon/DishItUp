@@ -5,10 +5,16 @@ import java.util.List;
 
 /**
  * Created by Jason on 4/1/2015.
+ *
+ * This class will build a list of recipes to use as default recipes.
  */
 public class DefaultRecipes {
+
     private List<RecipeCard> recipeCards = new ArrayList<>();
 
+    public List<RecipeCard> getDefaultCards(){return recipeCards;}
+
+    //this constructor builds all the recipes and adds them to the list of recipes
     DefaultRecipes(){
         RecipeCard recipe = new RecipeCard();
         recipe.setName("One Pan Mexican Quinoa");
@@ -196,7 +202,7 @@ public class DefaultRecipes {
                 "\nMeanwhile, brown the beef in a skillet over medium heat. When beef is nearly " +
                 "cooked, add the chopped onions and cook until soft." +
                 "\nReduce the heat and add the cream of mushroom soup and sour cream to the beef." +
-                "\nWhen pasta is finished cooking, drain the water and add the noodles to the beef" +
+                "\nWhen pasta is finished cooking, drain the water and add the noodles to the beef"+
                 "mixture. Mix and continue to heat until sauce is warm and thick.\n");
         recipe.setRating(2);
         recipe.addIngredient("8 oz", "pasta (rotini or shells are best)");
@@ -218,11 +224,11 @@ public class DefaultRecipes {
                 "1 minute. Stir in walnuts (if desired)." +
                 "\nSpread batter evenly in pan. bake for 20-25 minutes or until golden brown." +
                 "\nMeanwhile for frosting, heat butter in a large saucepan over medium heat until" +
-                "boiling. Let the butter turn a delicate golden brown (it should smell nutty as well" +
-                "and remove from heat immediately. " +
+                "boiling. Let the butter turn a delicate golden brown (it should smell nutty as " +
+                "well and remove from heat immediately. " +
                 "\nAdd in the sugar, milk, and vanilla and mix until smooth. (It should be " +
-                "thicker than glaze but thinner than frosting.)Spread immediately over warm brownies" +
-                "using a spatula.");
+                "thicker than glaze but thinner than frosting.)Spread immediately over warm" +
+                " brownies using a spatula.");
         recipe.setRating(2);
         recipe.addIngredient("1 1/2 cup", "sugar");
         recipe.addIngredient("1 cup", "sour cream");
@@ -248,10 +254,10 @@ public class DefaultRecipes {
         recipe.setDirections("Preheat broiler. Cut peppers in half and remove the seeds. Place" +
                 "peppers cut side down on a cookie sheet and lightly coat with olive oil. Place " +
                 "under boiler until skin is blackened and softened. Remove from oven and place" +
-                "peppers in a paper bag to steam for about 5-10 minutes. (This makes removing the " +
+                "peppers in a paper bag to steam for about 5-10 minutes. (This makes removing the "+
                 "skin easier.)" +
                 "\nRemove the skin from the peppers and cut into small pieces." +
-                "\nIn a frying pan, sautee the garlic, basil, onion, and red pepper flakes in the " +
+                "\nIn a frying pan, sautee the garlic, basil, onion, and red pepper flakes in the "+
                 "olive oil until onions are soft. Pour into a blender and add the chopped " +
                 "red peppers. Blend until smooth, then pour mixture back into the frying pan." +
                 "\nAdd half and half to the pepper mixture until desired consistency is" +
@@ -276,21 +282,23 @@ public class DefaultRecipes {
         recipe.setName("Buckeyes");
         recipe.setComment("Dummy Comment");
         recipe.setCookTime(60);
-        recipe.setDirections("Mix peanut butter, butter, and vanilla extract in a large bowl, mixer" +
-                "or food processor until fully combined. Add in 2 cups of the powdered sugar and " +
-                "mix until fully incorporated. Check dough for sweetness and consistency (should be " +
-                "slightly more firm than playdough). Add more powdered sugar as needed." +
+        recipe.setDirections("Mix peanut butter, butter, and vanilla extract in a large bowl," +
+                " mixer or food processor until fully combined. Add in 2 cups of the powdered " +
+                "sugar and mix until fully incorporated. Check dough for sweetness and " +
+                "consistency (should be slightly more firm than playdough). Add more powdered " +
+                "sugar as needed." +
                 "\nRoll the peanut butter dough into 3/4 inch balls and place on a lined cookie" +
                 "sheet. Stick a toothpick into each ball and place sheet in the freezer for at" +
                 "least 30 minutes or overnight." +
                 "\nMeanwhile, melt chocolate chips in a double boiler or in the microwave in 1" +
-                "minute intervals, stirring between each minute, until chocolate is smooth. (If you" +
-                "choose to use the microwave, you may have to reheat the chocolate during dipping.)" +
+                "minute intervals, stirring between each minute, until chocolate is smooth. " +
+                "(If you choose to use the microwave, you may have to reheat the chocolate" +
+                " during dipping.)" +
                 "\nRemove peanut butter balls from the freezer. One at a time, dip the balls into" +
                 "the chocolate until 2/3 of the ball is covered. Replace on the cookie sheet to " +
                 "set. " +
-                "\nRemove the toothpicks from the balls. Dip your finger in water and smooth each " +
-                "toothpick hole. Replace buckeyes in the freezer to set.\n");
+                "\nRemove the toothpicks from the balls. Dip your finger in water and smooth " +
+                "each toothpick hole. Replace buckeyes in the freezer to set.\n");
         recipe.setRating(2);
         recipe.addIngredient("1 cup", "creamy peanut butter");
         recipe.addIngredient("31/4 cup", "butter, softened");
@@ -314,6 +322,4 @@ public class DefaultRecipes {
         recipe.addCategory("Second Category");
         recipeCards.add(recipe);
     }
-
-    public List<RecipeCard> getDefaultCards(){return recipeCards;}
 }
