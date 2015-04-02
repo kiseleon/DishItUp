@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 11;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name

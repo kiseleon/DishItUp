@@ -13,6 +13,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TooManyListenersException;
@@ -166,15 +167,46 @@ public class AddNewRecipe extends ActionBarActivity {
 
         // RecipeCard already has the ingredients/amounts/etc, so we don't need to add them here
 
-        if(recipeCard.getName() == null || recipeCard.getName().equals("") ||// this is not working we need to verify that we have been given all the information that we need.
-                recipeCard.getCookTime() < 0 || recipeCard.getIngredients() == null ||
-                recipeCard.getDirections() == null){
+        if(recipeCard.getName() == null || recipeCard.getName().equals("") ||
+                recipeCard.getCookTime() < 1||
+                recipeCard.getDirections() == null || recipeCard.getDirections().equals("")){
             Log.e("Empty Card", "You did not fill out the card");
             CharSequence text = ("The Recipe Card was not added you must include all " +
                 "recipe information");
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
             finish();
+        }
+        List<String> list = recipeCard.getIngredients();
+        if(list.size() < 1){
+
+            Log.e("Empty Card", "You did not fill out the card");
+            CharSequence text = ("The Recipe Card was not added you must include all " +
+                    "recipe information");
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            finish();
+
+        }
+        list = recipeCard.getAmounts();
+        if(list.size() < 1){
+
+            Log.e("Empty Card", "You did not fill out the card");
+            CharSequence text = ("The Recipe Card was not added you must include all " +
+                    "recipe information");
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            finish();
+        }
+        Set<String> categories = recipeCard.getCategories();
+        if(categories.size() < 1){
+            recipeCard.addCategory("None");
+        }
+        if (recipeCard.getComment().equals("") || recipeCard.getComment() == null){
+            recipeCard.setComment("No Comment");
+        }
+        if (recipeCard.getRating() <= 0){
+            recipeCard.setRating(0);
         }
         recipeDatabase.createRecipe(recipeCard);
         Log.i("Recipe card added", "Recipe card added to the database");

@@ -15,10 +15,10 @@
         android:maxWidth="200dp"
         android:nestedScrollingEnabled="false"
         android:minWidth="200dp"
+        android:layout_marginBottom="55dp"
         android:layout_above="@+id/recentlyViewedButton"
         android:layout_alignLeft="@+id/recentlyViewedButton"
-        android:layout_alignStart="@+id/recentlyViewedButton"
-        android:layout_marginBottom="65dp" />
+        android:layout_alignStart="@+id/recentlyViewedButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,9 +28,10 @@
         android:id="@+id/recentlyViewedButton"
         android:minWidth="200dp"
         android:maxWidth="200dp"
+        android:layout_marginBottom="53dp"
         android:layout_above="@+id/addRecipeButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp" />
+        android:layout_alignLeft="@+id/addRecipeButton"
+        android:layout_alignStart="@+id/addRecipeButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -40,10 +41,9 @@
         android:onClick="launchAddNewRecipe"
         android:maxWidth="200dp"
         android:minWidth="200dp"
+        android:layout_marginBottom="84dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/recentlyViewedButton"
-        android:layout_alignStart="@+id/recentlyViewedButton"
-        android:layout_marginBottom="75dp" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"

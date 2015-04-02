@@ -16,32 +16,18 @@
             android:label="@string/title_activity_search"
             android:theme="@style/ActionBar" >
         </activity>
-
-
         <activity
             android:name=".Filter"
             android:label="@string/title_activity_filter"
             android:theme="@style/ActionBar" >
         </activity>
 
-
-        <activity
-            android:name=".Favorites"
-            android:label="@string/title_activity_favorites" >
-        </activity>
-        <activity
-            android:name=".RecentlyAdded"
-            android:label="@string/title_activity_recently_added" >
-        </activity>
-        <activity
-            android:name=".RecentlyViewed"
-            android:label="@string/title_activity_recently_viewed" >
-        </activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

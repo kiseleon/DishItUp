@@ -34,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
             for(RecipeCard recipe : defaultCards) {
                 recipeDatabase.createRecipe(recipe);
             }
+
         }
     }
 
@@ -68,5 +69,10 @@ public class MainActivity extends ActionBarActivity {
     public void launchAddNewRecipe(View view) {
         Intent intent = new Intent(MainActivity.this, AddNewRecipe.class);
         startActivity(intent);
+    }
+
+    public void launchShoppingList(View view) {
+ //       Intent intent = new Intent(MainActivity.this, ShoppingList.class);
+ //       startActivity(intent);
     }
 }
