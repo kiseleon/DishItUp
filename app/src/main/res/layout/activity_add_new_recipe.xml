@@ -329,6 +329,13 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="take photo"
+                    android:id="@+id/bPhoto"
+                    android:layout_column="0" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Add Recipe"
                     android:onClick="addRecipeToDatabase"
                     android:id="@+id/buttonAddRecipe"
