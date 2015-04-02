@@ -94,7 +94,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPES);
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORIES);
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_INGREDIENTS);
-        database.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_SHOPPINGLIST);
+        database.execSQL("DROP TABLE IF EXISTS " + TABLE_SHOPPINGLIST);
 
         onCreate(database);
     }
