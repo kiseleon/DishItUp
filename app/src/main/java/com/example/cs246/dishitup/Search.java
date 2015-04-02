@@ -172,17 +172,15 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
 
         recipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parentAdapter, View row, int position, long rowid) {
-                Log.e("OnItemSelect", "You clicked!");
-                Log.e("Row Item Clicked", String.valueOf(position));
-                // TODO Auto-generated method stub
+                Log.d("OnClickListener", "You clicked!");
+                Log.d("Row Item Clicked", String.valueOf(position));
 
-                ViewGroup group = (ViewGroup) parentAdapter.getChildAt(position);
-                TextView idView = (TextView) group.findViewById(R.id.idTab);
+                TextView idView = (TextView) row.findViewById(R.id.idTab);
 
-                Log.e("OnItemSelect", idView.getText().toString());
+                Log.e("idView", "ID as string: " + idView.getText().toString());
 
                 int id = Integer.parseInt(idView.getText().toString());
-                Log.e("OnItemSelect", "Id: " + id);
+                Log.e("idView", "ID as int: " + id);
                 RecipeCard recipe = databaseControl.getRecipeCard(id);
                 Intent intent = new Intent(Search.this, Recipe.class);
                 intent.putExtra("RecipeCard", recipe);
@@ -292,7 +290,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         TextView myText = (TextView) view;
-        Toast.makeText(this, "you selected " + myText.getText(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sorting: " + myText.getText(), Toast.LENGTH_SHORT).show();
         spinnerSelect(view);
     }
 
@@ -324,7 +322,7 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
             sortTimeLongSort();
         }else
         {
-            System.out.println("panic and cry this is never suposed to happen");
+            System.out.println("panic and cry this is never supposed to happen");
         }
 
     }
