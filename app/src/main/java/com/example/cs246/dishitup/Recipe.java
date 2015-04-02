@@ -157,4 +157,10 @@ public class Recipe extends ActionBarActivity {
     public void goBack(View view)  {
         finish();
     }
+
+    public void deleteCard(View view) {
+        DatabaseControl recipeDatabase = new DatabaseControl(getApplicationContext());
+        recipeDatabase.deleteRecipeCard(recipe);
+        goBack(view);
+    }
 }
