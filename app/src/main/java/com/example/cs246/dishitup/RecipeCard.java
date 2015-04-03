@@ -167,8 +167,10 @@ public class RecipeCard implements Parcelable {
         }
         this.amounts = new ArrayList<>();
         this.ingredients = new ArrayList<>();
-        parcel.readStringList(this.amounts);
+
+        // for whatever reason these need to be read in the opposite order of how they were inserted
         parcel.readStringList(this.ingredients);
+        parcel.readStringList(this.amounts);
 
     }
 
