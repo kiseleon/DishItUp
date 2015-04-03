@@ -62,19 +62,12 @@ public class AddNewRecipe extends ActionBarActivity {
 
         // if you got a filled out recipeCard passed to you, fill the appropriate parts of list
         if (recipeCard.getName() != null) {
-            Log.d("In the loop", "Step 1");
             name.setText(recipeCard.getName());
-            Log.d("In the loop", "Step 2");
             time.setText(Integer.toString(recipeCard.getCookTime()));
-            Log.d("In the loop", "Step 3");
             rating.setRating(recipeCard.getRating());
-            Log.d("In the loop", "Step 4");
             instructions.setText(recipeCard.getDirections());
-            Log.d("In the loop", "Step 5");
             comments.setText(recipeCard.getComment());
-            Log.d("In the loop", "Step 6");
             updateCategories();
-            Log.d("In the loop", "Step 7");
             updateIngredients();
             // TODO: Make this set the picture
             picture.setImageResource(R.drawable.placeholder_image);
@@ -240,6 +233,11 @@ public class AddNewRecipe extends ActionBarActivity {
             recipeCard.setRating(0);
         }
         recipeDatabase.createRecipe(recipeCard);
+
+        // if this is an existing recipe you are editing, delete the old version
+        if (recipeCard.getId() != -1) {
+            recipeDatabase.deleteRecipeCard(recipeCard);
+        }
         Log.i("Recipe card added", "Recipe card added to the database");
         CharSequence text = ("The Recipe Card "+ recipeCard.getName() +" was added to your " +
                 "recipes.");
