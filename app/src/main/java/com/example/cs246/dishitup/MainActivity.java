@@ -66,8 +66,16 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    /**
+     * Passes a blank recipe card to the AddNewRecipe activity.
+     * @param view the current view
+     */
     public void launchAddNewRecipe(View view) {
         Intent intent = new Intent(MainActivity.this, AddNewRecipe.class);
+
+        intent.putExtra("RecipeCard", new RecipeCard());
+
+        // start the new activity
         startActivity(intent);
     }
 

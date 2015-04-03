@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,12 +34,20 @@ public class AddNewRecipe extends ActionBarActivity {
     EditText comments;
     EditText categories;
     EditText amount;
+    ImageView picture;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_recipe);
+
+        // get the passed-in recipe card
+        Bundle b = getIntent().getExtras();
+        recipeCard = b.getParcelable("RecipeCard");
+
         recipeDatabase = new DatabaseControl(getApplicationContext());
+
         name = (EditText)findViewById(R.id.editName);
         time = (EditText)findViewById(R.id.editTime);
         rating = (RatingBar)findViewById(R.id.editRating);
@@ -47,7 +56,29 @@ public class AddNewRecipe extends ActionBarActivity {
         instructions = (EditText)findViewById(R.id.editInstructions);
         comments = (EditText)findViewById(R.id.editComments);
         categories = (EditText)findViewById(R.id.categoriesField);
-        recipeCard = new RecipeCard();
+        picture = (ImageView) findViewById(R.id.recipePicture);
+
+        Log.e("Received recipe", "name: " + recipeCard.getName());
+
+        // if you got a filled out recipeCard passed to you, fill the appropriate parts of list
+        if (recipeCard.getName() != null) {
+            Log.d("In the loop", "Step 1");
+            name.setText(recipeCard.getName());
+            Log.d("In the loop", "Step 2");
+            time.setText(Integer.toString(recipeCard.getCookTime()));
+            Log.d("In the loop", "Step 3");
+            rating.setRating(recipeCard.getRating());
+            Log.d("In the loop", "Step 4");
+            instructions.setText(recipeCard.getDirections());
+            Log.d("In the loop", "Step 5");
+            comments.setText(recipeCard.getComment());
+            Log.d("In the loop", "Step 6");
+            updateCategories();
+            Log.d("In the loop", "Step 7");
+            updateIngredients();
+            // TODO: Make this set the picture
+            picture.setImageResource(R.drawable.placeholder_image);
+        }
     }
 
     /**
@@ -98,7 +129,7 @@ public class AddNewRecipe extends ActionBarActivity {
         recipeCard.addIngredient(amount.getText().toString(), ingredients.getText().toString());
 
         // update the ingredient field
-        updateIngredients(view);
+        updateIngredients();
     }
 
     /**
@@ -110,11 +141,11 @@ public class AddNewRecipe extends ActionBarActivity {
         recipeCard.removeIngredient(ingredients.getText().toString());
 
         // update the ingredient field
-        updateIngredients(view);
+        updateIngredients();
     }
 
 
-    private void updateIngredients(View view) {
+    private void updateIngredients() {
         TextView ingredientView = (TextView) findViewById(R.id.ingredientsView);
         List<String> ingredientList = recipeCard.getIngredients();
         List<String> amountList = recipeCard.getAmounts();

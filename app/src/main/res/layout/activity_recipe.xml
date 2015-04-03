@@ -115,7 +115,8 @@
                 android:text="Edit"
                 android:id="@+id/edit"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight=".33" />
+                android:layout_weight=".33"
+                android:onClick="editRecipe" />
 
             <Button
                 android:layout_width="wrap_content"

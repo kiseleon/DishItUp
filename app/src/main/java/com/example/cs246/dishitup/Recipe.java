@@ -1,5 +1,6 @@
 package com.example.cs246.dishitup;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -162,5 +163,14 @@ public class Recipe extends ActionBarActivity {
         DatabaseControl recipeDatabase = new DatabaseControl(getApplicationContext());
         recipeDatabase.deleteRecipeCard(recipe);
         goBack(view);
+    }
+
+    public void editRecipe(View view) {
+        // Create the intent
+        Intent intent = new Intent(Recipe.this, AddNewRecipe.class);
+        intent.putExtra("RecipeCard", recipe);
+
+        // start the new activity
+        startActivity(intent);
     }
 }
