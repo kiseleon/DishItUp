@@ -69,7 +69,7 @@ public class AddNewRecipe extends ActionBarActivity {
             comments.setText(recipeCard.getComment());
             updateCategories();
             updateIngredients();
-            // TODO: Make this set the picture
+            // TODO: Make this set the picture reference
             picture.setImageResource(R.drawable.placeholder_image);
         }
     }
@@ -101,12 +101,12 @@ public class AddNewRecipe extends ActionBarActivity {
     private void updateCategories() {
         TextView categoryView = (TextView) findViewById(R.id.categoriesView);
         // retrieve categories
-        Set<String> categorylist = recipeCard.getCategories();
+        Set<String> categoryList = recipeCard.getCategories();
 
         String output = "";
 
         // update the view
-        for (String category : categorylist) {
+        for (String category : categoryList) {
             output += category + "\n";
         }
 
@@ -150,7 +150,6 @@ public class AddNewRecipe extends ActionBarActivity {
 
         ingredientView.setText(output);
     }
-
 
 
     @Override
