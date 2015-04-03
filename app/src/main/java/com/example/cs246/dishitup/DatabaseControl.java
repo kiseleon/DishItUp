@@ -182,8 +182,8 @@ public class DatabaseControl extends SQLiteOpenHelper {
 
         assert cursor != null;
         for(int i = 0; i < cursor.getCount(); i++) {
-            recipeCard.addIngredient(cursor.getString(cursor.getColumnIndex(KEY_INGREDIENT))
-                    , cursor.getString(cursor.getColumnIndex(KEY_AMOUNTS)));
+            recipeCard.addIngredient(cursor.getString(cursor.getColumnIndex(KEY_AMOUNTS))
+                    , cursor.getString(cursor.getColumnIndex(KEY_INGREDIENT)));
             cursor.moveToNext();
         }
 
