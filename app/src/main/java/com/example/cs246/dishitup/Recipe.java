@@ -1,6 +1,8 @@
 package com.example.cs246.dishitup;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -10,6 +12,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,10 +97,15 @@ public class Recipe extends ActionBarActivity {
         recipeDirections.setText(builder, TextView.BufferType.SPANNABLE);
 
         // Set the image
-        int imageResource = getResources().getIdentifier(recipe.getPictureRef(), null, getPackageName());
+        String picturePath = recipe.getPictureRef();
+        Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+        Log.w("image path from gallery", picturePath + "");
+        recipeImage.setImageBitmap(thumbnail);
+
+        /*
         Drawable res = getResources().getDrawable(imageResource);
         recipeImage.setImageDrawable(res);
-
+*/
         // set the comment
         builder.clear();
 
