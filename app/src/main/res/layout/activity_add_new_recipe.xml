@@ -108,12 +108,14 @@
                         android:layout_weight="2" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:id="@+id/recipePicture"
                         android:layout_column="1"
                         android:src="@drawable/placeholder_image"
-                        android:layout_weight="2" />
+                        android:layout_weight="2"
+
+                        android:scaleType="fitXY" />
 
                 </LinearLayout>
 
