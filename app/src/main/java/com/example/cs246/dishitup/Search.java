@@ -239,7 +239,9 @@ public class Search extends ActionBarActivity implements AdapterView.OnItemSelec
         String[] fromColumns = new String[] {databaseControl.KEY_ID, databaseControl.KEY_NAME, databaseControl.KEY_RATING, databaseControl.KEY_COOKTIME};
         int[] toControlIDs = new int[] {R.id.idTab, R.id.nameTab, R.id.ratingTab, R.id.timeTab};
 
-        listView.setAdapter(new SimpleCursorAdapter(this, R.layout.tabitem, cursor, fromColumns, toControlIDs, 0));
+
+        //listView.setAdapter(new SimpleCursorAdapter(this, R.layout.tabitem, cursor, fromColumns, toControlIDs, 0));
+        listView.setAdapter(new RecipeListAdapter(this, R.layout.tabitem, cursor, fromColumns, toControlIDs, 0));
 
     }
 

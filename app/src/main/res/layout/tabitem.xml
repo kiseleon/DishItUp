@@ -51,12 +51,13 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/imageTab"
         android:contentDescription="Recipe Image"
         android:layout_weight="2"
-        android:src="@drawable/placeholder_image" />
+        android:src="@drawable/placeholder_image"
+        android:scaleType="fitXY" />
 
 
 
