@@ -12,8 +12,6 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +57,7 @@ public class ShoppingCart extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_shoping_cart, menu);
+        getMenuInflater().inflate(R.menu.menu_shopping_cart, menu);
         
         return true;
     }
