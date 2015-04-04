@@ -56,7 +56,6 @@ public class AddNewRecipe extends ActionBarActivity {
     EditText categories;
     EditText amount;
 //trenton added this
-    ImageView recipePicture;
     Button addImageButton;
     ImageView picture;
 
@@ -158,7 +157,7 @@ public class AddNewRecipe extends ActionBarActivity {
                     bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),
                             bitmapOptions);
 
-                    recipePicture.setImageBitmap(bitmap);
+                    picture.setImageBitmap(bitmap);
 
                     String path = android.os.Environment
                             .getExternalStorageDirectory()
@@ -170,8 +169,8 @@ public class AddNewRecipe extends ActionBarActivity {
 
                     //need to get the string path here and pass it in... no idea how yet
                     // this is static setPickref is not == problem
-                    //RecipeCard.setPictureRef(String.valueOf(System.currentTimeMillis()) + ".jpg");
-                   // RecipeCard.setPictureRef(file.getName());
+                    recipeCard.setPictureRef(String.valueOf(System.currentTimeMillis()) + ".jpg");
+                    recipeCard.setPictureRef(file.getName());
 
 
                     try {
@@ -205,7 +204,7 @@ public class AddNewRecipe extends ActionBarActivity {
                 c.close();
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
                 Log.w("image path from gallery", picturePath+"");
-                recipePicture.setImageBitmap(thumbnail);
+                picture.setImageBitmap(thumbnail);
             }
         }
     }
