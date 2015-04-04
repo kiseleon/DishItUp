@@ -79,7 +79,6 @@ public class AddNewRecipe extends ActionBarActivity {
         comments = (EditText)findViewById(R.id.editComments);
         categories = (EditText)findViewById(R.id.categoriesField);
         picture = (ImageView) findViewById(R.id.recipePicture);
-        addImageButton = (Button) findViewById(R.id.addImageButton);
 
         Log.e("Received recipe", "name: " + recipeCard.getName());
 
@@ -134,10 +133,6 @@ public class AddNewRecipe extends ActionBarActivity {
         builder.show();
     }
 
-    public void addImage(View view) {
-        selectImage();
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -179,10 +174,6 @@ public class AddNewRecipe extends ActionBarActivity {
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
                         outFile.flush();
                         outFile.close();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -200,11 +191,11 @@ public class AddNewRecipe extends ActionBarActivity {
                 String picturePath = c.getString(columnIndex);
 
                 //this is what i added the problem is picturePath is static...
-                recipeCard.setPictureRef(picturePath);
+                //RecipeCard.setPictureRef(picturePath);
 
                 c.close();
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                Log.w("image path from gallery", picturePath+"");
+                Log.w("path of image from gallery", picturePath+"");
                 recipePicture.setImageBitmap(thumbnail);
             }
         }
