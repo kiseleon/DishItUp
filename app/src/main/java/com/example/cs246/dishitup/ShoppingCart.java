@@ -101,6 +101,11 @@ public class ShoppingCart extends ActionBarActivity {
         List<String> ingredientsToDelete = getIngredientsToDelete();
 
         // TODO: Call delete function here
+        for (String ing : ingredientsToDelete) {
+            databaseControl.deleteShoppingListItem(ing);
+        }
+
+        updateList();
     }
 
     public void mainMenu(View view) {
