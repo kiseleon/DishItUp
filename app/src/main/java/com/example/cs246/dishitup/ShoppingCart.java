@@ -103,4 +103,7 @@ public class ShoppingCart extends ActionBarActivity {
         // TODO: Call delete function here
     }
 
+    public void mainMenu(View view) {
+        finish();
+    }
 }

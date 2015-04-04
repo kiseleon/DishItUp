@@ -202,6 +202,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
 
+        cursor.close();
         database.close();
         return recipeCard;
     }
@@ -309,6 +310,15 @@ public class DatabaseControl extends SQLiteOpenHelper {
                 database.insert(TABLE_SHOPPINGLIST, null, values);
             }
         }
+
+        database.close();
+    }
+    public void deleteShoppingListItem(String ingredent){
+        SQLiteDatabase database = getWritableDatabase();
+
+        //Delete ingredients
+        database.delete(TABLE_SHOPPINGLIST, KEY_ITEM + " =? ", new String[]
+                {ingredent});
 
         database.close();
     }
