@@ -23,6 +23,7 @@ public class ShoppingCart extends ActionBarActivity {
     ListView shoppingCartList;
     DatabaseControl databaseControl;
     SQLiteDatabase database;
+    List<Boolean> checkedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +101,6 @@ public class ShoppingCart extends ActionBarActivity {
     public void deleteSelected (View view) {
         List<String> ingredientsToDelete = getIngredientsToDelete();
 
-        // TODO: Call delete function here
         for (String ing : ingredientsToDelete) {
             databaseControl.deleteShoppingListItem(ing);
         }

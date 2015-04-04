@@ -398,32 +398,6 @@ private void addImage(){
             finish();
 
         }
-        list = recipeCard.getAmounts();
-        if(list.size() < 1){
 
-            Log.e("Empty Card", "You did not fill out the card");
-            CharSequence text = ("The Recipe Card was not added you must include all " +
-                    "recipe information");
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            finish();
-        }
-        Set<String> categories = recipeCard.getCategories();
-        if(categories.size() < 1){
-            recipeCard.addCategory("None");
-        }
-        if (recipeCard.getComment().equals("") || recipeCard.getComment() == null){
-            recipeCard.setComment("No Comment");
-        }
-        if (recipeCard.getRating() <= 0){
-            recipeCard.setRating(0);
-        }
-        recipeDatabase.createRecipe(recipeCard);
-        Log.i("Recipe card added", "Recipe card added to the database");
-        CharSequence text = ("The Recipe Card "+ recipeCard.getName() +" was added to your " +
-                "recipes.");
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        finish();
     }
 }
