@@ -77,4 +77,7 @@ public class ShoppingCart extends ActionBarActivity {
 
     }
 
+    public void mainMenu(View view) {
+        finish();
+    }
 }
