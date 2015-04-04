@@ -104,6 +104,7 @@
                         android:layout_height="wrap_content"
                         android:text="Add Image"
                         android:id="@+id/addImageButton"
+                        android:onClick="addImage"
                         android:layout_weight="2" />
 
                     <ImageView
