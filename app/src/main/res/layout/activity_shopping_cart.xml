@@ -29,7 +29,8 @@
             android:id="@+id/deleteSelected"
             android:layout_below="@+id/shoppingList"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:onClick="deleteSelected" />
 
         <Button
             android:layout_width="wrap_content"

@@ -8,8 +8,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ShoppingCart extends ActionBarActivity {
@@ -72,9 +78,29 @@ public class ShoppingCart extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public List<String> getIngredientsToDelete () {
+        List<String> ingList = new ArrayList<>();
+
+        int numberOfItems = shoppingCartList.getChildCount();
+
+        for (int i = 0; i < numberOfItems; i++) {
+            LinearLayout row = (LinearLayout) shoppingCartList.getChildAt(i);
+            CheckBox box = (CheckBox) row.findViewById(R.id.checkBox);
+            if (box.isChecked()) {
+                String ing = box.getText().toString();
+                ingList.add(ing);
+                Log.d("Getting ingredients", "Adding ingredient: " + ing );
+            }
+        }
+
+
+        return ingList;
+    }
+
     public void deleteSelected (View view) {
+        List<String> ingredientsToDelete = getIngredientsToDelete();
 
-
+        // TODO: Call delete function here
     }
 
 }
