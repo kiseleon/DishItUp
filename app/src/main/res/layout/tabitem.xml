@@ -13,18 +13,20 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:weightSum="3"
-        android:layout_weight="3">
+        android:layout_weight="4">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Recipe Name"
             android:id="@+id/nameTab"
-            android:textSize="30sp"
-            android:layout_weight="3" />
+            android:textSize="25sp"
+            android:layout_weight="3"
+            android:textIsSelectable="false"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -51,13 +53,14 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="80dp"
+        android:layout_width="0dp"
         android:layout_height="80dp"
         android:id="@+id/imageTab"
         android:contentDescription="Recipe Image"
-        android:layout_weight="2"
         android:src="@drawable/placeholder_image"
-        android:scaleType="fitXY" />
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_weight="1" />
 
 
 

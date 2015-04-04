@@ -93,6 +93,7 @@ public class Recipe extends ActionBarActivity {
 
         builder.append(spannableDirectionsTitle);
         builder.append("\n" + recipe.getDirections());
+        builder.append("\n");
 
         recipeDirections.setText(builder, TextView.BufferType.SPANNABLE);
 
@@ -117,6 +118,7 @@ public class Recipe extends ActionBarActivity {
 
         builder.append(spannableCommentTitle);
         builder.append("\n" + recipe.getComment());
+        builder.append("\n");
 
         recipeComment.setText(builder, TextView.BufferType.SPANNABLE);
 
@@ -135,7 +137,7 @@ public class Recipe extends ActionBarActivity {
         for (String s : recipe.getCategories()) {
             categorylist += "\n" + s;
         }
-
+        categorylist += "\n";
         builder.append(categorylist);
 
         recipeCategories.setText(builder, TextView.BufferType.SPANNABLE);

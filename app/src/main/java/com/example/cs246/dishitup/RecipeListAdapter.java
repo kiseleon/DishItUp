@@ -67,7 +67,7 @@ public class RecipeListAdapter extends SimpleCursorAdapter {
 
         String sID = c.getString(iCol_ID);
         String sName = c.getString(iCol_Name);
-        String sRating = c.getString(iCol_Rating) + "/5";
+        String sRating = c.getString(iCol_Rating) + "/5 stars";
         String sTime = c.getString(iCol_Time) + " minutes";
         String sImage = c.getString (iCol_Image);  //// path & file
 

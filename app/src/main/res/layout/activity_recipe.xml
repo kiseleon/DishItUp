@@ -42,7 +42,8 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:minLines="2"
-                android:maxWidth="200dp" />
+                android:maxWidth="200dp"
+                android:textSize="25sp" />
 
             <ImageView
                 android:layout_width="0dp"
@@ -71,7 +72,7 @@
             android:layout_height="wrap_content"
             android:text="Ingredients"
             android:id="@+id/recipeIngredients"
-            android:textSize="25dp"
+            android:textSize="20sp"
             android:textIsSelectable="false" />
 
         <TextView
@@ -79,21 +80,21 @@
             android:layout_height="wrap_content"
             android:text="directions"
             android:id="@+id/recipeDirections"
-            android:textSize="25dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="comment"
             android:id="@+id/recipeComment"
-            android:textSize="25dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Categories"
             android:id="@+id/recipeCategories"
-            android:textSize="25dp" />
+            android:textSize="20sp" />
 
         <TableRow
             android:layout_width="match_parent"
