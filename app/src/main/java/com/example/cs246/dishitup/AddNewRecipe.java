@@ -56,7 +56,6 @@ public class AddNewRecipe extends ActionBarActivity {
     EditText categories;
     EditText amount;
 //trenton added this
-    ImageView recipePicture;
     Button addImageButton;
     ImageView picture;
 
@@ -79,6 +78,7 @@ public class AddNewRecipe extends ActionBarActivity {
         comments = (EditText)findViewById(R.id.editComments);
         categories = (EditText)findViewById(R.id.categoriesField);
         picture = (ImageView) findViewById(R.id.recipePicture);
+        addImageButton = (Button) findViewById(R.id.addImageButton);
 
         Log.e("Received recipe", "name: " + recipeCard.getName());
 
@@ -133,6 +133,10 @@ public class AddNewRecipe extends ActionBarActivity {
         builder.show();
     }
 
+    public void addImage(View view) {
+        selectImage();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -153,7 +157,7 @@ public class AddNewRecipe extends ActionBarActivity {
                     bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),
                             bitmapOptions);
 
-                    recipePicture.setImageBitmap(bitmap);
+                    picture.setImageBitmap(bitmap);
 
                     String path = android.os.Environment
                             .getExternalStorageDirectory()
@@ -165,8 +169,8 @@ public class AddNewRecipe extends ActionBarActivity {
 
                     //need to get the string path here and pass it in... no idea how yet
                     // this is static setPickref is not == problem
-                    //RecipeCard.setPictureRef(String.valueOf(System.currentTimeMillis()) + ".jpg");
-                   // RecipeCard.setPictureRef(file.getName());
+                    recipeCard.setPictureRef(String.valueOf(System.currentTimeMillis()) + ".jpg");
+                    recipeCard.setPictureRef(file.getName());
 
 
                     try {
@@ -174,6 +178,10 @@ public class AddNewRecipe extends ActionBarActivity {
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
                         outFile.flush();
                         outFile.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -191,12 +199,12 @@ public class AddNewRecipe extends ActionBarActivity {
                 String picturePath = c.getString(columnIndex);
 
                 //this is what i added the problem is picturePath is static...
-                //RecipeCard.setPictureRef(picturePath);
+                recipeCard.setPictureRef(picturePath);
 
                 c.close();
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                Log.w("path of image from gallery", picturePath+"");
-                recipePicture.setImageBitmap(thumbnail);
+                Log.w("image path from gallery", picturePath+"");
+                picture.setImageBitmap(thumbnail);
             }
         }
     }
