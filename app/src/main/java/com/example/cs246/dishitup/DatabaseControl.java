@@ -280,38 +280,34 @@ public class DatabaseControl extends SQLiteOpenHelper {
     public void addItemsToShoppingList(RecipeCard recipeCard){
         SQLiteDatabase database = getWritableDatabase();
 
-        List<String> ingredientList = recipeCard.getIngredients();
+        // get the list of ingredients
+        List<String> recipeIngredients = recipeCard.getIngredients();
 
-        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_SHOPPINGLIST, null);
-        int cursorCount = cursor.getCount();
-        cursor.close();
+        // query the database for the list of ingredients already in the list
+        String query = "SELECT " + KEY_ITEM + " FROM " + TABLE_SHOPPINGLIST + ";";
+        Cursor cursor = database.rawQuery(query, null);
 
-        for(int i = 0; i < ingredientList.size(); i++){
-            boolean contains = false;
-            for(int x = 1; x < cursorCount; x++){//checks to see if the ingredient is in the table
-                String rowIngredient;
-                String ingredientToAdd = ingredientList.get(i);
-                String selectQuery = "SELECT * FROM " + TABLE_SHOPPINGLIST + " WHERE "
-                        + KEY_ID + " = " + x;
+        List<String> tableIngredients = new ArrayList<>();
 
-                Cursor cursor2 = database.rawQuery(selectQuery, null);
-                if (cursor2 != null)
-                    cursor2.moveToFirst();
-                assert cursor2 != null;
-                rowIngredient = cursor2.getString(cursor2.getColumnIndex(KEY_ITEM));
-                cursor2.close();
+        cursor.moveToFirst();
 
-                contains = rowIngredient.equals(ingredientToAdd);
-            }
-            if(!contains){//adds ingredient if it was not in the table
+        for (int i = 0; i < cursor.getCount(); i++) {
+            String ing = cursor.getString(cursor.getColumnIndex(KEY_ITEM));
+            tableIngredients.add(ing);
+            cursor.moveToNext();
+        }
+
+        for (String ing : recipeIngredients) {
+            if (!tableIngredients.contains(ing)) {
+                // add the ingredient to the database
                 ContentValues values = new ContentValues();
-                values.put(KEY_ITEM, ingredientList.get(i));
-                //insert row
+                values.put(KEY_ITEM, ing);
                 database.insert(TABLE_SHOPPINGLIST, null, values);
             }
         }
 
         database.close();
+
     }
     public void deleteShoppingListItem(String ingredent){
         SQLiteDatabase database = getWritableDatabase();
