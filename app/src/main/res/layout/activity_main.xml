@@ -16,15 +16,16 @@
         android:nestedScrollingEnabled="false"
         android:minWidth="200dp"
         android:layout_marginBottom="55dp"
-        android:layout_above="@+id/recentlyAddedButton"
-        android:layout_alignLeft="@+id/recentlyAddedButton"
-        android:layout_alignStart="@+id/recentlyAddedButton" />
+        android:layout_above="@+id/shoppingCart"
+        android:layout_alignLeft="@+id/shoppingCart"
+        android:layout_alignStart="@+id/shoppingCart" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recently Added"
-        android:id="@+id/recentlyAddedButton"
+        android:text="My Shopping Cart"
+        android:id="@+id/shoppingCart"
+        android:onClick="goToShoppingCart"
         android:minWidth="200dp"
         android:maxWidth="200dp"
         android:layout_marginBottom="53dp"

@@ -18,7 +18,7 @@ import java.util.List;
 
 public class DatabaseControl extends SQLiteOpenHelper {
     //database version
-    private static final int DATABASE_VERSION = 11;
+    private static final int DATABASE_VERSION = 13;
     //database name
     private static final String DATABASE_NAME = "recipeCardManager";
     //table name
@@ -182,8 +182,8 @@ public class DatabaseControl extends SQLiteOpenHelper {
 
         assert cursor != null;
         for(int i = 0; i < cursor.getCount(); i++) {
-            recipeCard.addIngredient(cursor.getString(cursor.getColumnIndex(KEY_INGREDIENT))
-                    , cursor.getString(cursor.getColumnIndex(KEY_AMOUNTS)));
+            recipeCard.addIngredient(cursor.getString(cursor.getColumnIndex(KEY_AMOUNTS))
+                    , cursor.getString(cursor.getColumnIndex(KEY_INGREDIENT)));
             cursor.moveToNext();
         }
 
@@ -202,6 +202,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
 
+        cursor.close();
         database.close();
         return recipeCard;
     }
@@ -309,6 +310,15 @@ public class DatabaseControl extends SQLiteOpenHelper {
                 database.insert(TABLE_SHOPPINGLIST, null, values);
             }
         }
+
+        database.close();
+    }
+    public void deleteShoppingListItem(String ingredent){
+        SQLiteDatabase database = getWritableDatabase();
+
+        //Delete ingredients
+        database.delete(TABLE_SHOPPINGLIST, KEY_ITEM + " =? ", new String[]
+                {ingredent});
 
         database.close();
     }

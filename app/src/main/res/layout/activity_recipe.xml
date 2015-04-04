@@ -103,9 +103,9 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back"
-                android:id="@+id/back"
-                android:onClick="goBack"
+                android:text="Add to list"
+                android:id="@+id/addToListButton"
+                android:onClick="addToShoppingCart"
                 android:layout_gravity="left"
                 android:layout_weight=".33" />
 
@@ -115,7 +115,8 @@
                 android:text="Edit"
                 android:id="@+id/edit"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight=".33" />
+                android:layout_weight=".33"
+                android:onClick="editRecipe" />
 
             <Button
                 android:layout_width="wrap_content"

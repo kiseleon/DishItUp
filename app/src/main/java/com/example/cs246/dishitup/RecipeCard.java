@@ -132,9 +132,9 @@ public class RecipeCard implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeInt(this.id);
-        dest.writeString(this.name);
         dest.writeInt(this.rating);
         dest.writeInt(this.cookTime);
+        dest.writeString(this.name);
         dest.writeString(this.pictureRef);
         dest.writeString(this.comment);
         dest.writeString(this.directions);
@@ -148,27 +148,29 @@ public class RecipeCard implements Parcelable {
      * @param parcel Source Parcel
      */
     public RecipeCard(Parcel parcel) {
+        this.amounts = new ArrayList<>();
+        this.ingredients = new ArrayList<>();
+        List<String> categoryList = new ArrayList<>();
+        this.categories = new TreeSet<>();
+
+
         this.id = parcel.readInt();
-        this.name = parcel.readString();
         this.rating = parcel.readInt();
         this.cookTime = parcel.readInt();
+        this.name = parcel.readString();
         this.pictureRef = parcel.readString();
         this.comment = parcel.readString();
         this.directions = parcel.readString();
-
-        this.categories = new TreeSet<>();
-        List<String> categoryList = new ArrayList<>();
         parcel.readStringList(categoryList);
+        parcel.readStringList(this.amounts);
+        parcel.readStringList(this.ingredients);
+
         if (!categoryList.isEmpty()) {
             for (String s : categoryList) {
                 Log.d(RECIPE_CARD_TAG, "Adding category " + s);
                 addCategory(s);
             }
         }
-        this.amounts = new ArrayList<>();
-        this.ingredients = new ArrayList<>();
-        parcel.readStringList(this.amounts);
-        parcel.readStringList(this.ingredients);
 
     }
 

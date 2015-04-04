@@ -78,7 +78,11 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
          finish();
      }
 
-
+    public void clearFilters(View view) {
+        String message = "Clearing filters...";
+        Log.d(TAG_FILTER, message);
+        FilterData.clearFilter();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
