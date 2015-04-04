@@ -307,7 +307,7 @@ public class DatabaseControl extends SQLiteOpenHelper {
         }
 
         database.close();
-
+        cursor.close();
     }
     public void deleteShoppingListItem(String ingredent){
         SQLiteDatabase database = getWritableDatabase();
