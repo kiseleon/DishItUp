@@ -43,7 +43,7 @@ public class Recipe extends ActionBarActivity {
         recipe = b.getParcelable("RecipeCard");
 
         recipeName = (TextView) findViewById(R.id.recipeName);
-        recipeImage = (ImageView)   findViewById(R.id.recipeImage);
+        recipeImage = (ImageView) findViewById(R.id.recipeImage);
         recipeRating = (RatingBar) findViewById(R.id.ratingBar);
         recipeIngredients = (TextView) findViewById(R.id.recipeIngredients);
         recipeDirections = (TextView) findViewById(R.id.recipeDirections);
@@ -98,14 +98,16 @@ public class Recipe extends ActionBarActivity {
 
         // Set the image
         String picturePath = recipe.getPictureRef();
-        Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-        Log.w("image path from gallery", picturePath + "");
-        recipeImage.setImageBitmap(thumbnail);
+        if (picturePath.equals("@drawable/placeholder_image")) {
+            int imageResource = getResources().getIdentifier(picturePath, null, getPackageName());
+            Drawable res = getResources().getDrawable(imageResource);
+            recipeImage.setImageDrawable(res);
+        } else {
+            Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+            Log.w("image path from gallery", picturePath + "");
+            recipeImage.setImageBitmap(thumbnail);
+        }
 
-        /*
-        Drawable res = getResources().getDrawable(imageResource);
-        recipeImage.setImageDrawable(res);
-*/
         // set the comment
         builder.clear();
 
