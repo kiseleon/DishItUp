@@ -162,6 +162,9 @@ public class DatabaseControl extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
+        if (cursor.getCount() == 0)
+            return recipeCard;
+
         assert cursor != null;
         recipeCard.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
         recipeCard.setName(cursor.getString(cursor.getColumnIndex(KEY_NAME)));

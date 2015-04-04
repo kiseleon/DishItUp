@@ -147,7 +147,11 @@ public class Recipe extends ActionBarActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        finish();
+        DatabaseControl databaseControl = new DatabaseControl(getApplicationContext());
+        RecipeCard checkForChange = databaseControl.getRecipeCard(recipe.getId());
+
+        if (checkForChange.getId() == -1)
+            finish();
     }
 
     @Override
