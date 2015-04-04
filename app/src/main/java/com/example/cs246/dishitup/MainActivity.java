@@ -79,8 +79,8 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    public void launchShoppingList(View view) {
- //       Intent intent = new Intent(MainActivity.this, ShoppingList.class);
- //       startActivity(intent);
+    public void goToShoppingCart(View view) {
+        Intent intent = new Intent(MainActivity.this, ShoppingCart.class);
+        startActivity(intent);
     }
 }

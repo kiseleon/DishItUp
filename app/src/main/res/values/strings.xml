@@ -25,5 +25,6 @@
 
     <string name="title_activity_add_new_recipe">AddNewRecipe</string>
     <string name="title_activity_shopping_list">ShoppingList</string>
+    <string name="title_activity_shoping_cart">ShopingCart</string>
 
 </resources>
