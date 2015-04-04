@@ -309,6 +309,12 @@ public class DatabaseControl extends SQLiteOpenHelper {
         database.close();
         cursor.close();
     }
+
+    /**
+     * Pass a String ingredent you want to delete and and it will be removed from the shoppinglist
+     *
+     * @param ingredent pass in a string with the ingredient you want to delete from the list
+     */
     public void deleteShoppingListItem(String ingredent){
         SQLiteDatabase database = getWritableDatabase();
 
