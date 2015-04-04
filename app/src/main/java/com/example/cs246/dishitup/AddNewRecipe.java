@@ -79,6 +79,7 @@ public class AddNewRecipe extends ActionBarActivity {
         comments = (EditText)findViewById(R.id.editComments);
         categories = (EditText)findViewById(R.id.categoriesField);
         picture = (ImageView) findViewById(R.id.recipePicture);
+        addImageButton = (Button) findViewById(R.id.addImageButton);
 
         Log.e("Received recipe", "name: " + recipeCard.getName());
 
@@ -131,6 +132,10 @@ public class AddNewRecipe extends ActionBarActivity {
             }
         });
         builder.show();
+    }
+
+    public void addImage(View view) {
+        selectImage();
     }
 
     @Override
@@ -195,11 +200,11 @@ public class AddNewRecipe extends ActionBarActivity {
                 String picturePath = c.getString(columnIndex);
 
                 //this is what i added the problem is picturePath is static...
-                //RecipeCard.setPictureRef(picturePath);
+                recipeCard.setPictureRef(picturePath);
 
                 c.close();
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                Log.w("path of image from gallery......******************.........", picturePath+"");
+                Log.w("image path from gallery", picturePath+"");
                 recipePicture.setImageBitmap(thumbnail);
             }
         }
