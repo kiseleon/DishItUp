@@ -103,20 +103,21 @@
                     <Button
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Add Image"
+                        android:text="Add\nImage"
                         android:id="@+id/addImageButton"
                         android:onClick="addImage"
                         android:layout_weight="2" />
 
                     <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
                         android:id="@+id/recipePicture"
                         android:layout_column="1"
                         android:src="@drawable/placeholder_image"
-                        android:layout_weight="2"
 
-                        android:scaleType="fitXY" />
+                        android:scaleType="fitCenter"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true" />
 
                 </LinearLayout>
 
@@ -145,7 +146,8 @@
                     <TableRow
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:id="@+id/ingredientFields">
+                        android:id="@+id/ingredientFields"
+                        android:weightSum="3">
 
                         <EditText
                             android:layout_width="wrap_content"
@@ -155,15 +157,17 @@
                             android:maxWidth="100dp"
                             android:maxLines="1"
                             android:nestedScrollingEnabled="false"
-                            android:maxLength="10" />
+                            android:maxLength="10"
+                            android:layout_weight="1" />
 
                         <EditText
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/ingredientField"
                             android:hint="Ingredient"
                             android:maxLines="1"
-                            android:maxLength="20" />
+                            android:maxLength="20"
+                            android:layout_weight="2" />
 
 
 
