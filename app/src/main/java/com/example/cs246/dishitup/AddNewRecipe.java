@@ -58,6 +58,7 @@ public class AddNewRecipe extends ActionBarActivity {
 //trenton added this
     Button addImageButton;
     ImageView picture;
+    Button addRecipeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ public class AddNewRecipe extends ActionBarActivity {
         categories = (EditText)findViewById(R.id.categoriesField);
         picture = (ImageView) findViewById(R.id.recipePicture);
         addImageButton = (Button) findViewById(R.id.addImageButton);
+        addRecipeButton = (Button) findViewById(R.id.buttonAddRecipe);
 
         Log.e("Received recipe", "name: " + recipeCard.getName());
 
@@ -91,8 +93,10 @@ public class AddNewRecipe extends ActionBarActivity {
             comments.setText(recipeCard.getComment());
             updateCategories();
             updateIngredients();
-            // TODO: Make this set the picture reference
-            picture.setImageResource(R.drawable.placeholder_image);
+            String picturePath = recipeCard.getPictureRef();
+            Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+            picture.setImageBitmap(thumbnail);
+            addRecipeButton.setText("Update Recipe");
         }
     }
 
