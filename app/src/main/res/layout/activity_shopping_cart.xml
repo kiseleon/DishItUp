@@ -31,7 +31,8 @@
             android:layout_below="@+id/shoppingList"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:onClick="deleteSelected" />
+            android:onClick="deleteSelected"
+            android:background="#fec5bac5" />
 
         <Button
             android:layout_width="wrap_content"
@@ -41,7 +42,8 @@
             android:id="@+id/mainMenu"
             android:layout_above="@+id/listView"
             android:layout_toRightOf="@+id/deleteSelected"
-            android:layout_toEndOf="@+id/deleteSelected" />
+            android:layout_toEndOf="@+id/deleteSelected"
+            android:background="#fec5bac5" />
     </LinearLayout>
 
     <ListView

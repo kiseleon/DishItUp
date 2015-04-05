@@ -106,7 +106,8 @@
                         android:text="Add Image"
                         android:id="@+id/addImageButton"
                         android:onClick="addImage"
-                        android:layout_weight="2" />
+                        android:layout_weight="2"
+                        android:background="#fec5bac5" />
 
                     <ImageView
                         android:layout_width="100dp"
@@ -183,7 +184,8 @@
                             android:contentDescription="Add Ingredient"
                             android:layout_weight="1"
                             android:cropToPadding="false"
-                            android:onClick="addIngredient" />
+                            android:onClick="addIngredient"
+                            android:background="#fec5bac5" />
 
                         <ImageButton
                             android:layout_width="fill_parent"
@@ -194,7 +196,8 @@
                             android:contentDescription="Remove Ingredient"
                             android:layout_weight="1"
                             android:cropToPadding="false"
-                            android:onClick="removeIngredient" />
+                            android:onClick="removeIngredient"
+                            android:background="#fec5bac5" />
 
                     </TableRow>
 
@@ -295,7 +298,8 @@
                             android:src="@android:drawable/ic_input_add"
                             android:cropToPadding="false"
                             android:layout_weight="1"
-                            android:onClick="addCategory" />
+                            android:onClick="addCategory"
+                            android:background="#fec5bac5" />
 
                         <ImageButton
                             android:layout_width="wrap_content"
@@ -304,7 +308,8 @@
                             android:layout_column="2"
                             android:src="@android:drawable/ic_delete"
                             android:layout_weight="1"
-                            android:onClick="removeCategory" />
+                            android:onClick="removeCategory"
+                            android:background="#fec5bac5" />
 
                     </TableRow>
 
@@ -336,7 +341,8 @@
                     android:text="Add Recipe"
                     android:onClick="addRecipeToDatabase"
                     android:id="@+id/buttonAddRecipe"
-                    android:layout_column="1" />
+                    android:layout_column="1"
+                    android:background="#fec5bac5" />
             </TableRow>
         </TableLayout>
     </LinearLayout>

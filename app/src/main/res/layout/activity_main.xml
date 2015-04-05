@@ -19,7 +19,8 @@
         android:layout_marginBottom="55dp"
         android:layout_above="@+id/shoppingCart"
         android:layout_alignLeft="@+id/shoppingCart"
-        android:layout_alignStart="@+id/shoppingCart" />
+        android:layout_alignStart="@+id/shoppingCart"
+        android:background="#fec5bac5" />
 
     <Button
         android:layout_width="wrap_content"
@@ -32,7 +33,8 @@
         android:layout_marginBottom="53dp"
         android:layout_above="@+id/addRecipeButton"
         android:layout_alignLeft="@+id/addRecipeButton"
-        android:layout_alignStart="@+id/addRecipeButton" />
+        android:layout_alignStart="@+id/addRecipeButton"
+        android:background="#fec5bac5" />
 
     <Button
         android:layout_width="wrap_content"
@@ -44,7 +46,8 @@
         android:minWidth="200dp"
         android:layout_marginBottom="84dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="#fec5bac5" />
 
     <TextView
         android:layout_width="wrap_content"

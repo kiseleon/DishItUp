@@ -109,7 +109,8 @@
                 android:id="@+id/addToListButton"
                 android:onClick="addToShoppingCart"
                 android:layout_gravity="left"
-                android:layout_weight=".33" />
+                android:layout_weight=".33"
+                android:background="#fec5bac5" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -118,7 +119,8 @@
                 android:id="@+id/edit"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight=".33"
-                android:onClick="editRecipe" />
+                android:onClick="editRecipe"
+                android:background="#fec5bac5" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -126,7 +128,8 @@
                 android:text="Delete"
                 android:onClick="deleteCard"
                 android:id="@+id/delete"
-                android:layout_weight=".33" />
+                android:layout_weight=".33"
+                android:background="#fec5bac5" />
         </TableRow>
 
     </LinearLayout>
