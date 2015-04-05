@@ -24,7 +24,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Shopping Cart"
+        android:text="Shopping Cart"
         android:id="@+id/shoppingCart"
         android:onClick="goToShoppingCart"
         android:minWidth="200dp"
