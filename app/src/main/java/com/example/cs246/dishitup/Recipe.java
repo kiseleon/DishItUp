@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -20,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 
 public class Recipe extends ActionBarActivity {
     RecipeCard recipe;
@@ -32,6 +36,9 @@ public class Recipe extends ActionBarActivity {
     TextView recipeDirections;
     TextView recipeComment;
     TextView recipeCategories;
+
+    private int MY_DATA_CHECK_CODE = 0;
+    private TextToSpeech myTTS;
 
 
     @Override
@@ -142,6 +149,47 @@ public class Recipe extends ActionBarActivity {
 
         recipeCategories.setText(builder, TextView.BufferType.SPANNABLE);
 
+        // Start Text-to-Speech
+        Intent checkTTSIntent = new Intent();
+        checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+        startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+
+
+        // Set the text-to-speech up for the directions
+        recipeDirections.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                speakString(recipeDirections.getText().toString());
+            }
+        });
+
+        // Set the text-to-speech for the instructions
+        recipeIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                speakString(recipeIngredients.getText().toString());
+            }
+        });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == MY_DATA_CHECK_CODE) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                myTTS = new TextToSpeech(getApplicationContext(), new OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        if (status == TextToSpeech.SUCCESS) {
+                            myTTS.setLanguage(Locale.US);
+                        }
+                    }
+                });
+            }
+            else {
+                Intent installTTSIntent = new Intent();
+                installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installTTSIntent);
+            }
+        }
     }
 
     @Override
@@ -199,4 +247,9 @@ public class Recipe extends ActionBarActivity {
         DatabaseControl recipeDatabase = new DatabaseControl(getApplicationContext());
         recipeDatabase.addItemsToShoppingList(recipe);
     }
+
+    public void speakString(String speech) {
+        myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
 }
