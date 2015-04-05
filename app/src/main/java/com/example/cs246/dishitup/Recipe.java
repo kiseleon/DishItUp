@@ -249,7 +249,16 @@ public class Recipe extends ActionBarActivity {
     }
 
     public void speakString(String speech) {
-        myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+        if (myTTS.isSpeaking()) {
+            myTTS.stop();
+        } else {
+            myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null, "hello");
+        }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        myTTS.shutdown();
+    }
 }
