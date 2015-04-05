@@ -2,7 +2,6 @@ package com.example.cs246.dishitup;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +20,6 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.app.Activity;
 import android.os.Environment;
 import android.provider.MediaStore;
 import java.io.File;
@@ -29,11 +27,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.TooManyListenersException;
 
 // take a photo
 // code was based on this website
@@ -99,13 +94,6 @@ public class AddNewRecipe extends ActionBarActivity {
             addRecipeButton.setText("Update Recipe");
         }
     }
-
-
-
-
-
-
-
 
     private void selectImage() {
 
