@@ -45,16 +45,21 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
     public void searchTime(View view){
 
         Log.d(TAG_FILTER, "Time EditText contains string: " + editTextTime.getText().toString());
+        String message = editTextTime.getText().toString();
 
-        int cookTime = Integer.parseInt(editTextTime.getText().toString());
+        if (!message.equals("")) {
 
-        //int cooktime = Integer.getInteger(editTextTime.getText().toString());
+            int cookTime = Integer.parseInt(editTextTime.getText().toString());
 
-        Log.d(TAG_FILTER, "Filtering by time: " + cookTime);
+            //int cooktime = Integer.getInteger(editTextTime.getText().toString());
 
-        FilterData.timeFilter(cookTime);
+            Log.d(TAG_FILTER, "Filtering by time: " + cookTime);
 
-        finish();
+            FilterData.timeFilter(cookTime);
+
+            finish();
+        }
+
     }
 
     public void searchCategory(View view){
@@ -63,19 +68,22 @@ public class Filter extends ActionBarActivity implements AdapterView.OnItemSelec
 
         Log.d(TAG_FILTER, "Filtering by category: " + message);
 
-        FilterData.categoryFilter(message);
+        if (!message.equals("")) {
+            FilterData.categoryFilter(message);
 
-        finish();
+            finish();
+        }
     }
      public void searchIngredient(View view){
 
          String message = editTextIngredient.getText().toString();
 
          Log.d(TAG_FILTER, "Filtering by ingredient: " + message);
+         if (!message.equals("")) {
+             FilterData.ingredientFilter(message);
 
-         FilterData.ingredientFilter(message);
-
-         finish();
+             finish();
+         }
      }
 
     public void clearFilters(View view) {
