@@ -130,7 +130,7 @@ public class DefaultRecipes {
                 "to a boil. Remove from heat and stir in garlic powder and water until smooth." +
                 "\nWhen chicken strips are done cooking, toss them in the sauce. Serve warm with" +
                 " ranch or blue cheese dressing.\n");
-        recipe.setRating(2);
+        recipe.setRating(4);
         recipe.addIngredient("3-4", "chicken breasts, pounded to 1/2 inch thickness");
         recipe.addIngredient("1/2 cup", "flour");
         recipe.addIngredient("3", "eggs");
