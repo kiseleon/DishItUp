@@ -198,5 +198,6 @@ public class Recipe extends ActionBarActivity {
     public void addToShoppingCart(View view) {
         DatabaseControl recipeDatabase = new DatabaseControl(getApplicationContext());
         recipeDatabase.addItemsToShoppingList(recipe);
+        finish();
     }
 }
