@@ -49,7 +49,7 @@ public class ShoppingCart extends ActionBarActivity {
 
         Cursor cursor = database.rawQuery(query, null);
 
-        shoppingCartList.setAdapter(new SimpleCursorAdapter(this, R.layout.shoppinglistitem, cursor, fromColumns, toControlIDs, 0));
+        shoppingCartList.setAdapter(new ShoppingListAdapter(this, R.layout.shoppinglistitem, cursor, fromColumns, toControlIDs, 0));
 
         database.close();
     }
