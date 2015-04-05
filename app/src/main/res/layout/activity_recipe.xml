@@ -7,7 +7,8 @@
     android:orientation="vertical"
     tools:context="com.example.cs246.dishitup.Recipe"
     android:id="@+id/recipeScrollView"
-    android:weightSum="6">
+    android:weightSum="6"
+    android:background="#ffd2c5ab">
 
 
     <LinearLayout
