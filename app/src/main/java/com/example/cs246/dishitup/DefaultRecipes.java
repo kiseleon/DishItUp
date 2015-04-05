@@ -220,13 +220,13 @@ public class DefaultRecipes {
         recipe.setCookTime(25);
         recipe.setDirections("Preheat oven to 375. Grease and flour 15x10-inch jelly roll pan." +
                 "\nBeat sugar, sour cream, butter, and eggs in a large bowl until creamy." +
-                "Blend in bananas and vanilla. Add the flour, baking soda, and salt and blend for" +
+                "Blend in bananas and 2 t vanilla. Add the flour, baking soda, and salt and blend for" +
                 "1 minute. Stir in walnuts (if desired)." +
                 "\nSpread batter evenly in pan. bake for 20-25 minutes or until golden brown." +
                 "\nMeanwhile for frosting, heat butter in a large saucepan over medium heat until" +
                 "boiling. Let the butter turn a delicate golden brown (it should smell nutty as " +
                 "well and remove from heat immediately. " +
-                "\nAdd in the sugar, milk, and vanilla and mix until smooth. (It should be " +
+                "\nAdd in the sugar, milk, and 1 1/2 t vanilla and mix until smooth. (It should be " +
                 "thicker than glaze but thinner than frosting.)Spread immediately over warm" +
                 " brownies using a spatula.");
         recipe.setRating(2);
@@ -235,14 +235,13 @@ public class DefaultRecipes {
         recipe.addIngredient("1/2 cup", "butter, softened");
         recipe.addIngredient("2", "eggs");
         recipe.addIngredient("3 or 4", "ripe bananas");
-        recipe.addIngredient("2 t", "vanilla extract");
+        recipe.addIngredient("3 1/2 t", "vanilla extract");
         recipe.addIngredient("2 cups", "flour");
         recipe.addIngredient("1 t", "baking soda");
         recipe.addIngredient("3/4 t", "salt");
         recipe.addIngredient("1/2 cup", "chopped walnuts (optional)");
         recipe.addIngredient("1/2 cup", "butter");
         recipe.addIngredient("4 cups", "powdered sugar");
-        recipe.addIngredient("1 1/2 t", "vanilla extract");
         recipe.addIngredient("3 T", "milk");
         recipe.addCategory("desserts");
         recipeCards.add(recipe);
