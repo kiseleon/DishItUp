@@ -10,7 +10,7 @@
 
     <Space
         android:layout_width="20px"
-        android:layout_height="60px" />
+        android:layout_height="100px" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
 
     <Space
         android:layout_width="20px"
-        android:layout_height="40px" />
+        android:layout_height="100px" />
 
     <Button
         android:layout_width="wrap_content"
@@ -77,7 +77,7 @@
 
     <Space
         android:layout_width="20px"
-        android:layout_height="40px" />
+        android:layout_height="100px" />
 
     <Button
         android:layout_width="wrap_content"
