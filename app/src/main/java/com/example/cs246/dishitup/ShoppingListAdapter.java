@@ -27,8 +27,8 @@ public class ShoppingListAdapter extends SimpleCursorAdapter {
     private Context context;
     private int layout;
     private LayoutInflater layoutInflater;
-    private List<Boolean> checked;
-
+    private ArrayList<Boolean> status = new ArrayList<>();
+    private ArrayList<String> names = new ArrayList<>();
 
     private class ViewHolder {
         TextView id;
@@ -46,7 +46,13 @@ public class ShoppingListAdapter extends SimpleCursorAdapter {
         this.context = context;
         this.layout = layout;
         layoutInflater = LayoutInflater.from(context);
-        checked = new ArrayList<>();
+
+        c.moveToFirst();
+        for (int i = 0; i < c.getCount(); i++) {
+            status.add(false);
+            names.add(c.getString(c.getColumnIndex(DatabaseControl.KEY_ITEM)));
+            c.moveToNext();
+        }
     }
 
     @Override
@@ -73,6 +79,35 @@ public class ShoppingListAdapter extends SimpleCursorAdapter {
 
     }
 
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
+        View vi = convertView;
+        if (vi == null)
+            vi = layoutInflater.inflate(R.layout.shoppinglistitem,
+                    null);
+        TextView id = (TextView) vi
+                .findViewById(R.id.listId);
+        CheckBox cb = (CheckBox) vi
+                .findViewById(R.id.checkBox);
+        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+                if (isChecked) {
+                    status.set(position, true);
+                } else {
+                    status.set(position, false);
+                }
+            }
+        });
+        cb.setChecked(status.get(position));
+        cb.setText(names.get(position));
+
+        return vi;
+
+    }
 
 
 }
