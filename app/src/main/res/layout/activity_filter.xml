@@ -21,8 +21,7 @@
             android:id="@+id/mainMenu"
             android:onClick="goToMenu"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:background="#fec5bac5" />
+            android:layout_weight="1" />
 
         <Space
             android:layout_width="20px"
@@ -36,8 +35,7 @@
             android:id="@+id/clearFiltersButton"
             android:layout_gravity="right"
             android:layout_weight="1"
-            android:onClick="clearFilters"
-            android:background="#fec5bac5" />
+            android:onClick="clearFilters" />
     </LinearLayout>
 
     <TextView
@@ -66,8 +64,7 @@
             android:text="Filter"
             android:id="@+id/BTime"
             android:onClick="searchTime"
-            android:layout_weight="1"
-            android:background="#fec5bac5" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <TextView
@@ -95,8 +92,7 @@
             android:text="Filter"
             android:id="@+id/BIngredient"
             android:onClick="searchIngredient"
-            android:layout_weight="1"
-            android:background="#fec5bac5" />
+            android:layout_weight="1" />
     </LinearLayout>
 
     <TextView
@@ -124,8 +120,7 @@
             android:text="Filter"
             android:id="@+id/BCategory"
             android:onClick="searchCategory"
-            android:layout_weight="1"
-            android:background="#fec5bac5" />
+            android:layout_weight="1" />
 
     </LinearLayout>
 
