@@ -3,14 +3,16 @@
     android:orientation="horizontal" android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:id="@+id/listRow"
-    android:clickable="false">
+    android:clickable="false"
+    android:background="#ffd2c5ab">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="id field"
         android:id="@+id/listId"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:background="#ffd2c5ab" />
 
     <CheckBox
         android:layout_width="fill_parent"
